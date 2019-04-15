@@ -195,7 +195,7 @@ Cascading Style Sheets - 层叠样式表
 ---
 
 ## CSS规范属性
-### 1、设置所有的背景属性：`background`
+### • `background`：设置所有的背景属性
 ```css
 div {background: blue url(/image.jpg) cover fixed center;}
 div {
@@ -248,7 +248,7 @@ div {
     border-box  相对于边框盒来定位
     content-box  相对于内容框来定位
 <br/>
-### 2、设置所有的边框属性：`border`
+### • `border`：设置所有的边框属性
 ```css
 h1 {border: 5px solid blue;}
 h1 {
@@ -282,7 +282,7 @@ h1 {
     *hex_number  十六进制值
     *rgb_number  RGB代码
 <br/>
-### 3、允许将元素的边框替换为图片或形状：`border-image`
+### • `border-image`：允许将元素的边框替换为图片或形状
 ```css
 h1 { 
     border: 10px solid blue;   /* 必须先设置边框属性 */
@@ -346,8 +346,8 @@ p {border-image-repeat: stretch repeat;}
     round  如果无法完整平铺所有图像，则对图像进行缩放以适应区域
     space  如果无法完整平铺所有图像，扩展空间会分布在图像周围
 <br/>
-### 4、为元素添加圆角边框：`border-radius`
-#### • 仅设置一个值（平滑的圆角边框）
+### • `border-radius`：为元素添加圆角边框
+#### - 仅设置一个值（平滑的圆角边框）
 ```css
 h1 {border-radius: 30px;}
 h1 {
@@ -358,7 +358,7 @@ h1 {
 }
 ```
 ![示例效果][6]
-#### • 设置两个值（两条对角线上的角不同）
+#### - 设置两个值（两条对角线上的角不同）
 ```css
 h2 {border-radius: 50px 0px;}
 h2 {
@@ -371,7 +371,7 @@ h2 {
 书写顺序：左上角-右下角 右上角-左下角
 ```
 ![示例效果][7]
-#### • 设置三/四个值（每个角不同）
+#### - 设置三/四个值（每个角不同）
 ```css
 h3 {border-radius: 10px 20px 30px 40px;}
 h3 {
@@ -384,7 +384,7 @@ h3 {
 书写顺序：左上角 右上角 右下角 左下角
 ```
 ![此处输入图片的描述][8]
-#### • 设置多个值（四个方向的水平/垂直半径）
+#### - 设置多个值（四个方向的水平/垂直半径）
 ```css
 h4 {border-radius: 2em 1em 4em / 0.5em 3em;}
 h4 {border-radius: 2em 1em 4em 1em / 0.5em 3em 0.5em 3em;}
@@ -402,7 +402,7 @@ h4 {
     *px  定义圆角的半径值（默认值：0）
     *%  宽x百分比值=水平半径；高x百分比值=垂直半径
 <br/>
-### 5、向框添加一个或多个阴影：`box-shadow`
+### • `box-shadow`：向框添加一个或多个阴影
 ```css
 .div1 {box-shadow: 10px 10px;}
 .div2 {box-shadow: 10px 10px 5px #888888;}
@@ -420,7 +420,7 @@ h4 {
     *color  阴影的颜色
     inset  将外部阴影改为内部阴影
 <br/>
-### 6、以特定方式定义元素以适应指定区域：`box-sizing`
+### • `box-sizing`：以特定方式定义元素以适应指定区域
 ```css
 /* 在设定尺寸的区域之外绘制内边距和边框，相加为元素的实际尺寸 */
 .div1 {
@@ -443,7 +443,7 @@ h4 {
 ![box-sizing效果示例][11]
 
 <br/>
-### 7、清除其他浮动元素：`clear`
+### • `clear`：清除其他浮动元素
 ```css
 div {clear: none;}
 ```
@@ -453,14 +453,14 @@ div {clear: none;}
     both  在左右两侧均不允许浮动元素
 
 <br/>
-### 8、规定文本的颜色：`color`
+### • `color`：规定文本的颜色
 ```css
 h1 {color: red;}   /* 颜色名称 */
 h2 {color: #00ff00;}   /* 十六进制值 */
 h3 {color: rgb(0,0,255);}   /* RGB代码 */
 ```
 <br/>
-### 9、插入生成内容：`content`
+### • `content`：插入生成内容
 ```css
 h1:before {content: url(/image.jpg)}
 h1:after {content: "sometext"}
@@ -478,7 +478,7 @@ h1:after {content: "sometext"}
     no-close-quote  移除内容的闭合引号
     url(……)  插入媒体内容（图像，声音，视频等）
 <br/>
-### 10、鼠标指针放在一个元素边界范围内时的光标形状：`cursor`
+### • `cursor`：鼠标指针放在一个元素边界范围内时的光标形状
 ```css
 p {cursor: auto;}
 ```
@@ -502,7 +502,7 @@ p {cursor: auto;}
     sw-resize  指示矩形框的边缘可被向下（南）及向左（西）移动
     se-resize  指示矩形框的边缘可被向下（南）及向右（东）移动
 <br/>
-### 11、规定元素应该生成的框的类型：`display`
+### • `display`：规定元素应该生成的框的类型
 ```css
 /* 无法设置宽高的内联元素 */
 h1 {display: inline;}
@@ -538,7 +538,7 @@ h3 {
     table-cell  一个表格单元格（类似 <td> 和 <th>）
     table-caption  一个表格标题（类似 <caption>）
 
-### * 盒状模型的弹性布局：`display: flex | inline-flex`
+#### - 盒状模型的弹性布局：`display: flex|inline-flex`
 ```css
 /* 任何一个容器都可以指定为Flex布局 */
 h1 {display: flex;}
@@ -548,11 +548,11 @@ h2 {display: inline-flex;}
 /* Flex布局下，子元素的float、clear、vertical-align属性将失效 */
 ```
 采用Flex布局的元素称为**Flex容器**，子元素称为**Flex项目**：
-
 ![Flex容器和Flex项目1][13]
 ![Flex容器和Flex项目2][14]
-#### ① Flex容器（父元素）的属性
-##### • 项目的排列方式：`flex-flow`
+
+**1、Flex容器（父元素）的属性**
+① 项目的排列方式：`flex-flow`
 ```css
 .box {
     display: flex;
@@ -566,7 +566,8 @@ h2 {display: inline-flex;}
 
 书写顺序：方向 换行
 ```
-##### - 项目的排列方向：`flex-direction`
+
+• 项目的排列方向：`flex-direction`
 
     row  从左起水平排列（默认值）
     row-reverse  从右起水平排列
@@ -575,14 +576,15 @@ h2 {display: inline-flex;}
     
 ![项目的排列方向][15]
 
-##### - 项目的换行方式：`flex-wrap`
+• 项目的换行方式：`flex-wrap`
 
     nowrap  不换行（默认值）
     wrap  换行到下方
     wrap-reverse  换行到上方
 
 ![换行方式][16]
-##### • 项目在横轴方向上的对齐方式：`justify-content`
+
+② 项目在横轴方向上的对齐方式：`justify-content`
 ```css
 .box {
     display: flex;
@@ -596,7 +598,8 @@ h2 {display: inline-flex;}
     space-around  两端对齐，间隔边框
     space-evenly  均匀对齐，间隔相等
 ![横轴对齐方式][17]
-##### • 项目在纵轴方向上的对齐方式：`align-items`
+
+③ 项目在纵轴方向上的对齐方式：`align-items`
 ```css
 .box {
     display: flex;
@@ -609,7 +612,8 @@ h2 {display: inline-flex;}
     center  容器中心对齐
     baseline  项目内容沿基线对齐
 ![垂直对齐方式][18]
-##### • 多根轴线在纵轴方向上的对齐方式：`align-content`
+
+④ 多根轴线在纵轴方向上的对齐方式：`align-content`
 ```css
 .box {
     display: flex;
@@ -626,13 +630,14 @@ h2 {display: inline-flex;}
     space-around  两端对齐，间隔边框
 ![多行垂直对齐方式][19]
 
-#### ② Flex项目（子元素）的属性
-##### • 项目出现的顺序：`order`
+**2、Flex项目（子元素）的属性**
+① 项目出现的顺序：`order`
 ```css
 .item {order: 3;}   /* 一个数字，规定项目出现的顺序（默认值：0） */
 ```
 ![项目出现的顺序][20]
-##### • 项目如何分配空间：`flex`
+
+② 项目如何分配空间：`flex`
 ```css
 .item {flex: 0 1 auto;}   /* 默认值 */
 .item {
@@ -652,22 +657,23 @@ h2 {display: inline-flex;}
     一个非负数值和一个百分比值n *% == n 1 *%
     一个非负数值和一个长度值n *px == n 1 *px
 
-##### - 项目扩展的比率：`flex-grow`
+• 项目扩展的比率：`flex-grow`
 
     *number  规定项目将相对于其他项目进行扩展的量（默认值：0）
 ![flex-grow][21]
 
-##### - 当项目宽度之和大于容器宽度时，项目收缩的比率：`flex-shrink`
+• 当项目宽度之和大于容器宽度时，项目收缩的比率：`flex-shrink`
 
     *number  规定项目将相对于其他项目进行收缩的量（默认值：1）
 ![flex-shrink][22]
 
-##### - 设置或检索项目基准值，计算剩余空间以伸缩项目：`flex-basis`
+• 设置或检索项目基准值，计算剩余空间以伸缩项目：`flex-basis`
 
     auto  默认值等于项目的长度（如果该项目未指定长度，则长度将根据内容决定）
     *px  规定项目的初始长度
     *%  相对于容器尺寸的百分比值计算项目的初始长度
-##### • 允许单个项目在纵轴方向上的不同对齐方式：`align-self`
+
+③ 允许单个项目在纵轴方向上的不同对齐方式：`align-self`
 ```css
 .item {align-self: auto;}
 ```
@@ -679,7 +685,7 @@ h2 {display: inline-flex;}
     baseline  项目内容沿基线对齐
 ![单独对齐方式][23]
 <br/>
-### 12、定义元素在哪个方向浮动：`float`
+### • `float`：定义元素在哪个方向浮动
 ```css
 h1 {float: none;}
 
@@ -688,9 +694,8 @@ h1 {float: none;}
     none  不浮动（默认值）
     left  元素向左浮动
     right  元素向右浮动
-
 <br/>
-### 13、设置所有字体属性：`font`
+### • `font`：设置所有字体属性
 ```css
 h1 {font: italic bold 12px/30px Georgia,serif;}
 h1 {
@@ -832,21 +837,21 @@ h1 {font-family: 'Times New Roman', Georgia, serif;}
 </tbody>
 </table>
 <br/>
-### 14、设置元素的高度：`height`
+### • `height`：设置元素的高度
 ```css
 h1 {height: auto;}   /* 根据内容自动调整（默认值） */
 h2 {height: 500px;}   /* 使用单位定义高度 */
 h3 {height: 100%;}   /* 基于父元素高度的百分比值 */
 ```
 <br/>
-### 15、增加或减少字符间距：`letter-spacing`
+### • `letter-spacing`：增加或减少字符间距
 ```css
 h1 {letter-spacing: normal;}   /* 默认值 */
 h2 {letter-spacing: 20px;}   /* 字符间的固定空间 */
 h3 {letter-spacing: -0.5em;}   /* 允许使用负值，让字母挤得更紧 */
 ```
 <br/>
-### 16、设置所有的列表属性：`list-style`
+### • `list-style`：设置所有的列表属性
 ```css
 h1 {list-style: square inside url(/image.jpg);}
 h1 {
@@ -887,8 +892,8 @@ h1 {
     none  无图像（默认值）
     url(……)  图像的相对路径
 <br/>
-### 17、设置所有外边距属性：`margin`
-#### • 仅设置一个值（元素在父元素内居中）
+### • `margin`：设置所有外边距属性
+#### - 仅设置一个值（元素在父元素内居中）
 ```css
 h1 {margin: 20px;}
 h1 {
@@ -900,7 +905,7 @@ h1 {
 
 /* 允许使用负值，不过使用时要小心 */
 ```
-#### • 设置两个值（垂直方向和水平方向的外边距）
+#### - 设置两个值（垂直方向和水平方向的外边距）
 ```css
 h2 {margin: 20px 30px;}
 h2 {
@@ -913,7 +918,7 @@ h2 {
 书写顺序：垂直方向 水平方向
 /* 允许使用负值，不过使用时要小心 */
 ```
-#### • 设置三/四个值（四个方向的外边距）
+#### - 设置三/四个值（四个方向的外边距）
 ```css
 h3 {margin: 10px 15px 20px;}   /* 值复制原则 */
 h3 {margin: 10px 15px 20px 15px;}
@@ -934,7 +939,7 @@ h3 {
 
 ![值复制原理图][25]
 <br/>
-### 18、定义元素的最大宽度：`max-width`
+### • `max-width`：定义元素的最大宽度
 ```css
 h1 {max-width: none;}   /* 没有限制（默认值） */
 h2 {max-width: 300px;}   /* 定义元素的最大宽度值 */
@@ -943,7 +948,7 @@ h3 {max-width: 50%;}   /* 基于包含它的块级对象的百分比值 */
 /* 不允许指定负值 */
 ```
 <br/>
-### 19、设置元素的透明度：`opacity`
+### • `opacity`：设置元素的透明度
 ```css
 h1 {opacity: 0.0;}   /* 完全透明 */
 h2 {opacity: 0.5;}   /* 半透明 */
@@ -952,7 +957,7 @@ h3 {opacity: 1.0;}   /* 毫不透明 */
 /* 取值范围：0.0 — 1.0 */
 ```
 <br/>
-### 20、当内容溢出元素框时发生的事情：`overflow`
+### • `overflow`：当内容溢出元素框时发生的事情
 ```css
 div {overflow: visible;}
 
@@ -978,8 +983,17 @@ div {overflow: visible;}
     no-display  如果内容不适合框则删除框
     no-content  如果内容不适合框则隐藏内容
 <br/>
-### 21、设置所有内边距属性：`padding`
-#### • 仅设置一个值（元素中的内容居中）
+### • `overflow-wrap`：设置或检索当内容超过指定容器的边界时是否断行
+```css
+div {overflow-wrap：normal;}
+
+/* 使用 overflow-wrap 时，最好同时使用 word-wrap 作为备选兼容 */
+```
+    normal  允许内容顶开或溢出指定的容器边界
+    break-word  内容在边界内换行；如果需要，单词内部允许断行
+<br/>
+### • `padding`：设置所有内边距属性
+#### - 仅设置一个值（元素中的内容居中）
 ```css
 h1 {padding: 20px;}
 h1 {
@@ -991,7 +1005,7 @@ h1 {
 
 /* 禁止使用负值 */
 ```
-#### • 设置两个值（垂直方向和水平方向的内边距）
+#### - 设置两个值（垂直方向和水平方向的内边距）
 ```css
 h2 {padding: 20px 30px;}
 h2 {
@@ -1004,7 +1018,7 @@ h2 {
 书写顺序：垂直方向 水平方向
 /* 禁止使用负值 */
 ```
-#### • 设置三/四个值（四个方向的内边距）
+#### - 设置三/四个值（四个方向的内边距）
 ```css
 h3 {padding: 10px 15px 20px;}   /* 值复制原则 */
 h3 {padding: 10px 15px 20px 15px;}
@@ -1022,7 +1036,7 @@ h3 {
     *px  以具体单位计的内边距值
     *%  基于父元素的宽度的百分比值
 <br/>
-### 22、规定元素的定位类型：`position`
+### • `position`：规定元素的定位类型
 ```css
 h1 {position: static;}   /* 没有定位，不移动（默认值） */
 ```
@@ -1069,14 +1083,14 @@ h5 {
 ![sticky][29]
 
 <br/>
-### 23、设置嵌套引用的引号类型：`quotes`
+### • `quotes`：设置嵌套引用的引号类型
 ```css
 q:lang(en) {quotes: "《" "》" "<" ">"}
 ```
     none  规定content属性的open-quote、close-quote的值不会产生任何引号
     "……" "……" "……" "……"  定义要使用的引号（前两个值规定第一级引用嵌套，后两个值规定下一级引号嵌套）
 <br/>
-### 24、规定元素中的文本的水平对齐方式：`text-align`
+### • `text-align`：规定元素中的文本的水平对齐方式
 ```css
 h1 {text-align: left;}
 ```
@@ -1085,7 +1099,7 @@ h1 {text-align: left;}
     center  居中对齐
     justify  两端对齐
 <br/>
-### 25、规定添加到文本的修饰：`text-decoration`
+### • `text-decoration`：规定添加到文本的修饰
 ```css
 h1 {text-decoration: none;}
 ```
@@ -1095,7 +1109,7 @@ h1 {text-decoration: none;}
     line-through  删除线
     blink  文本闪烁
 <br/>
-### 26、规定文本块中首行文本的缩进：`text-indent`
+### • `text-indent`：规定文本块中首行文本的缩进
 ```css
 h1 {text-indent: 32px;}   /* 固定的缩进 */
 h2 {text-indent: 2em;}   /* 缩进两个字符 */
@@ -1104,7 +1118,7 @@ h3 {text-indent: 50%;}   /* 基于父元素宽度的百分比的缩进 */
 /* 允许使用负值，首行会被缩进到左边 */
 ```
 <br/>
-### 27、规定当文本溢出包含元素时发生的事情：`text-overflow`
+### • `text-overflow`：规定当文本溢出包含元素时发生的事情
 ```css
 h1 {text-overflow: clip;}
 ```
@@ -1112,7 +1126,7 @@ h1 {text-overflow: clip;}
     ellipsis  溢出文本省略为...
     "……"  溢出文本省略为字符串内容（仅对Firefox有效）
 <br/>
-### 28、向文本设置阴影：`text-shadow`
+### • `text-shadow`：向文本设置阴影
 ```css
 h1 {text-shadow: 5px 5px;}
 h2 {text-shadow: 5px 5px 5px #FF0000;} 
@@ -1127,7 +1141,7 @@ h2 {text-shadow: 5px 5px 5px #FF0000;}
     *blur  模糊距离
     *color  阴影的颜色
 <br/>
-### 29、向元素应用2D或3D转换：`transform`
+### • `transform`：向元素应用2D或3D转换
 ```css
 .div1 {transform: none;}   /* 不进行转换 */
 .div2 {transform: matrix(1, 0, 0, 1, 0, 0);}   /* 2D转换 */
@@ -1332,7 +1346,7 @@ matrix3d(1,0,0,0,0,sy,0,0,0,0,1,0,0,0,0,1)</td>
 
     perspective(……)  通过设置镜头到3D元素的距离定义透视效果（*number/*px）
 
-### • 设置元素转换的基准点：`transform-origin`
+### • `transform-origin`：设置元素转换的基准点
 ```css
 /* 定义2D转换 */
 .div1 {
@@ -1350,7 +1364,7 @@ matrix3d(1,0,0,0,0,sy,0,0,0,0,1,0,0,0,0,1)</td>
     *y-axis  定义y轴上的位置（top/center/bottom/*length/*%）
     *z-axis  定义z轴上的位置（*length）
 <br/>
-### 30、设置元素的垂直对齐方式：`vertical-align`
+### • `vertical-align`：设置元素的垂直对齐方式
 ```css
 h1 {vertical-align: baseline;}
 
@@ -1369,7 +1383,7 @@ h1 {vertical-align: baseline;}
     *px  元素偏移的距离，正值向上，负值向下
     *%  相对于line-height的百分比值来计算元素偏移的距离
 <br/>
-### 31、指定元素内的空白怎样处理：`white-space`
+### • `white-space`：指定元素内的空白怎样处理
 ```css
 p {white-space: normal;}
 ```
@@ -1379,14 +1393,14 @@ p {white-space: normal;}
     pre-wrap  保留空白符序列，但要换行
     pre-line  合并空白符序列，但保留换行符
 <br/>
-### 32、设置元素的宽度：`width`
+### • `width`：设置元素的宽度
 ```css
 h1 {width: auto;}   /* 根据内容自动调整（默认值） */
 h2 {width: 500px;}   /* 使用单位定义宽度 */
 h3 {width: 100%;}   /* 基于父元素宽度的百分比值 */
 ```
 <br/>
-### 33、指定一个元素的堆叠顺序：`z-index`
+### • `z-index`：指定一个元素的堆叠顺序
 ```css
 img {
     position: absolute;   /* 必须先设置定位 */
@@ -1401,7 +1415,7 @@ img {
 ---
 
 ## CSS特殊属性
-### 1、指定一个box子元素的排列方式：`-webkit-box-orient`
+### • `-webkit-box-orient`：指定一个box子元素的排列方式
 ```css
 div {
     display: -webkit-box;   /* 必须结合的属性 */
@@ -1413,7 +1427,7 @@ div {
     horizontal  指定子元素在一个水平线上从左至右排列
     vertical  从顶部向底部垂直布置子元素
 <br/>
-### 2、限制在一个块元素内文本可显示的行数：`-webkit-line-clamp`
+### • `-webkit-line-clamp`：限制在一个块元素内文本可显示的行数
 ```css
 div {
     overflow: hidden;
@@ -1427,8 +1441,8 @@ div {
 
 ---
 
-## CSS规范函数
-### 1、返回选择元素的属性值：`attr()`
+## CSS函数
+### • `attr()`：返回选择元素的属性值
 ```css
 attr(attribute-name)
 /* attribute-name：HTML元素的属性名（必需） */
@@ -1446,7 +1460,7 @@ attr(attribute-name)
 ```
 ![此处输入图片的描述][32]
 <br/>
-### 2、动态计算长度值：`calc()`
+### • `calc()`：动态计算长度值
 ```css
 calc(expression)
 /* expression：一个数学表达式，结果将采用运算后的返回值（必需） */
@@ -1460,7 +1474,7 @@ calc(expression)
 ```
 ![此处输入图片的描述][33]
 <br/>
-### 3、创建一个线性渐变的 "图像"：`linear-gradient()`
+### • `linear-gradient()`：创建一个线性渐变的 "图像"
 ```css
 background: linear-gradient(direction, start-color, transit-color, ……, stop-color);
 /* start-color：指定渐变的起始颜色（必需） */
@@ -1479,7 +1493,7 @@ background: linear-gradient(direction, start-color, transit-color, ……, stop-
 ```
 ![此处输入图片的描述][34]
 <br/>
-### 4、创建一个径向渐变的 "图像"：`radial-gradient()`
+### • `radial-gradient()`：创建一个径向渐变的 "图像"
 ```css
 background: radial-gradient(shape size at position, start-color, transit-color, ……, stop-color);
 /* start-color：指定渐变的起始颜色（必需） */
@@ -1500,7 +1514,7 @@ background: radial-gradient(shape size at position, start-color, transit-color, 
 ```
 ![此处输入图片的描述][35]
 <br/>
-### 5、创建重复的线性渐变 "图像"：`repeating-linear-gradient()`
+### • `repeating-linear-gradient()`：创建重复的线性渐变 "图像"
 ```css
 background: repeating-linear-gradient(angle | to position, start-color, transit-color, ……, stop-color);
 /* start-color：指定渐变的起始颜色（必需） */
@@ -1520,7 +1534,7 @@ background: repeating-linear-gradient(angle | to position, start-color, transit-
 ```
 ![此处输入图片的描述][36]
 <br/>
-### 6、创建重复的径向渐变 "图像"：`repeating-radial-gradient()`
+### • `repeating-radial-gradient()`：创建重复的径向渐变 "图像"
 ```css
 background: repeating-linear-gradient(shape size at position | at position, start-color, transit-color, ……, stop-color);
 /* start-color：指定渐变的起始颜色（必需） */

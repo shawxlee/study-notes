@@ -1,4 +1,4 @@
-﻿# HTML 标签|元素|属性参考手册
+﻿# HTML 标签|属性参考手册
 Hyper Text Markup Language - 超级文本标记语言
  
 标签（空格分隔）： html 标签 元素
@@ -354,14 +354,6 @@ The world’s leading conservation organization, WWF works in 100 countries and 
     *以下属性需与rel="icon"配合使用：
     sizes=""  被链接资源的尺寸（*HeightxWidth|any）
 <br/>
-### • `mark`：定义高亮的文本
-```html
-<h1>h标题内<mark>高亮</mark></h1>    
-<p>p文本内<mark>高亮</mark></p>
-<mark>单独使用高亮</mark>
-```
-![此处输入图片的描述][10]
-<br/>
 ### • `meta/`：提供有关页面的元信息
 ```html
 <head>
@@ -452,7 +444,7 @@ pre标签可以对文本的
 ```html
 <p>下面是一段引用的文本：<q>这是引用的内容</q></p>
 ```
-![效果示例][11]
+![效果示例][10]
 
     cite=""  定义引用的出处或来源（*URL）
 <br/>
@@ -520,7 +512,7 @@ pre标签可以对文本的
 
 <!-- label：为选项组规定描述 -->
 ```
-![此处输入图片的描述][12]
+![此处输入图片的描述][11]
 
     disabled  规定禁用该选项组
 ##### - `option`：定义下拉列表中的一个选项（一个条目）
@@ -541,7 +533,7 @@ pre标签可以对文本的
 
 <!-- 缩小文本的样式根据标签类型而定 -->
 ```
-![此处输入图片的描述][13]
+![此处输入图片的描述][12]
 <br/>
 ### • `span`：对文档中的行内元素进行组合
 ```html
@@ -615,7 +607,7 @@ pre标签可以对文本的
 
 <!-- 通过cols和rows属性来规定textarea的尺寸 -->
 ```
-![效果示例][14]
+![效果示例][13]
 
     autofocus  自动获得焦点
     disabled  禁用该文本区
@@ -635,7 +627,7 @@ pre标签可以对文本的
 
 <!-- <i>、<b>、<u>元素相邻时，需用<br/>换行 -->
 ```
-![此处输入图片的描述][15]
+![此处输入图片的描述][14]
 <br/>
 ### • `ul`：定义无序列表
 ```html
@@ -673,33 +665,11 @@ pre标签可以对文本的
 	    </ul>
 </ul>
 #### - `li`：定义列表项目
-<br/>
-### • `video`：定义视频
-```html
-<video src="/i/movie.ogg">视频无法显示</video>
-
-<!-- src：视频文件的URL -->
-```
-<video src="http://www.w3school.com.cn/i/movie.ogg">视频无法显示</video>
-
-    controls  显示播放控件
-    autoplay  自动播放
-    loop  循环播放
-    muted  静音
-    preload=""  预备播放，autoplay下忽略（auto|metadata|none）
-    poster=""  视频封面图（*URL）
-    width=""  视频播放器的宽度（*px）
-    height=""  视频播放器的高度（*px）
 
 ---
 
-## HTML5 新元素
+## HTML 5 新标签
 ### • `article`：规定独立的自包含内容（独立于站点的其余部分对其进行分发）
-```graphLR
-    A{body} --> B(article)
-    A --> C(section)
-    C --> D(article)
-```
 ```html
 <article>
     <h1>文章标题</h1>
@@ -710,11 +680,6 @@ pre标签可以对文本的
 ```
 <br/>
 ### • `aside`：定义主题之外的相关内容，通常显示成侧边栏或注释（例如目录、索引、广告、简介等）
-```graphLR
-    A{body} --> B(aside)
-    A --> C(article)
-    C --> D(aside)
-```
 ```html
 <p>The Disney movie <em>The Little Mermaid</em> was first released to theatres in 1989.</p>  
 <aside>The movie earned $87 million during its initial release.</aside>  
@@ -733,15 +698,24 @@ pre标签可以对文本的
     <p>这是被折叠隐藏的详情内容，展开后才可见</p>
 </details>
 ```
-![此处输入图片的描述][1]
+![此处输入图片的描述][15]
 #### - `summary`：为details元素定义一个可见的标题，当用户点击标题时会显示出详细信息
 <br/>
-### • `footer`：定义文档或节的页脚（通常包含文档的作者、版权信息、使用条款链接、联系信息等）
-```graphLR
-    A{body} --> B(footer)
-    A --> C(...)
-    C --> D(footer)
+### • `figure`：规定独立的流内容（图像、图表、照片、代码等等）
+```html
+<p>这是一段主要内容这是一段主要内容这是一段主要内容</p>
+<figure>
+    <p>这是一段附加内容：</p>
+    <img src="/img.jpg" alt="附加图片" width="50%">
+    <figcaption>附加内容的小标题</figcaption>
+</figure>
+
+<!-- <figcaption>应被置于<figure>下的第一个或最后一个位置 -->
 ```
+![此处输入图片的描述][16]
+#### - `figcaption`：定义 figure 元素的标题（caption）
+<br/>
+### • `footer`：定义文档或节的页脚（通常包含文档的作者、版权信息、使用条款链接、联系信息等）
 ```html
 <footer>
     <p>页脚内容1</p>
@@ -750,11 +724,6 @@ pre标签可以对文本的
 ```
 <br/>
 ### • `header`：定义文档的页眉（介绍信息）
-```graphLR
-    A{body} --> B(header)
-    A --> C(...)
-    C --> D(header)
-```
 ```html
 <header>
     <h1>页眉主题</h1>
@@ -763,12 +732,15 @@ pre标签可以对文本的
 <p>文档内容</p>
 ```
 <br/>
-### • `nav`：定义导航链接的部分
-```graphLR
-    A{body} --> B(nav)
-    A --> C(...)
-    C --> D(nav)
+### • `mark`：定义高亮的文本
+```html
+<h1>h标题内<mark>高亮</mark></h1>    
+<p>p文本内<mark>高亮</mark></p>
+<mark>单独使用高亮</mark>
 ```
+![此处输入图片的描述][17]
+<br/>
+### • `nav`：定义导航链接的部分
 ```html
 <nav>
     <a href="跳转链接1">导航文本1</a>
@@ -783,9 +755,6 @@ pre标签可以对文本的
 #### - `a`：定义超链接
 <br/>
 ### • `section`：定义文档中的节（section、区段）
-```graphLR
-    A{body} --> B(section)
-```
 ```html
 <section>
     <h1>第一节标题</h1>
@@ -797,6 +766,23 @@ pre标签可以对文本的
     <p>第二节内容</p>
 </section>
 ```
+<br/>
+### • `video`：定义视频
+```html
+<video src="/i/movie.ogg">视频无法显示</video>
+
+<!-- src：视频文件的URL -->
+```
+<video src="http://www.w3school.com.cn/i/movie.ogg">视频无法显示</video>
+
+    controls  显示播放控件
+    autoplay  自动播放
+    loop  循环播放
+    muted  静音
+    preload=""  预备播放，autoplay下忽略（auto|metadata|none）
+    poster=""  视频封面图（*URL）
+    width=""  视频播放器的宽度（*px）
+    height=""  视频播放器的高度（*px）
 
 ---
 
@@ -848,7 +834,6 @@ pre标签可以对文本的
 ---
 
 
-  [1]: http://wx4.sinaimg.cn/large/7de6638dly1fwonpa48vsg20nv07b0tr.gif
   [1]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwnuvfapozj20o101tgll.jpg
   [2]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwomk40xlcj20ny029jre.jpg
   [3]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwon64k6zfj20ny0c8myv.jpg
@@ -858,9 +843,11 @@ pre标签可以对文本的
   [7]: https://wx3.sinaimg.cn/mw690/7de6638dly1fv2dlmghllj20pl03o3ym.jpg
   [8]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwny027prkj20nr0cwjrp.jpg
   [9]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwop2c6iloj20nw0190sl.jpg
-  [10]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwnyxwpugij20nw05zdfw.jpg
-  [11]: https://wx1.sinaimg.cn/mw690/7de6638dly1fvqlgxoupej20pi016aa0.jpg
-  [12]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwok9hlajcj20o205tglm.jpg
-  [13]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnyt0d7chj20np0eeq3m.jpg
-  [14]: https://wx1.sinaimg.cn/mw690/7de6638dly1fu2okz4rvsj206j02gweb.jpg
-  [15]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwop3tsf1kj20o901bwed.jpg
+  [10]: https://wx1.sinaimg.cn/mw690/7de6638dly1fvqlgxoupej20pi016aa0.jpg
+  [11]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwok9hlajcj20o205tglm.jpg
+  [12]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnyt0d7chj20np0eeq3m.jpg
+  [13]: https://wx1.sinaimg.cn/mw690/7de6638dly1fu2okz4rvsj206j02gweb.jpg
+  [14]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwop3tsf1kj20o901bwed.jpg
+  [15]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwnuvfapozj20o101tgll.jpg
+  [16]: https://wx4.sinaimg.cn/mw690/7de6638dly1g22ves9tipj20pi0cg0ws.jpg
+  [17]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwnyxwpugij20nw05zdfw.jpg
