@@ -1,0 +1,2203 @@
+﻿# Bootstrap 布局|样式|组件|工具参考手册
+Bootstrap - 用于HTML、CSS和JS开发的开源工具包（v4.3）
+
+标签（空格分隔）： bootstrap css 组件 插件 
+
+---
+
+## Bootstrap4 布局
+### 1、移动设备优先
+为了让 Bootstrap 开发的网站对移动设备友好，确保适当的绘制和触屏缩放，需要在网页的 head 之中添加 viewport meta 标签：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>……</title>
+</head>
+<body>
+    ……
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+```
+    width=device-width  宽度是设备屏幕的宽度
+    initial-scale=1  初始的缩放比例为1
+    shrink-to-fit=no  自动适应手机屏幕的宽度
+
+<br/>
+### 2、容器类：`.container` / `.container-fluid`
+Bootstrap 4 需要一个容器元素来包裹网站的内容
+
+- `.container`：用于固定宽度并支持响应式布局的容器
+```html
+<div class="container">
+  …… 
+</div>
+```
+![此处输入图片的描述][1]
+
+- `.container-fluid`：用于100%宽度，占据全部viewport的容器
+```html
+<div class="container-fluid">
+  …… 
+</div>
+```
+![此处输入图片的描述][2]
+
+<br/>
+### 3、网格系统
+Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，随着屏幕或viewport尺寸的增加，系统会自动分为最多 12 列：
+
+![此处输入图片的描述][3]
+
+#### ① 网格类：`.col-*|auto` `.col-sm|md|lg|xl-*|auto`
+    col  列
+    -sm  小屏幕    -md  中等屏幕    -lg  大屏幕    -xl  超大屏幕
+    -*  当屏幕为前缀规定的尺寸时，每个div所占列数（每row行共12列）
+    -auto  根据内容自动调整div宽度
+<table>
+<tr>
+<th></th>
+<th style="text-align:center">超小屏幕</th>
+<th style="text-align:center">小屏幕</th>
+<th style="text-align:center">中等屏幕</th>
+<th style="text-align:center">大屏幕</th>
+<th style="text-align:center">超大屏幕</th>
+</tr>
+<tr>
+<th style="text-align:center">设备尺寸</th>
+<td style="text-align:center">＜576px</td>
+<td style="text-align:center">≥ 576px</td>
+<td style="text-align:center">≥ 768px</td>
+<td style="text-align:center">≥ 992px</td>
+<td style="text-align:center">≥ 1200px</td>
+</tr>
+<tr>
+<th style="text-align:center">class前缀</th>
+<td style="text-align:center;"><code>.col-*</code></td>
+<td style="text-align:center;"><code>.col-sm-*</code></td>
+<td style="text-align:center;"><code>.col-md-*</code></td>
+<td style="text-align:center;"><code>.col-lg-*</code></td>
+<td style="text-align:center;"><code>.col-xl-*</code></td>
+</tr>
+<tr>
+<th style="text-align:center">容器宽度</th>
+<td style="text-align:center">auto</td>
+<td style="text-align:center">540px</td>
+<td style="text-align:center">720px</td>
+<td style="text-align:center">960px</td>
+<td style="text-align:center">1140px</td>
+</tr>
+</table>
+<br/>
+#### ② 网格的基本结构
+```html
+<!-- 首先创建一行row -->
+<div class="row">
+    <!-- 然后给每个div添加网格类 -->
+    <div class="col-*-*"></div>
+    <div class="col-*-*"></div>
+    ……
+</div>
+```
+
+##### • 等宽布局：`.col`
+不在col上添加数字，自动调整为等宽布局，即同一行的每个div宽度相等
+```html
+<div class="row">
+    <div class="col">第1块（占4列）</div>
+    <div class="col">第2块（占4列）</div>
+    <div class="col">第3块（占4列）</div>
+</div>
+<div class="row">
+    <div class="col">第1块（占3列）</div>
+    <!-- 若设置了一个div的宽度，其他div将自动均分剩余宽度 -->
+    <div class="col-6">第2块（占6列）</div>
+    <div class="col">第3块（占3列）</div>
+</div>
+```
+![此处输入图片的描述][4]
+
+##### • 内容布局：`.col-auto` `.col-*-auto`
+使div的宽度跟随内容调整，且固定为内容的宽度，不受其他div影响
+```html
+<div class="row">
+    <div class="col-2">……</div>
+    <div class="col-auto">.col-*-auto使div的宽度跟随内容</div>
+    <div class="col">……</div>
+	<div class="col">……</div>
+</div>
+```
+![此处输入图片的描述][5]
+
+##### • 响应式布局：`.col-sm|md|lg|xl-*`
+适应不同屏幕尺寸的布局，而在移动设备上，多个列将会上下堆叠排版
+```html
+<div class="row">
+    <div class="col-md-3">……</div>
+    <div class="col-md-3">……</div>
+    <div class="col-md-3">……</div>
+    <div class="col-md-3">……</div>
+</div>
+<!-- 并排显示四个div，当屏幕为md时每个div占3列 -->
+    
+<div class="row">
+    <div class="col-md-4">……</div>
+    <div class="col-md-8">……</div>
+</div>
+<!-- 并排显示两个div，当屏幕为md时，第一个占4列，第二个占8列 -->
+
+<div class="row">
+    <div class="col-md-3 col-lg-6">……</div>
+    <div class="col-md-9 col-lg-6">……</div>
+</div>
+<!-- 并排显示两个div，md时分别占比25%、75%，lg时分别占比50%、50% -->
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">……</div>
+    ……
+</div>
+<!-- 随着屏幕尺寸的变化，应用不同的布局 -->
+```
+
+##### • 嵌套布局：`.col` > `.row`
+在现有列中添加一组新row，最多可添加12个或更少的列
+```html
+<div class="row">
+    <div class="col">一级div</div>
+    <div class="col">一级div
+        <div class="row">
+            <div class="col-5">二级div</div>
+            <div class="col">二级div</div>
+            <div class="col">二级div</div>
+        </div>
+    </div>
+</div>
+```
+![此处输入图片的描述][6]
+<br>
+#### ③ 网格的排列方式
+##### • row垂直对齐：`.align-items-start|center|end`
+```html
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col">start顶端对齐</div>
+        ……
+    </div>
+    <div class="row align-items-center">
+        <div class="col">center垂直居中</div>
+        ……
+    </div>
+    <div class="row align-items-end">
+        <div class="col">end底端对齐</div>
+        ……
+    </div>
+</div>
+```
+
+##### • row水平对齐：`.justify-content-start|center|end|around|between`
+```html
+<div class="container">
+    <div class="row justify-content-start">
+        <div class="col-3">start左对齐</div>
+        ……
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-3">center水平居中</div>
+        ……
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-3">end右对齐</div>
+        ……
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-3">around分散对齐</div>
+        ……
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-3">between两端对齐</div>
+        ……
+    </div>
+</div>
+```
+![此处输入图片的描述][7]
+
+##### • col垂直对齐：`.align-self-start|center|end`
+```html
+<div class="container">
+    <div class="row">
+        <div class="col align-self-start">……</div>
+        <div class="col align-self-center">……</div>
+        <div class="col align-self-end">……</div>
+    </div>
+</div>
+```
+
+##### • 清除内外边距：`.no-gutters`
+```html
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col">……</div>
+        <div class="col">……</div>
+        <div class="col">……</div>
+    </div>
+</div>
+```
+![此处输入图片的描述][8]
+
+##### • 强制换行：`.w-100`
+```html
+<div class="row">
+    <div class="col">……</div>
+    <div class="col">……</div>
+    <!-- 插入一个带.w-100的空div可强制换行 -->
+    <div class="w-100"></div>
+    <div class="col">……</div>
+    <div class="col">……</div>
+</div>
+
+<!-- 若一行中div的总宽度超过12列，则会自动换行 -->
+```
+![此处输入图片的描述][9]
+
+##### • 重新排序：`.order-*|first|last` `.order-sm|md|lg|xl-*`
+按照*的大小重新排列div的显示顺序，其中1≤ * ≤12
+>优先级：**.order-first|last** ＞ **无order** ＞ **.order-* / .order-sm|md|lg|xl-***
+```html
+<div class="row">
+	<div class="col">这是第一个div，无order，所以排在第二个</div>
+    <div class="col order-12">这是第二个div，但添加了.order-12，所以排在第六个</div>
+    <div class="col order-1">这是第三个div，但添加了.order-1，所以排在第四个</div>
+    <div class="col order-last">这是第四个div，但添加了.order-last，所以排在最后</div>
+	<div class="col">这是第五个div，无order，所以排在第三个</div>
+	<div class="col order-3">这是第六个div，但添加了.order-3，所以排在第五个</div>
+	<div class="col order-first">这是最后一个div，但添加了.order-first，所以排在最前</div>
+</div>
+```
+![此处输入图片的描述][10]
+
+##### • 偏移列：`.offset-sm|md|lg|xl-*`
+在规定屏幕尺寸上使用偏移，会把一个div的左外边距增加*列，其中1≤ * ≤11
+```html
+<div class="row" >
+      <div class="col-md-6 offset-md-3">……</div>
+</div>
+<!-- 当屏幕为md时，div向右偏移3列（此时为居中显示） -->
+
+<!-- 或可使用外边距工具.m*-*-*调整div之间的距离 -->
+```
+
+---
+
+## Bootstrap4 样式
+>**全局默认样式：**
+font-size: 16px;
+line-height: 1.5;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+### 1、HTML标签优化
+- `<abbr>`
+```html
+<p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+```
+![此处输入图片的描述][11]
+
+- `<address>`
+```html
+<address>
+Written by <strong>Shaw</strong><br>
+Email: <a href="mailto:shaw@example.com">shaw@example.com</a>
+</address>
+```
+![此处输入图片的描述][12]
+
+- `<blockquote>`
+```html
+<h1>About WWF</h1>
+<p>Here is a quote from WWF's website:</p>
+<blockquote cite="https://www.worldwildlife.org/about">
+    For nearly 60 years, WWF has been protecting the future of nature.
+    The world’s leading conservation organization, WWF works in 100 countries and is supported by more than one million members in the United States and close to five million globally. WWF's unique way of working combines global reach with a foundation in science, involves action at every level from local to global, and ensures the delivery of innovative solutions that meet the needs of both people and nature.
+</blockquote>
+```
+![此处输入图片的描述][13]
+
+#### • `button`
+```html
+<button type="button">button按钮（IE默认值）</button>
+<button type="submit">submit按钮（其他浏览器默认值）</button>
+```
+![此处输入图片的描述][14]
+
+- `<code>`
+```html
+<p>HTML元素 <code>&lt;span&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;div&gt;</code> 用于定义部分文档内容。</p>
+```
+![此处输入图片的描述][15]
+
+- `<details>` > `<summary>`
+```html
+<details>
+    <summary>点击展开详情</summary>
+    <p>这是被折叠隐藏的详情内容，展开后才可见</p>
+</details>
+<br>
+<details open>
+    <summary>详情设置为可见，点击折叠</summary>
+    <p>这是被折叠隐藏的详情内容，展开后才可见</p>
+</details>
+```
+![此处输入图片的描述][16]
+
+- `<dl>` > `<dt>` `<dd>`
+
+>★可使用网格系统布局
+```html
+<dl>
+	<dt>项目一名称</dt>
+	<dd>这是对项目一的描述</dd>
+	<dt>项目二名称</dt>
+	<dd>这是对项目二的描述</dd>
+	……
+</dl>
+```
+![此处输入图片的描述][17]
+
+- `<form>` > `<fieldset>` > `<legend>` `<label>` `<input>`
+```html
+<form>
+	<fieldset>
+		<legend>Personal Information</legend>
+		<p>What's your name?
+		<input type="text" name="name" placeholder="My name is..."></p>
+		<p>What's your gender?
+		<label for="male"></label>
+	    <input id="male" type="radio" name="sex" checked>Male
+	    <label for="female"></label>
+	    <input id="female" type="radio" name="sex">Female</p>
+		<input type="submit" value="Submit">
+	</fieldset>
+</form>
+```
+![此处输入图片的描述][18]
+
+- `<h1>`~`<h6>` `<p>`
+```html
+<h1>h1标题（2.5rem = 40px）</h1>
+<h2>h2标题（2rem = 32px）</h2>
+<h3>h3标题（1.75rem = 28px）</h3>
+<h4>h4标题（1.5rem = 24px）</h4>
+<h5>h5标题（1.25rem = 20px）</h5>
+<h6>h6标题（1rem = 16px）</h6>
+<p>p文字段落（1rem = 16px）</p>
+```
+![此处输入图片的描述][19]
+
+#### • `kbd`
+```html
+<p>使用快捷键 <kbd>ctrl + c</kbd> 进行复制</p>
+```
+![此处输入图片的描述][20]
+
+#### • `mark`
+```html
+<h1>h标题内<mark>高亮</mark></h1>    
+<p>p文本内<mark>高亮</mark></p>
+<mark>单独使用高亮</mark>
+```
+![此处输入图片的描述][21]
+
+#### • `ol` > `li`
+```html
+<ol>
+	<li>第1项</li>
+	    <ol>
+	    	<li>第1.1项</li>
+	    	<li>第1.2项</li>
+			    <ol>
+	    	        <li>第1.2.1项</li>
+	    	        <li>第1.2.2项</li>
+	            </ol>
+	    </ol>
+	<li>第2项</li>
+	<li>第3项</li>
+	    <ol>
+	    	<li>第3.1项</li>
+	    </ol>
+</ol>
+```
+![此处输入图片的描述][22]
+
+- `<pre>`
+```html
+<pre>
+pre标签可以对文本的
+换行和   空格    进行控制
+常用于展示计算机的源代码
+</pre>
+```
+![此处输入图片的描述][23]
+
+#### • `select` > `optgroup` > `option`
+```html
+<select>
+	<optgroup label="Junior">
+		<option value="junior1">junior 1</option>
+		<option value="junior2">junior 2</option>
+		<option value="junior3">junior 3</option>
+	</optgroup>
+	<optgroup label="Senior">
+		<option value="senior1">senior 1</option>
+		<option value="senior2">senior 2</option>
+		<option value="senior3">senior 3</option>
+	</optgroup>
+</select>
+```
+![此处输入图片的描述][24]
+
+#### • `small`
+```html
+<h1>h1标题 <small>h1副标题</small></h1>
+<h2>h2标题 <small>h2副标题</small></h2>
+<h3>h3标题 <small>h3副标题</small></h3>
+<h4>h4标题 <small>h4副标题</small></h4>
+<h5>h5标题 <small>h5副标题</small></h5>
+<h6>h6标题 <small>h6副标题</small></h6>
+<p>p文本 <small>p副文本</small></p>
+<small>单独使用时即按默认文本样式缩小</small>
+```
+![此处输入图片的描述][25]
+
+- `<table>` > `<caption>` `<tr>` > `<th>`/`<td>`
+```html
+<table border="1">
+    <caption>caption元素不再作为表格标题，而是位于下方的一段描述文本</caption>
+    <tr>
+        <th>表头：1行1列</th>
+        <th>表头：1行2列</th>
+    </tr>
+    <tr>
+        <td>内容：2行1列</td>
+        <td>内容：2行2列</td>
+    </tr>
+</table>
+```
+![此处输入图片的描述][26]
+
+#### • `textarea`
+```html
+<textarea>这是一个多行文本框，只能垂直调整大小</textarea>
+```
+![此处输入图片的描述][27]
+
+- `<ul>` > `<li>`
+```html
+<ul>
+	<li>第1项</li>
+	    <ul>
+	    	<li>第1.1项</li>
+	    	<li>第1.2项</li>
+			    <ul>
+	    	        <li>第1.2.1项</li>
+	    	        <li>第1.2.2项</li>
+	            </ul>
+	    </ul>
+	<li>第2项</li>
+	<li>第3项</li>
+	    <ul>
+	    	<li>第3.1项</li>
+	    </ul>
+</ul>
+```
+![此处输入图片的描述][28]
+<br/>
+### 2、CSS属性优化
+#### • `display: none` → `hidden`
+```html
+<p hidden>这个元素会被隐藏</p>
+```
+<br/>
+### 3、排版样式类
+#### • 标题类：`.h1|h2|h3|h4|h5|h6`
+当想要匹配标题的字体样式但不能使用关联的HTML元素时
+```html
+<p class="h1">.h1标题（2.5rem = 40px）</p>
+<p class="h2">.h2标题（2rem = 32px）</p>
+<p class="h3">.h3标题（1.75rem = 28px）</p>
+<p class="h4">.h4标题（1.5rem = 24px）</p>
+<p class="h5">.h5标题（1.25rem = 20px）</p>
+<p class="h6">.h6标题（1rem = 16px）</p>
+<p>p文字段落（1rem = 16px）</p>
+```
+![此处输入图片的描述][29]
+
+#### • 扩大标题：`.display-1|2|3|4`
+```html
+<h1 class="display-1">display-1标题</h1>
+<h1 class="display-2">display-2标题</h1>
+<h1 class="display-3">display-3标题</h1>
+<h1 class="display-4">display-4标题</h1>
+
+<!-- display-*的样式是固定的，与标签类型无关 -->
+```
+![此处输入图片的描述][30]
+
+#### • 突出段落：`.lead`
+```html
+<p>这是一段普通文本</p>
+<p class="lead">这是一段突出文本</p>
+<p>这是一段普通文本</p>
+```
+![此处输入图片的描述][31]
+
+#### • 高亮文本：`.mark`
+```html
+<p class="mark">这是一行高亮的文本</p>
+<p>文本中插入<span class="mark">带.mark的span</span>高亮局部</p>
+```
+![此处输入图片的描述][32]
+
+#### • 缩小文本字号：`.small`
+缩小文本字号为父元素字号的85%
+```html
+<p>这是一段普通文本，字号为16px</p>
+<p class="small">这是一段.small文本，字号为13.6px</p>
+
+<div style="font-size: 30px;">
+    <p>这是父元素设定字号30px下的普通文本</p>
+    <p class="small">这是30px下的.small文本，字号为25.5px</p>
+</div>
+```
+![此处输入图片的描述][33]
+
+#### • 小号大写字母缩写：`.initialism`
+显示在abbr元素中的文本以小号字体展示，且可以将小写字母转换为大写字母
+```html
+<p>The <abbr class="initialism" title="World Health Organization">who</abbr> was founded in 1948.</p>
+```
+![此处输入图片的描述][34]
+
+#### • 突出引用内容：`.blockquote` > `.blockquote-footer`
+```html
+<h1>About WWF</h1>
+<!-- 向<blockquote>标签添加.blockquote可突出引用内容 -->
+<blockquote class="blockquote">
+    <p>For nearly 60 years, WWF has been protecting the future of nature.
+        The world’s leading conservation organization, WWF works in 100 countries and is supported by more than one million members in the United States and close to five million globally. WWF's unique way of working combines global reach with a foundation in science, involves action at every level from local to global, and ensures the delivery of innovative solutions that meet the needs of both people and nature.</p>
+    <!-- 向<footer>标签添加.blockquote-footer生成引用注脚，将引用源包裹在cite标签内，通过title属性备注源信息 -->
+    <footer class="blockquote-footer">Quote from <cite title="https://www.worldwildlife.org/about">WWF</cite>'s website</footer>
+</blockquote>
+```
+![此处输入图片的描述][35]
+
+#### • 清除列表样式：`.list-unstyled`
+```html
+<!-- 向父元素添加.list-unstyled，只对一级列表项有效 -->
+<ul class="list-unstyled">
+	<li>第1项</li>
+	    <ul>
+	    	<li>第1.1项</li>
+	    	<li>第1.2项</li>
+			    <ul>
+	    	        <li>第1.2.1项</li>
+	    	        <li>第1.2.2项</li>
+	            </ul>
+	    </ul>
+	<li>第2项</li>
+	<li>第3项</li>
+	    <ul>
+	    	<li>第3.1项</li>
+	    </ul>
+</ul>
+```
+![此处输入图片的描述][36]
+
+#### • 行内并排列表项：`.list-inline` > `.list-inline-item`
+```html
+<ul class="list-inline">
+    <li class="list-inline-item">第一项</li>
+    <li class="list-inline-item">第二项</li>
+    <li class="list-inline-item">第三项</li>
+</ul>
+```
+![此处输入图片的描述][37]
+
+#### • 代码块滚动：`.pre-scrollable`
+使pre元素可滚动，代码块高度超出340px时，就会在Y轴出现滚动条
+```html
+<pre class="pre-scrollable">
+使 pre 元素可滚动
+代码块区域最大高度为 340px
+一旦超出这个高度
+就会在 Y 轴出现滚动条
+</pre>
+```
+![此处输入图片的描述][38]
+<br>
+### 4、文本样式类
+#### • 文本水平对齐方式：`.text-justify|left|center|right`
+```html
+<p class="text-justify">左起两端对齐</p>
+<p class="text-left">左对齐</p>
+<p class="text-center">居中对齐</p>
+<p class="text-right">右对齐</p>
+```
+![此处输入图片的描述][39]
+
+#### • 文本换行/溢出/省略：`.text-wrap|nowrap|truncate`/`.text-break`
+```html
+<p class="bg-secondary w-25">默认的中文文本不会溢出，换行显示；英文文本会溢出，一行显示</p>
+<p class="bg-primary w-25 text-wrap">.text-wrap的中文文本不会溢出，换行显示；英文文本会溢出，一行显示</p>
+<p class="bg-success w-25 text-nowrap">.text-nowrap的文本会溢出，一行显示</p>
+<p class="bg-warning w-25 text-truncate">.text-truncate的文本不会溢出，不换行，溢出部分省略为...</p>
+<p class="bg-danger w-25 text-break">.text-break的文本不会溢出，换行显示</p>
+```
+![此处输入图片的描述][40]
+
+#### • 字母大小写转换：`.text-uppercase|lowercase|capitalize`
+```html
+<p class="text-lowercase">全小写 text-lowercase</p>
+<p class="text-uppercase">全大写 text-uppercase</p>      
+<p class="text-capitalize">首字母大写 text-capitalize</p>
+```
+![此处输入图片的描述][41]
+
+#### • 文本粗细与斜体：`.font-weight-bolder|bold|normal|light|lighter` `.font-italic`
+```html
+<p class="font-weight-normal">普通文本 .font-weight-normal</p>
+<p class="font-weight-bold">粗体文本 .font-weight-bold</p>
+<p class="font-weight-bolder">更粗文本 .font-weight-bolder</p>
+<p class="font-weight-light">细体文本 .font-weight-light</p>
+<p class="font-weight-lighter">更细文本 .font-weight-lighter</p>
+<p class="font-italic">斜体文本 .font-italic</p>
+
+<!-- .font-weight-*和.font-italic可搭配使用 -->
+```
+![此处输入图片的描述][42]
+
+#### • 等宽英文字体：`.text-monospace`
+```html
+<p class="text-monospace">This is in monospace</p>
+```
+![此处输入图片的描述][43]
+
+#### • 文本从父继承颜色：`.text-reset`
+```html
+<p class="text-muted">
+    <a href="#">链接1：默认颜色</a>
+    <a href="#" class="text-reset">链接2：.text-reset从父继承颜色</a>
+</p>
+```
+![此处输入图片的描述][44]
+
+#### • 清除链接下划线：`.text-decoration-none`
+```html
+<a href="#" class="text-decoration-none">没有下划线的链接文本</a>
+```
+![此处输入图片的描述][45]
+<br/>
+### 5、颜色样式类
+#### • 文本颜色：`.text-primary|secondary|success|danger|warning|info|light|dark|body|muted|white|black-50|white-50`
+```html
+<p class="text-primary">.text-primary</p>
+<p class="text-secondary">.text-secondary</p>
+<p class="text-success">.text-success</p>
+<p class="text-danger">.text-danger</p>
+<p class="text-warning">.text-warning</p>
+<p class="text-info">.text-info</p>
+<p class="text-light">.text-light</p>
+<p class="text-dark">.text-dark</p>
+<p class="text-body">.text-body</p>
+<p class="text-muted">.text-muted</p>
+<p class="text-white">.text-white</p>
+<p class="text-black-50">.text-black-50</p>
+<p class="text-white-50">.text-white-50</p>
+```
+![此处输入图片的描述][46]
+
+#### • 背景颜色：`.bg-primary|secondary|success|danger|warning|info|light|dark|white|transparent`
+```html
+<p class="bg-primary">.bg-primary</p>
+<p class="bg-secondary">.bg-secondary</p>
+<p class="bg-success">.bg-success</p>
+<p class="bg-danger">.bg-danger</p>
+<p class="bg-warning">.bg-warning</p>
+<p class="bg-info">.bg-info</p>
+<p class="bg-light">.bg-light</p>
+<p class="bg-dark">.bg-dark</p>
+<p class="bg-white">.bg-white</p>
+<p class="bg-transparent">.bg-transparent</p>
+```
+![此处输入图片的描述][47]
+
+---
+
+## Bootstrap4 组件
+### 1、路径导航：`.breadcrumb` > `.breadcrumb-item` `.active`
+路径导航表示当前页面在导航层次结构内的位置，可以显示日期、类别或标签等
+```html
+<!-- 以一个nav标签开始 -->
+<nav>
+    <!-- 创建一个带.breadcrumb的有序列表ol -->
+    <ol class="breadcrumb">
+        <!-- 向每个li添加.breadcrumb-item，父级项内包裹a链接 -->
+	    <li class="breadcrumb-item"><a href="#">2018</a></li>
+	    <li class="breadcrumb-item"><a href="#">Nov.</a></li>
+	    <!-- 当前项li用.active标记 -->
+	    <li class="breadcrumb-item active">08th</li>
+    </ol>
+</nav>
+
+<!-- 各路径间的分隔符已经自动通过CSS设置好了 -->
+```
+![此处输入图片的描述][48]
+
+<br/>
+### 2、卡片：`.card`
+>★可使用网格系统布局
+#### • 主体内容：`.card-body` > `.card-title`/`.card-subtitle`/`.card-text`/`.card-link`
+```html
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <!-- 在.card-body下创建标题/文本/链接 -->
+        <h3 class="card-title">这是卡片的标题</h3>
+        <h5 class="card-subtitle">这是卡片的副标题</h5>
+        <p class="card-text">这是卡片的文本内容</p>
+        <a href="#" class="card-link">这是一条链接</a>
+    </div>
+</div>
+```
+![此处输入图片的描述][49]
+
+#### • 封面图：`.card-img-top`
+```html
+<div class="card" style="width: 18rem;">
+    <!-- 在.card下插入带.card-img-top的img标签 -->
+    <img src="/img1.jpg" class="card-img-top">
+    <div class="card-body">这是卡片的主体内容</div>
+    <!-- .card-img-top的位置即图片的位置 -->
+    <img src="/img2.jpg" class="card-img-top">
+</div>
+
+<!-- 图片默认填充，按原始比例缩放 -->
+```
+![此处输入图片的描述][50]
+
+#### • 图片背景：`.card-img` + `.card-img-overlay`
+将图像转换为卡片背景，并在背景中添加文本内容
+```html
+<div class="card" style="width: 18rem;">
+    <img src="/img.jpg" class="card-img">
+    <!-- 在.card-img后插入带.card-img-overlay的div -->
+	<div class="card-img-overlay">这是.card-img-overlay中的内容</div>
+    <div class="card-body">这是.card-body中的内容</div>
+</div>
+
+<!-- 图片默认填充，按原始比例缩放 -->
+```
+![此处输入图片的描述][51]
+
+#### • 列表组：`.list-group` `.list-group-flush` > `.list-group-item`
+```html
+<div class="card" style="width: 10rem;">
+    <!-- 在.card下插入带.list-group和.list-group-flush的ul标签 -->
+    <ul class="list-group list-group-flush">
+        <!-- 在li标签内添加.list-group-item -->
+        <li class="list-group-item">列表项1</li>
+        <li class="list-group-item">列表项2</li>
+        <li class="list-group-item">列表项3</li>
+    </ul>
+</div>
+```
+![此处输入图片的描述][52]
+
+#### • 页眉和页脚：`.card-header` + `.card-footer`
+```html
+<div class="card" style="width: 18rem;">
+    <!-- 在.card下开头插入带.card-header的div/h*标签 -->
+    <div class="card-header">这是卡片的页眉</div>
+    <div class="card-body">这是卡片的主体</div>
+    <!-- 在.card下末尾插入带.card-footer的div/h*标签 -->
+    <div class="card-footer">这是卡片的页脚</div>
+</div>
+
+<!-- .card-header和.card-footer可添加到h*标签中强调文本 -->
+```
+![此处输入图片的描述][53]
+
+#### • 卡片导航：( `.card-header` > `.nav` `.nav-tabs|pills` `.card-header-tabs|pills` > `.nav-item` ) + ( `.card-body` > `.tab-content` )
+```html
+<div class="card" style="width: 30rem;">
+	<div class="card-header">
+		<!-- 在.card-header下创建tab导航组件，添加.card-header-tabs -->
+		<ul class="nav nav-tabs card-header-tabs">
+		    <!-- 当前选项卡用.active标记 -->
+			<li class="nav-item"><a href="#part1" class="nav-link active" data-toggle="tab">导航链接1</a></li>
+			<li class="nav-item"><a href="#part2" class="nav-link" data-toggle="tab">导航链接2</a></li>
+			<li class="nav-item"><a href="#part3" class="nav-link" data-toggle="tab">导航链接3</a></li>
+		</ul>
+	</div>
+	<div class="card-body">
+	    <!-- 在.card-body下创建对应的选项卡组件 -->
+		<div class="tab-content">
+		    <!-- 当前页面用.active标记 -->
+			<div class="tab-pane active" id="part1">这是第一部分</div>
+			<div class="tab-pane" id="part2">这是第二部分</div>
+			<div class="tab-pane" id="part3">这是第三部分</div>
+		</div>
+	</div>
+</div>
+```
+![此处输入图片的描述][54]
+```html
+<div class="card" style="width: 30rem;">
+	<div class="card-header">
+		<!-- 在.card-header下创建pill导航组件，添加.card-header-pills -->
+		<ul class="nav nav-pills card-header-pills">
+			<li class="nav-item"><a href="#part1" class="nav-link active" data-toggle="pill">导航链接1</a></li>
+			<li class="nav-item"><a href="#part2" class="nav-link" data-toggle="pill">导航链接2</a></li>
+			<li class="nav-item"><a href="#part3" class="nav-link" data-toggle="pill">导航链接3</a></li>
+		</ul>
+	</div>
+	<div class="card-body">
+		<div class="tab-content">
+			<div class="tab-pane active" id="part1">这是第一部分</div>
+			<div class="tab-pane" id="part2">这是第二部分</div>
+			<div class="tab-pane" id="part3">这是第三部分</div>
+		</div>
+	</div>
+</div>
+```
+![此处输入图片的描述][55]
+<br/>
+### 3、卡片组合
+##### • 紧邻卡片组：`.card-group`
+将一系列卡片从左到右排列在一行显示，默认等宽且等高，卡片之间无间距紧邻
+```html
+<!-- 将多个卡片包裹在一个带.card-group的div里 -->
+<div class="card-group">
+    <div class="card">
+        <img class="card-img" src="/image1.jpg" alt="image1">
+        <div class="card-body">卡片1主体内容</div>
+    </div>
+    <div class="card">
+        <div class="card-header">卡片2页眉内容</div>
+        <img class="card-img" src="/image2.jpg" alt="image2">
+        <div class="card-body">卡片2主体内容</div>
+        <div class="card-footer">卡片2页脚内容</div>
+    </div>
+    <div class="card">
+        <div class="card-header">卡片3页眉内容</div>
+        <img class="card-img" src="/image3.jpg" alt="image3">
+        <div class="card-body">卡片3主体内容</div>
+        <div class="card-footer">卡片3页脚内容</div>
+    </div>
+    ……
+</div>
+
+<!-- 顶部按顶端对齐，底部按底端对齐，各部分高度随内容调整 -->
+```
+![此处输入图片的描述][56]
+
+##### • 间隔卡片组：`.card-deck`
+将一系列卡片从左到右排列在一行显示，默认等宽且等高，卡片之间等间距间隔
+```html
+<!-- 将多个卡片包裹在一个带.card-deck的div里 -->
+<div class="card-deck">
+    <div class="card">
+        <img class="card-img" src="/image1.jpg" alt="image1">
+        <div class="card-body">卡片1主体内容</div>
+    </div>
+    <div class="card">
+        <div class="card-header">卡片2页眉内容</div>
+        <img class="card-img" src="/image2.jpg" alt="image2">
+        <div class="card-body">卡片2主体内容</div>
+        <div class="card-footer">卡片2页脚内容</div>
+    </div>
+    <div class="card">
+        <div class="card-header">卡片3页眉内容</div>
+        <img class="card-img" src="/image3.jpg" alt="image3">
+        <div class="card-body">卡片3主体内容</div>
+        <div class="card-footer">卡片3页脚内容</div>
+    </div>
+    ……
+</div>
+
+<!-- 顶部按顶端对齐，底部按底端对齐，各部分高度随内容调整 -->
+```
+![此处输入图片的描述][57]
+
+##### • 堆砌卡片组：`.card-columns`
+将一系列卡片从上到下堆砌成三列，默认等宽，每个卡片的高度根据内容调整
+```html
+<!-- 将多个卡片包裹在一个带.card-columns的div里 -->
+<div class="card-columns">
+    <div class="card">
+        ……卡片1内容……
+    </div>
+    <div class="card">
+        ……卡片2内容……
+    </div>
+    <div class="card">
+        ……
+    </div>
+    ……
+</div>
+```
+![此处输入图片的描述][58]
+
+<br/>
+### 3、下拉菜单
+#### ① 基础下拉/弹出菜单：`.dropdown|dropup` > `.dropdown-toggle` `data-toggle="dropdown"` + `.dropdown-menu` > `.dropdown-item`
+```html
+<!-- 将触发器和菜单包裹在带.dropdown的div里，指定一个下拉菜单 -->
+<div class="dropdown">
+    <!-- 向触发器添加.dropdown-toggle和data-toggle="dropdown" -->
+	<button class="dropdown-toggle" type="button" data-toggle="dropdown">下拉菜单</button>
+	<!-- 添加带.dropdown-menu的div标签，创建一个下拉菜单 -->
+	<div class="dropdown-menu">
+	    <!-- 添加带.dropdown-item的a标签，创建菜单列表 -->
+		<a class="dropdown-item" href="#">链接1</a>
+		<a class="dropdown-item" href="#">链接2</a>
+		<a class="dropdown-item" href="#">链接3</a>
+	</div>
+</div>
+```
+```html
+<!-- 将触发器和菜单包裹在带.dropup的div里，指定一个弹出菜单 -->
+<div class="dropup">
+	<button class="dropdown-toggle" type="button" data-toggle="dropdown">下拉菜单</button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" href="#">链接1</a>
+		<a class="dropdown-item" href="#">链接2</a>
+		<a class="dropdown-item" href="#">链接3</a>
+	</div>
+</div>
+```
+![此处输入图片的描述][59]
+<br/>
+#### ② 按钮下拉/弹出菜单：`.btn-group` / `.btn-group` `.dropup`
+```html
+<!-- 将按钮和菜单包裹在带.btn-group的div里，创建按钮下拉菜单 -->
+<div class="btn-group">
+    <!-- 任何按钮颜色和按钮尺寸的类都适用于按钮下拉菜单 -->
+	<button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">按钮下拉菜单</button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" href="#">链接1</a>
+		<a class="dropdown-item" href="#">链接2</a>
+		<a class="dropdown-item" href="#">链接3</a>
+	</div>
+</div>
+```
+```html
+<!-- 在.btn-group后添加.dropup，使触发的下拉菜单向上打开 -->
+<div class="btn-group dropup">
+	<button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">按钮弹出菜单</button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" href="#">链接1</a>
+		<a class="dropdown-item" href="#">链接2</a>
+		<a class="dropdown-item" href="#">链接3</a>
+	</div>
+</div>
+
+<!-- 仅当.dropup的div前有足够空间显示下拉菜单时才能向上弹出 -->
+```
+![此处输入图片的描述][60]
+##### • 分裂式按钮菜单：`.caret`
+分割按钮的左边是原始的功能，右边是显示下拉菜单的切换
+```html
+<div class="btn-group">
+    <!-- 将按钮的button与下拉菜单触发器的button分开书写 -->
+	<button class="btn btn-outline-primary" type="button">按钮下拉菜单</button>
+	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+	    <!-- 此时的三角提示符需插入带图标类的span -->
+		<span class="caret"></span>
+    </button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" href="#">链接1</a>
+		<a class="dropdown-item" href="#">链接2</a>
+		<a class="dropdown-item" href="#">链接3</a>
+	</div>
+</div>
+```
+![此处输入图片的描述][61]
+<br/>
+#### ③ 菜单小标题/分割线：`.dropdown-header` / `.dropdown-divider`
+```html
+<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">一个下拉菜单</button>
+	<div class="dropdown-menu">
+	    <!-- 在菜单项之间添加带.dropdown-header的文本标签 -->
+	    <p class="dropdown-header">我是小标题</p>
+        <a class="dropdown-item" href="#">链接1</a>
+        <a class="dropdown-item" href="#">链接2</a>
+        <!-- 在菜单项之间添加带.dropdown-divider的空div -->
+		<div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">链接3</a>
+    </div>
+</div>
+```
+![此处输入图片的描述][62]
+<br/>
+#### ④ 菜单右对齐：`.dropdown-menu-right`
+下拉菜单默认沿着父元素的上沿和左侧被定位为100%宽度，可以改为右对齐
+```html
+<div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">菜单右对齐</button>
+	<!-- 向.dropdown-menu添加.dropdown-menu-right使菜单右对齐 -->
+	<div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">链接1</a>
+        <a class="dropdown-item" href="#">链接2</a>
+        <a class="dropdown-item" href="#">链接3</a>
+    </div>
+</div>
+
+<!-- 仅当div左侧有足够空间显示下拉菜单时才能右对齐 -->
+```
+![此处输入图片的描述][63]
+<br/>
+#### ⑤ 高亮/禁用菜单项：`.active` / `.disabled`
+```html
+<div class="dropdown">
+	<button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">高亮/禁用菜单项</button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" href="#">链接1</a>
+		<!-- 向a标签添加.active，高亮该链接 -->
+		<a class="dropdown-item active" href="#">链接2</a>
+		<!-- 向a标签添加.disabled，禁用该链接 -->
+		<a class="dropdown-item disabled" href="#">链接3</a>
+	</div>
+</div>
+```
+![此处输入图片的描述][64]
+
+<br/>
+### 4、表单
+#### ① 输入表单：`.form-group` > `.form-control`/`.form-control-file`/`.form-control-range`
+```html
+<form>
+    <!-- 在form下创建带.form-group的div，作为一组 -->
+    <div class="form-group">
+        <label for="inputText">请输入文本：</label>
+        <!-- 向text类型input元素添加.form-control -->
+        <input type="text" class="form-control" id="inputText">
+    </div>
+    <div class="form-group">
+        <label for="selectOption">请选择选项：</label>
+        <!-- 向select元素添加.form-control -->
+        <select class="form-control" id="selectOption">
+            <option>选项1</option>
+            <option>选项2</option>
+            <option>选项3</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="textareaRow">请输入多行文本：</label>
+        <!-- 向textarea元素添加.form-control -->
+        <textarea class="form-control" id="textareaRow" rows="3"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="inputFile">请上传文件：</label>
+        <!-- 向file类型input元素添加.form-control-file -->
+        <input type="file" class="form-control-file" id="inputFile">
+    </div>
+    
+    <div class="form-group">
+        <label for="inputRange">请调节范围：</label>
+        <!-- 向range类型input元素添加.form-control-range -->
+        <input type="range" class="form-control-range" id="inputRange">
+    </div>
+</form>
+```
+![此处输入图片的描述][65]
+##### • 输入框尺寸：`.form-control-lg|sm`
+```html
+<!-- 在表单控件类后添加.form-control-lg或.form-control-sm -->
+<input type="text" class="form-control form-control-lg">
+<input type="text" class="form-control form-control-sm">
+```
+![此处输入图片的描述][66]
+##### • 只读文本：`.form-control-plaintext`
+```html
+<input type="text" readonly class="form-control" placeholder="readonly">
+<!-- readonly后添加.form-control-plaintext清除样式，显示纯文本 -->
+<input type="text" readonly class="form-control-plaintext" placeholder=".form-control-plaintext">
+```
+![此处输入图片的描述][67]
+<br/>
+#### ② 选框表单：`.form-check` > `.form-check-input`+`.form-check-label`
+```html
+<form>
+    <!-- 在form下创建带.form-check的div，作为一组 -->
+    <div class="form-check">
+        <!-- 向checkbox|radio类型添加.form-check-input -->
+        <input type="checkbox" class="form-check-input" id="checkbox1">
+        <!-- 向label元素添加.form-check-label -->
+        <label class="form-check-label" for="checkbox1">复选框1</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="checkbox2">
+        <label class="form-check-label" for="checkbox2">复选框2</label>
+    </div>
+    ……
+    <div class="form-check">
+        <input type="radio" name="radioGroup" class="form-check-input" id="radio1">
+        <label class="form-check-label" for="radio1">单选框1</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" name="radioGroup" class="form-check-input" id="radio2">
+        <label class="form-check-label" for="radio2">单选框2</label>
+    </div>
+    ……
+</form>
+```
+![此处输入图片的描述][68]
+##### • 行内选框：`.form-check-inline`
+```html
+<!-- 每个.form-check后添加.form-check-inline，可将选项排成一行 -->
+<div class="form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="check1">
+    <label class="form-check-label" for="check1">复选框1</label>
+</div>
+<div class="form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="check2">
+    <label class="form-check-label" for="check2">复选框2</label>
+</div>
+……
+```
+![此处输入图片的描述][69]
+##### • 无标签选框：`.position-static`
+```html
+<div class="form-check">
+    <!-- 若无标签，需在.form-check-input后添加.position-static -->
+    <input type="checkbox" class="form-check-input position-static" id="check1">
+</div>
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="check2">
+    <label class="form-check-label" for="check2">复选框2</label>
+</div>
+……
+```
+![此处输入图片的描述][70]
+<br/>
+#### ③ 表单网格：`.row`/`.form-row` > `.col-*`
+```html
+<form>
+    <!-- 在form下创建.form-row网格系统 -->
+    <div class="form-row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Last name">
+        </div>
+    </div>
+    <br>
+    <div class="form-row">
+        <!-- 在.col-*后添加.form-group创建表单分组 -->
+        <div class="col-8 form-group">
+            <label for="inputEmail">Email:</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+        </div>
+        <div class="col-4 form-group">
+            <label for="inputPassword">Password:</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+</form>
+```
+![此处输入图片的描述][71]
+##### • 行内标签：`.col-form-label`
+```html
+<form>
+    <div class="form-group row">
+        <!-- 在表单网格中，向label添加.col和.col-form-label -->
+        <label class="col-3 col-form-label" for="text1">lableExample:</label>
+        <div class="col-9">
+            <input type="text" id="text1" class="form-control">
+        </div>
+    </div>
+    <br>
+    <fieldset class="form-group">
+        <div class="row">
+            <!-- 向legend添加.col和.col-form-label，清除内边距 -->
+            <legend class="col-3 col-form-label pt-0">legendExample:</legend>
+            <div class="col-9">
+                <div class="form-check">
+                    <input type="radio" name="group" id="radio1" class="form-check-input" checked>
+                    <label class="form-check-label" for="radio1">Option 1</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="group" id="radio2" class="form-check-input">
+                    <label class="form-check-label" for="radio2">Option 2</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="group" id="radio3" class="form-check-input">
+                    <label class="form-check-label" for="radio3">Option 3</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+```
+![此处输入图片的描述][72]
+##### • 行内标签尺寸：`.col-form-label-lg|sm`
+```html
+<div class="form-group row">
+    <label class="col-4 col-form-label col-form-label-lg" for="lg">.col-form-label-lg</label>
+    <div class="col-8">
+        <input type="text" id="lg" class="form-control form-control-lg" placeholder=".form-control-lg">
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-4 col-form-label" for="def">default</label>
+    <div class="col-8">
+        <input type="text" id="def" class="form-control" placeholder="default">
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-4 col-form-label col-form-label-sm" for="sm">.col-form-label-sm</label>
+    <div class="col-8">
+        <input type="text" id="sm" class="form-control form-control-sm" placeholder=".form-control-sm">
+    </div>
+</div>
+```
+![此处输入图片的描述][73]
+<br/>
+#### ③ 自定义表单样式：`.custom-*(表单类型)`
+##### • 自定义复选框/单选框：`.custom-control` `.custom-checkbox|radio` > `.custom-control-input`+`.custom-control-label`
+```html
+<form>
+    <!-- 将.form-check替换为.custom-control加.custom-* -->
+    <div class="custom-control custom-checkbox">
+        <!-- 将.form-check-input替换为.custom-control-input -->
+        <input type="checkbox" id="checkbox1" class="custom-control-input">
+        <!-- 将.form-check-label替换为.custom-control-label -->
+        <label class="custom-control-label" for="checkbox1">.custom-checkbox</label>
+    </div>
+    ……
+    <!-- 向每项添加.custom-control-inline，可将选项排成一行 -->
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" name="group" id="radio1" class="custom-control-input">
+        <label class="custom-control-label" for="radio1">.custom-radio 1</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" name="group" id="radio2" class="custom-control-input">
+        <label class="custom-control-label" for="radio2">.custom-radio 2</label>
+    </div>
+    ……
+</form>
+```
+![此处输入图片的描述][74]
+##### • 自定义文件输入框：`.custom-file` > `.custom-file-input`+`.custom-file-label`
+```html
+<!-- 创建一个带.custom-file的div -->
+<div class="custom-file">
+    <!-- 向file类型添加.custom-file-input -->
+    <input type="file" id="exam" class="custom-file-input">
+    <!-- 向label元素添加.custom-file-label -->
+    <label class="custom-file-label" for="exam">上传文件</label>
+</div>
+```
+![此处输入图片的描述][75]
+##### • 自定义范围输入框：`.custom-range`
+```html
+<label for="rangeExample">请调节范围：</label>
+<!-- 向range类型添加.custom-range -->
+<input type="range" id="rangeExample" class="custom-range">
+```
+![此处输入图片的描述][76]
+##### • 自定义选择菜单（尺寸）：`.custom-select` `.custom-select-lg|sm`
+```html
+<!-- 向select元素添加.custom-select -->
+<select class="custom-select">
+    <option>.custom-select 1</option>
+    <option>.custom-select 2</option>
+    <option>.custom-select 3</option>
+</select>
+<!-- 在.custom-select后添加.custom-select-lg|sm，可改变尺寸 -->
+<select class="custom-select custom-select-lg">
+    <option>.custom-select 1</option>
+    <option>.custom-select 2</option>
+    <option>.custom-select 3</option>
+</select>
+
+<!-- select元素无法用br隔开，需用.m*-*设置外边距 -->
+```
+![此处输入图片的描述][77]
+<br/>
+#### ⑤ 行内表单：`.form-inline`
+```html
+<!-- 向form添加.form-inline，使表单内所有元素排成一行 -->
+<form class="form-inline">
+    <label for="inputPassword">请输入密码：</label>
+    <input type="password" id="inputExample" class="form-control mr-3">
+    <div class="form-check">
+        <input type="checkbox" id="inputCheckbox" class="form-check-input">
+        <label class="form-check-label mr-3" for="inputCheckbox">记住密码</label>
+    </div>
+    <button class="btn btn-primary">提交</button>
+</form>
+```
+![此处输入图片的描述][78]
+<br/>
+#### ⑥ 表单必填提示：`.was-validated` > `required`+`.invalid-feedback`
+```html
+<!-- 向form添加.was-validated，默认已验证表单未填写 -->
+<form class="was-validated">
+    <div class="form-group">
+        <label for="textExample">输入框：</label>
+        <!-- 向表单控件添加required属性，关联为必填项 -->
+        <input type="text" id="textExample" class="form-control" required>
+        <!-- 控件下创建带.invalid-feedback的div，设置提示文本 -->
+        <div class="invalid-feedback">必填项，请输入内容！</div>
+    </div>
+    <br>
+    <div class="form-check">
+        <input type="radio" name="group" id="radioExample1" class="form-check-input" required>
+        <label class="form-check-label" for="radioExample1">单选框1</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" name="group" id="radioExample2" class="form-check-input" required>
+        <label class="form-check-label" for="radioExample2">单选框2</label>
+        <!-- 单选框组的提示文本写在最后一项结尾 -->
+        <div class="invalid-feedback">必填项，请选择一项！</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <select class="form-control" required>
+            <!-- 需预设一个非选项，向第一个option添加value="" -->
+            <option value="">预显示文本（非选项）</option>
+            <option value="1">选项1</option>
+            <option value="2">选项2</option>
+        </select>
+        <div class="invalid-feedback">必填项，请选择一项！</div>
+    </div>
+</form>
+```
+![此处输入图片的描述][79]
+
+<br/>
+### 5、输入框组合
+#### ① 基础组合：`.input-group` > `.input-group-prepend|append` > `.input-group-text`
+```html
+<!-- 以一个带.input-group的div开始，创建输入框组合 -->
+<div class="input-group">
+    <!-- 创建.input-group-prepend，显示为前缀区域 -->
+    <div class="input-group-prepend">
+        <!-- 在带.input-group-text的span里设置文本内容 -->
+        <span class="input-group-text">文本前缀</span>
+    </div>
+    <!-- 主要的输入控件 -->
+    <input type="text" class="form-control" placeholder=".form-control输入框">
+</div>
+
+<div class="input-group">
+    <select class="custom-select">
+        <option selected>.custom-select选择菜单</option>
+        <option value="1">选项1</option>
+        <option value="2">选项2</option>
+        <option value="3">选项3</option>
+  </select>
+    <!-- 创建.input-group-append，显示为后缀区域 -->
+    <div class="input-group-append">
+        <!-- 使用选框控件替代文本内容 -->
+        <div class="input-group-text">
+            <input type="checkbox">
+        </div>
+    </div>
+</div>
+
+<label for="idName">label标签：</label>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <!-- 可组合按钮元素 -->
+        <button class="btn btn-primary">按钮前缀</button>
+    </div>
+    <div class="custom-file">
+        <input type="file" id="inputFile" class="custom-file-input">
+        <label class="custom-file-label" for="inputFile">.custom-file选择文件</label>
+    </div>
+    <div class="input-group-append">
+        <!-- 可组合下拉菜单组件 -->
+        <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">下拉菜单后缀</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">链接1</a>
+            <a class="dropdown-item" href="#">链接2</a>
+            <a class="dropdown-item" href="#">链接3</a>
+        </div>
+    </div>
+</div>
+```
+![此处输入图片的描述][80]
+#### ② 内联多个零件
+```html
+<div class="input-group">
+    <div class="input-group-prepend">
+        <!-- .input-group-prepend|append下可内联多个内容 -->
+        <span class="input-group-text">姓</span>
+        <span class="input-group-text">名</span>
+    </div>
+    <!-- .input-group下可内联多个输入控件 -->
+    <input type="text" class="form-control" id="lastName">
+    <input type="text" class="form-control" id="firstName">
+</div>
+```
+![此处输入图片的描述][81]
+<br/>
+#### ③ 输入组的尺寸：`.input-group-lg|sm`
+```html
+<!-- 在.input-group后添加.input-group-lg|sm -->
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <span class="input-group-text">前缀文本</span>
+    </div>
+    <input type="text" class="form-control" placeholder=".input-group .input-group-lg">
+    <div class="input-group-append">
+        <span class="input-group-text">后缀文本</span>
+    </div>
+</div>
+```
+![此处输入图片的描述][82]
+
+<br/>
+### 6、超大屏幕：`.jumbotron`
+创建一个大的灰色背景框，里面可以设置HTML标签等一些特殊的内容和信息
+```html
+<div class="jumbotron">
+    <h1>这是jumbotron里的标题</h1> 
+    <p>这是jumbotron里的一些文本内容</p> 
+</div>
+```
+![此处输入图片的描述][83]
+#### • 全屏幕：`.jumbotron-fluid` > `.container|container-fluid`
+创建一个没有圆角的全屏幕
+```html
+<!-- 在.jumbotron后添加.jumbotron-fluid -->
+<div class="jumbotron jumbotron-fluid">
+    <!-- 将内容包裹在一个带容器类的div里 -->
+    <div class="container">
+        <h1>这是jumbotron-fluid里的标题</h1> 
+        <p>这是jumbotron-fluid里的一些文本内容</p>
+    </div>
+</div>
+```
+![此处输入图片的描述][84]
+
+<br/>
+### 7、模态框
+#### ① 基础模态框：`data-toggle="modal"` `data-target="#idName"` + `.modal` `id="idName"` `tabindex="-1"` > `.modal-dialog` > `.modal-content` > `.modal-header`+`.modal-body`+`.modal-footer`
+```html
+<!-- 触发按钮，关键插件：data-toggle="modal" data-target="#……" -->
+<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
+<!-- 带.modal创建模态框组件，标记id，并添加tabindex="-1" -->
+<div class="modal" id="modalId" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- .modal-header为页眉部分 -->
+            <div class="modal-header">这是模态框的页眉</div>
+            <!-- .modal-body为模态框的主体部分，必需项 -->
+            <div class="modal-body">这是模态框的主体</div>
+            <!-- .modal-footer为页脚部分 -->
+            <div class="modal-footer">这是模态框的页脚</div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框若未设置关闭按钮，点击页面其他位置也可以使其消失 -->
+<!-- 若内容过长使模态框超出视窗高度，浏览过程中它将独立滚动 -->
+```
+![此处输入图片的描述][85]
+
+##### • 页眉与页脚：`.modal-header` > `.modal-title` + `.close` `data-dismiss="modal"` ↓ `.modal-footer` > `data-dismiss="modal"`
+```html
+<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
+
+<div class="modal" id="modalId" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- .modal-header下创建.modal-title标题 -->
+                <h5 class="modal-title">这是模态框的标题</h5>
+                <!-- .close加data-dismiss="modal"创建关闭按钮 -->
+                <button class="close" data-dismiss="modal">
+                    <!-- 点击右上角的X符号关闭 -->
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">这是模态框的主体</div>
+            <div class="modal-footer">
+                <button>确定</button>
+                <!-- data-dismiss="modal"创建关闭按钮 -->
+		        <button data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 向触发器添加data-backdrop="static"，可禁止点击其他位置关闭 -->
+```
+![此处输入图片的描述][86]
+<br/>
+#### ② 模态框居中显示：`.modal-dialog-centered`
+```html
+<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
+
+<div class="modal" id="modalId" tabindex="-1">
+    <!-- 在.modal-dialog后添加.modal-dialog-centered，即可居中 -->
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>主体部分可以放各种内容，如文本、图像、样式等</p>
+            </div>
+        </div>
+    </div>
+</div>
+```
+![此处输入图片的描述][87]
+<br/>
+#### ③ 模态框尺寸：`.modal-lg|sm`
+```html
+<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
+
+<div class="modal" id="modalId" tabindex="-1">
+    <!-- 在.modal-dialog后添加.modal-lg或.modal-sm，改变大小 -->
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>主体部分可以放各种内容，如文本、图像、样式等</p>
+            </div>
+        </div>
+    </div>
+</div>
+```
+![此处输入图片的描述][88]
+
+<br/>
+### 8、导航列表
+#### 1、基础导航：`.nav` > `.nav-item` > `.nav-link`
+```html
+<!-- 以一个带.nav的无序列表ul开始 -->
+<ul class="nav">
+    <!-- 向li添加.nav-item，创建导航列表项 -->
+	<li class="nav-item">
+	    <!-- 在li下添加带.nav-link的a标签，生成导航链接 -->
+	    <a class="nav-link" href="#">Home</a>
+	</li>
+	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
+	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
+</ul>
+```
+![此处输入图片的描述][89]
+
+##### • 导航样式：`.nav-tabs|pills`
+```html
+<!-- 在.nav后添加.nav-tabs，可创建标签式导航 -->
+<ul class="nav nav-tabs">
+    <!-- 对选中的链接使用.active来标记 -->
+	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
+	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
+</ul>
+```
+```html
+<!-- 在.nav后添加.nav-pills，可创建胶囊式导航 -->
+<ul class="nav nav-pills">
+	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">VB.Net</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
+</ul>
+```
+![此处输入图片的描述][90]
+![此处输入图片的描述][91]
+
+##### • 导航对齐方式：`.nav-justified` / `.justify-content-center|end`
+```html
+<!-- 向ul添加.nav-justified，使导航列表两端对齐等间距显示 -->
+<ul class="nav nav-tabs nav-justified">
+	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
+	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
+</ul>
+```
+```html
+<!-- 向ul添加.justify-content-center，使导航列表居中显示 -->
+<ul class="nav nav-tabs justify-content-center">
+	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
+	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
+</ul>
+```
+```html
+<!-- 向ul添加.justify-content-end，使导航列表右对齐显示 -->
+<ul class="nav nav-tabs justify-content-end">
+	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
+	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
+</ul>
+```
+![此处输入图片的描述][92]
+
+##### • 垂直导航：`.flex-column`
+```html
+<!-- 向ul添加.flex-column，创建垂直导航列表 -->
+<ul class="nav nav-pills flex-column">
+	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
+	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
+</ul>
+```
+![此处输入图片的描述][93]
+<br/>
+#### 2、选项卡切换
+设置选项卡对应的内容随导航链接的切换而更改
+##### • 标签式选项卡切换：`.nav-tabs` > `.nav-item` > `.nav-link` `data-toggle="tab"` `href="#idName"` ↓ `.tab-content` > `.tab-pane` `id="idName"`
+```html
+<ul class="nav nav-tabs">
+    <!-- nav-tabs下，向a添加data-toggle="tab"，并绑定选项卡id -->
+	<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab2">iOS</a></li>
+	<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab3">Java</a></li>
+	<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab4">PHP</a></li>
+</ul>
+<!-- 将所有选项卡内容包裹在一个带有.tab-content的div里 -->
+<div class="tab-content">
+    <!-- 将每个选项卡div标记id，并添加.tab-pane切换内容 -->
+	<div id="tab1" class="tab-pane active">SVN是Subversion的简称……</div>
+	<div id="tab2" class="tab-pane">iOS是由苹果公司开发的移动操作系统……</div>
+	<!-- 可以在.tab-pane后添加.fade以实现淡入效果 -->
+	<div id="tab3" class="tab-pane fade">Java是一门面向对象编程语言……</div>
+	<div id="tab4" class="tab-pane fade">PHP是一种通用开源脚本语言……</div>
+</div>
+
+<!-- 默认导航页的选项卡也要添加.active，否则内容显示为空白 -->
+```
+![此处输入图片的描述][94]
+
+##### • 胶囊式选项卡切换：`.nav-pills` > `.nav-item` > `.nav-link` `data-toggle="pill"` `href="#idName"` ↓ `.tab-content` > `.tab-pane` `id="idName"`
+```html
+<ul class="nav nav-pills">
+    <!-- nav-pills下，向a添加data-toggle="pill"，绑定选项卡id -->
+	<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#tab1">SVN</a></li>
+	<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab2">iOS</a></li>
+	<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab3">Java</a></li>
+	<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab4">PHP</a></li>
+</ul>
+<!-- 创建对应的选项卡组件 -->
+<div class="tab-content">
+	<div id="tab1" class="tab-pane active">SVN是Subversion的简称……</div>
+	<div id="tab2" class="tab-pane">iOS是由苹果公司开发的移动操作系统……</div>
+	<div id="tab3" class="tab-pane fade">Java是一门面向对象编程语言……</div>
+	<div id="tab4" class="tab-pane fade">PHP是一种通用开源脚本语言……</div>
+</div>
+
+<!-- 默认导航页的选项卡也要添加.active，否则内容显示为空白 -->
+```
+![此处输入图片的描述][95]
+<br/>
+#### 3、带下拉菜单的导航：`.nav-item` `.dropdown|dropup`
+```html
+<ul class="nav nav-tabs">
+	<li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+	<!-- 向li添加.dropdown/.dropup，创建下拉菜单组件 -->
+	<li class="nav-item dropdown">
+	    <!-- 向a添加.dropdown-toggle和data-toggle="dropdown" -->
+	    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
+	    <!-- 创建下拉菜单 -->
+	    <div class="dropdown-menu">
+	        <p class="dropdown-header">This is a title</p>
+	        <a class="dropdown-item" href="#">link 1</a>
+	        <a class="dropdown-item" href="#">link 2</a>
+	        <div class="dropdown-divider"></div>
+	        <a class="dropdown-item" href="#">link 3</a>
+	    </div>
+	</li>
+	<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+</ul>
+```
+![此处输入图片的描述][96]
+
+<br/>
+### 九、导航栏
+#### 1、基础样式：`.navbar` `navbar-expand-*` > `navbar-brand` + （`.navbar-toggler` `data-toggle="collapse"` `data-target="#……"` > `.navbar-toggler-icon`）+ （`.collapse` `.navbar-collapse` `#……` > `.navbar-nav` > `.nav-item` > `.nav-link`）
+```html
+<!-- 以一个带.navbar和.navbar-expand-*的nav标签开始 -->
+<nav class="navbar navbar-expand-lg bg-light navbar-light">
+    <!-- 创建一个带.navbar-toggler、data-toggle="collapse"、data-target="#……"的响应式折叠按钮，仅折叠时可见 -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv">
+        <!-- 用带.navbar-toggler-icon的span内置按钮样式图标 -->
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- 创建导航菜单 -->
+    <div class="collapse navbar-collapse" id="navDiv">
+        <!-- 菜单可以用ul列表设置 -->
+        <ul class="navbar-nav">
+	        <li class="nav-item">
+	            <a class="nav-link" href="#">Link</a>
+	        </li>
+	        ……
+        </ul>
+    </div>
+</nav>
+```
+…… `.navbar-nav` > `.nav-item` `.nav-link`
+```html
+<nav class="navbar navbar-expand-lg bg-light navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navDiv">
+        <!-- 菜单也可以用div > a设置，避免表格样式的困扰-->
+        <div class="navbar-nav">
+	        <a class="nav-item nav-link" href="#">Link</a>
+	        ……
+        </div>
+    </div>
+</nav>
+```
+
+##### • 品牌标志：`.navbar-brand`
+```html
+<nav class="navbar bg-light navbar-light">
+    <!-- 在nav下添加带.navbar-brand的a标签，生成品牌链接 -->
+	<a class="navbar-brand" href="#">Brand</a>
+</nav>
+
+<nav class="navbar bg-light navbar-light">
+    <!-- 在a中插入图片作为品牌logo -->
+	<a class="navbar-brand" href="#">
+	    <img src="icon.jpg" alt="icon">
+	</a>
+</nav>
+
+<nav class="navbar bg-light navbar-light">
+    <!-- 在nav下添加带.navbar-brand的aspan，生成品牌文本 -->
+	<span class="navbar-brand h1">Brand</span>
+</nav>
+```
+![此处输入图片的描述][97]
+
+```html
+<nav class="navbar bg-light navbar-light">
+    <!-- nav下的所有元素呈两端对齐方式显示 -->
+    <a class="navbar-brand" href="#">Brand</a>
+    <form class="form-inline">……</form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv">……</button>
+    <!-- 仅折叠杆中的内容在小屏时总是被折叠 -->
+    <div class="collapse navbar-collapse" id="navDiv">
+        ……
+    </div>
+</nav>
+
+<!-- 此外，折叠杆中的id属性也可匹配网页其他内容 -->
+```
+
+##### • 输入表单：`.form-inline` > `.form-control`
+```html
+<nav class="navbar bg-light navbar-light">
+    <!-- 在nav下添加带.form-inline的form标签，创建表单组件 -->
+	<form class="form-inline">
+	    <input class="form-control" type="search" placeholder="Search">
+	    <button class="btn btn-info" type="submit">Search</button>
+	</form>
+</nav>
+```
+`.form-inline` > `.input-group` > `.form-control`
+```html
+<nav class="navbar bg-light navbar-light">
+	<form class="form-inline">
+	    <!-- 在form下添加带.input-group的div，创建输入组 -->
+	    <div class="input-group">
+	        <input class="form-control" type="text" placeholder="sometext">
+	        <div class="input-group-append">
+	            <button class="btn btn-info" type="button">GO!</button>
+	        </div>
+	    </div>
+	</form>
+</nav>
+```
+![此处输入图片的描述][98]
+
+##### • 文本：`.navbar-text`
+导航栏上的非链接文本，保证水平对齐，颜色与内边距一样
+```html
+<nav class="navbar navbar-light bg-light">
+    <!-- 在nav下添加带.navbar-text的span -->
+    <span class="navbar-text">sometext</span>
+</nav>
+```
+![此处输入图片的描述][99]
+<br/>
+#### 2、带下拉菜单：`.nav-item` `.dropdown|dropdown` > `.nav-link` `.dropdown-toggle` > `data-toggle="dropdown"` + （`.dropdown-menu` > `.dropdown-item`）
+```html
+<nav class="navbar navbar-expand-lg bg-light navbar-light">
+    <a class="navbar-brand" href="#">Brand</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navDiv">
+        <ul class="navbar-nav">
+	        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+	        <!-- 向li添加.dropdown/.dropup，创建下拉/弹出菜单 -->
+	        <li class="nav-item dropdown">
+	            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
+	            <div class="dropdown-menu">
+	                <a class="dropdown-item" href="#">link 1</a>
+	                <a class="dropdown-item" href="#">link 2</a>
+	            </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+```
+![此处输入图片的描述][100]
+<br/>
+#### 3、颜色搭配：`.bg-背景颜色` `.navbar-light|dark`
+
+    .navbar-light  深色文本        .navbar-dark  浅色文本
+```html
+<!-- 向nav添加背景颜色类和导航栏文本颜色类 -->
+<nav class="navbar bg-light navbar-light">
+    ……
+</nav>
+
+<!-- 浅色面板搭配.navbar-light，深色面板搭配.navbar-dark -->
+```
+![此处输入图片的描述][101]
+<br/>
+#### 4、定位方式：`.fixed-top`/`.fixed-bottom`/`.sticky-top`
+```html
+<head>
+    <style type="text/css">
+        /* 向body添加样式padding-top ≥ 50px */
+		body {padding-top: 70px;}
+	</style>
+</head>
+
+<body>
+    <!-- 向nav添加.fixed-top，使导航栏固定在窗口顶部 -->
+    <nav class="navbar bg-light navbar-light fixed-top">
+        <a class="navbar-brand" href="#">Brand</a>
+    </nav>
+    <div>需为body设置padding-top，页面内容才不会被导航栏遮挡。</div>
+</body>
+```
+![此处输入图片的描述][102]
+
+```html
+<head>
+    <style type="text/css">
+        /* 向body添加样式padding-bottom ≥ 50px */
+		body {padding-bottom: 70px;}
+	</style>
+</head>
+
+<body>
+    <!-- 向nav添加.fixed-bottom，使导航栏固定在窗口底部 -->
+    <nav class="navbar bg-light navbar-light fixed-bottom">
+        <a class="navbar-brand" href="#">Brand</a>
+    </nav>
+    <div>为body设置padding-bottom，页面内容不会被导航栏遮挡。</div>
+</body>
+```
+![此处输入图片的描述][103]
+
+```html
+<!-- 向nav添加.sticky-top，使导航栏磁铁在窗口顶部 -->
+<nav class="navbar bg-light navbar-light sticky-top">
+    <a class="navbar-brand" href="#">Brand</a>
+</nav>
+```
+
+<br/>
+### 十、弹出框
+>**注意：**要使弹出框生效，需在 jQuery 里初始化所有弹出框
+#### 1、基础弹出框：`data-toggle="popover"` `data-content="……"`
+鼠标点击到元素后，在旁边显示弹出框，需再次点击该元素才能关闭
+```html
+<!-- 向a元素添加data-toggle="popover"和data-content="……" -->
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！">点击显示弹出框</a>
+```
+```javascript
+$(document).ready(function(){
+    //初始化弹出框，在指定元素上调用popover()方法
+    $('[data-toggle="popover"]').popover();
+})
+```
+![此处输入图片的描述][104]
+##### • focus弹出框：`data-trigger="focus"` `tabindex="0"`
+点击元素显示弹出框后，再点击该元素之外的其他任意位置都可以关闭弹出框
+```html
+<!-- 向基础弹出框再添加data-trigger="focus"和tabindex属性 -->
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="focus" tabindex="0">点击显示弹出框</a>
+```
+![此处输入图片的描述][105]
+##### • hover弹出框：`data-trigger="hover"`
+显示弹出框后，再点击除了该元素之外的其他任意位置都可以关闭弹出框
+```html
+<!-- 向基础弹出框再添加data-trigger="hover" -->
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="hover">点击显示弹出框</a>
+```
+![此处输入图片的描述][106]
+<br/>
+#### 2、弹出框中的标题：`title="……"`
+```html
+<a data-toggle="popover" title="这是标题" data-content="这是弹出框中的文本内容！">点击显示弹出框</a>
+```
+![此处输入图片的描述][107]
+<br/>
+#### 3、指定弹出方向：`data-placement="top|right|bottom|left"`
+```html
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="top">向上弹出框</a>
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="right">向右弹出框</a>
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="bottom">向下弹出框</a>
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="left">向左弹出框</a>
+
+<!-- 仅当元素与页面边框间距足够时，该方向才能弹出，否则反方向弹出 -->
+```
+![此处输入图片的描述][108]
+
+---
+
+## Bootstrap4 工具
+### 一、间距
+    .m*： margin       *t： top        -sm： ≥ 576px      -0： 0
+    .p*： padding      *r： right      -md： ≥ 768px      -1： 0.25 rem
+                       *b： bottom     -lg： ≥ 992px      -2： 0.5 rem
+                       *l： left       -xl： ≥ 1200px     -3： 1 rem
+                       *x： X轴方向                        -4： 1.5 rem
+                       *y： Y轴方向                        -5： 3 rem
+                       *： 四边间距                        -auto： auto
+#### 1、外间距
+##### • 设定外间距：`.mt|mr|mb|ml|mx|my|m-0|1|2|3|4|5|auto`
+<table>
+<thead>
+<tr style="background: #555555; color: #fff;">
+<th>class</th>
+<th>CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.mt-0</td>
+<td>{ margin-top: 0 !important; }</td>
+</tr>
+<tr>
+<td>.mr-1</td>
+<td>{ margin-right: 0.25rem !important; }</td>
+</tr>
+<tr>
+<td>.mb-2</td>
+<td>{ margin-bottom: 0.5rem !important; }</td>
+</tr>
+<tr>
+<td>.ml-3</td>
+<td>{ margin-left: 1rem !important; }</td>
+</tr>
+<tr>
+<td>.mx-4</td>
+<td>{ margin-right: 1.5rem !important; margin-left: 1.5rem !important; }</td>
+</tr>
+<tr>
+<td>.my-5</td>
+<td>{ margin-top: 3rem !important; margin-bottom: 3rem !important; }</td>
+</tr>
+<tr>
+<td>.m-auto</td>
+<td>{ margin: auto !important; }</td>
+</tr>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+##### • 响应外间距：`.mt|mr|mb|ml|mx|my|m-sm|md|lg|xl-0|1|2|3|4|5|auto`
+<br/>
+#### 2、内间距
+##### • 设定内间距：`.pt|pr|pb|pl|px|py|p-0|1|2|3|4|5|auto`
+<table>
+<thead>
+<tr style="background: #555555; color: #fff;">
+<th>class</th>
+<th>CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.pt-0</td>
+<td>{ padding-top: 0 !important; }</td>
+</tr>
+<tr>
+<td>.pr-1</td>
+<td>{ padding-right: 0.25rem !important; }</td>
+</tr>
+<tr>
+<td>.pb-2</td>
+<td>{ padding-bottom: 0.5rem !important; }</td>
+</tr>
+<tr>
+<td>.pl-3</td>
+<td>{ padding-left: 1rem !important; }</td>
+</tr>
+<tr>
+<td>.px-4</td>
+<td>{ padding-right: 1.5rem !important; padding-left: 1.5rem !important; }</td>
+</tr>
+<tr>
+<td>.py-5</td>
+<td>{ padding-top: 3rem !important; padding-bottom: 3rem !important; }</td>
+</tr>
+<tr>
+<td>.p-auto</td>
+<td>{ padding: auto !important; }</td>
+</tr>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+##### • 响应内间距：`.pt|pr|pb|pl|px|py|p-sm|md|lg|xl-0|1|2|3|4|5|auto`
+
+---
+
+
+  [1]: http://wx2.sinaimg.cn/large/7de6638dly1fwmdzl9xsfj20n605vaa5.jpg
+  [2]: http://wx1.sinaimg.cn/large/7de6638dly1fwmdzrprjgj20n505x74h.jpg
+  [3]: http://wx4.sinaimg.cn/large/7de6638dly1fwme70jl6fj20yx07wglh.jpg
+  [4]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwq6rce7b0j20np03st8z.jpg
+  [5]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwq7dzvpa5j20nr02mt8u.jpg
+  [6]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwqc1dage6j20ng041q2v.jpg
+  [7]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwq8volf0aj20nl06xgmb.jpg
+  [8]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwq9c1tdwgj20nq03hjrl.jpg
+  [9]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwq7mqj1zfj20nq02xa9t.jpg
+  [10]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwqb2gwwrij21bm049406.jpg
+  [11]: http://wx3.sinaimg.cn/large/7de6638dly1fwnz471zmvg20o703w3yp.gif
+  [12]: http://wx2.sinaimg.cn/large/7de6638dly1fwomlix20hj20o0029glk.jpg
+  [13]: http://wx4.sinaimg.cn/large/7de6638dly1g231q57104j20o20cz40g.jpg
+  [14]: http://wx3.sinaimg.cn/large/7de6638dly1fwom63xr8wj20o501rmxa.jpg
+  [15]: http://wx1.sinaimg.cn/large/7de6638dly1g232ihkljqj20r701dmx7.jpg
+  [16]: http://wx1.sinaimg.cn/large/7de6638dly1fwonw64f3yg20o306jjsl.gif
+  [17]: http://wx1.sinaimg.cn/large/7de6638dly1fwnzp4lp9oj20nw05wjrk.jpg
+  [18]: http://wx3.sinaimg.cn/large/7de6638dly1fwolo69dagj20o106xwes.jpg
+  [19]: http://wx4.sinaimg.cn/large/7de6638dly1fwntbgdba9j20o00bdwft.jpg
+  [20]: http://wx2.sinaimg.cn/large/7de6638dly1fwnzu7r4alj20o501b0sn.jpg
+  [21]: http://wx1.sinaimg.cn/large/7de6638dly1fwnuk6tgdhj20o005p0sw.jpg
+  [22]: http://wx4.sinaimg.cn/large/7de6638dly1fwon06nebcj20o008a3yq.jpg
+  [23]: http://wx1.sinaimg.cn/large/7de6638dly1fwnzwva1m5j20nv02sglr.jpg
+  [24]: http://wx4.sinaimg.cn/large/7de6638dly1fwolw4qky3j20o3097wek.jpg
+  [25]: http://wx2.sinaimg.cn/large/7de6638dly1fwnue3fc6hj20nv0cpab2.jpg
+  [26]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwohkwibhaj20o4063glz.jpg
+  [27]: http://wx4.sinaimg.cn/large/7de6638dly1fwom1fprbtj20o002r3yh.jpg
+  [28]: http://wx3.sinaimg.cn/large/7de6638dly1fwomz2az6aj20nz08aaaa.jpg
+  [29]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwoonho7qqj20o20b275m.jpg
+  [30]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwntro22cej20pt0liac1.jpg
+  [31]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwo0i01z6cj20o504zjrj.jpg
+  [32]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwopnpnwwuj20o003jt8t.jpg
+  [33]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwo0whqd56j20nw07at9m.jpg
+  [34]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwob64aqhlj20nw030glt.jpg
+  [35]: http://wx1.sinaimg.cn/large/7de6638dly1g2322j4tjmj20nx0czdhs.jpg
+  [36]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwogq8uzgmj20jc08egm7.jpg
+  [37]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwobmc1kqqj20o3014mx0.jpg
+  [38]: http://wx4.sinaimg.cn/large/7de6638dly1fwoc22wp77g20nz0euq9h.gif
+  [39]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwof5hjxvjj20nz0admxw.jpg
+  [40]: http://wx4.sinaimg.cn/large/7de6638dly1g22zzaj64fj21du0gfmzh.jpg
+  [41]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwrq6t79hhj20o304lq33.jpg
+  [42]: http://wx2.sinaimg.cn/large/7de6638dly1g230cjtlytj20qz0a20tf.jpg
+  [43]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwofsmzi9ij20nx02rmx7.jpg
+  [44]: http://wx3.sinaimg.cn/large/7de6638dly1g230m0e0flj20p501q0su.jpg
+  [45]: http://wx1.sinaimg.cn/large/7de6638dly1g230s0hjj8j20pd01hq2v.jpg
+  [46]: http://wx3.sinaimg.cn/large/7de6638dly1g2312pgh0zj20qu0m8wft.jpg
+  [47]: http://wx4.sinaimg.cn/large/7de6638dly1g231ah3ukkj20pw0gngmi.jpg
+  [48]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0ef79gedj20nu02gmx0.jpg
+  [49]: https://wx4.sinaimg.cn/mw690/7de6638dly1g22qqfgzpej20ci07jaae.jpg
+  [50]: https://wx1.sinaimg.cn/mw690/7de6638dly1g22u4nenhjj20cj0k7gt7.jpg
+  [51]: https://wx2.sinaimg.cn/mw690/7de6638dly1g22udr27c9j20cj08xadr.jpg
+  [52]: https://wx4.sinaimg.cn/mw690/7de6638dly1g22rflcnm6j207706u3yg.jpg
+  [53]: https://wx3.sinaimg.cn/mw690/7de6638dly1g22rw7e7vjj20cw07pwek.jpg
+  [54]: http://wx4.sinaimg.cn/large/7de6638dly1g22tj4zivig20ko05nwfc.gif
+  [55]: http://wx1.sinaimg.cn/large/7de6638dly1g22ty7z741g20kj067t9i.gif
+  [56]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwry55xg4vj21ap0nawgt.jpg
+  [57]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwry7z4ymtj21ar0ndtar.jpg
+  [58]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwrzck6dioj21at0i7mze.jpg
+  [59]: http://wx1.sinaimg.cn/large/7de6638dly1fwm7nyhkrjg20f906jab0.gif
+  [60]: http://wx4.sinaimg.cn/large/7de6638dly1fwmhgr5yp5g20o209jgn9.gif
+  [61]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmhvmyr9nj20o4072t8w.jpg
+  [62]: https://wx3.sinaimg.cn/mw690/7de6638dly1fygfp1sba7j20o109hq34.jpg
+  [63]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmia665e5j20o307bmxa.jpg
+  [64]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmis7pvuxj20o0070t8u.jpg
+  [65]: https://wx1.sinaimg.cn/mw690/7de6638dly1fy45bi5t25j20si0itjs1.jpg
+  [66]: https://wx3.sinaimg.cn/mw690/7de6638dly1fy467yuyw3j20uy06gq2y.jpg
+  [67]: https://wx2.sinaimg.cn/mw690/7de6638dly1fy441ms8jqj20nz03p0sx.jpg
+  [68]: https://wx4.sinaimg.cn/mw690/7de6638dly1fy46iibviuj20nt055q30.jpg
+  [69]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg75k5q40j20o401oq2u.jpg
+  [70]: https://wx4.sinaimg.cn/mw690/7de6638dly1fy47hzs0d4j20ny02at8j.jpg
+  [71]: https://wx1.sinaimg.cn/mw690/7de6638dly1fyg2yprbk3j20o106egln.jpg
+  [72]: https://wx4.sinaimg.cn/mw690/7de6638dly1fyg4qpk9o5j20o1072glq.jpg
+  [73]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg5alo8doj20o706y3yp.jpg
+  [74]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg7jfldbzj20o305pq36.jpg
+  [75]: https://wx2.sinaimg.cn/mw690/7de6638dly1fyg9038bvsj20o002a3yd.jpg
+  [76]: http://wx3.sinaimg.cn/large/7de6638dly1fyg8mk147og20o90420t0.gif
+  [77]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg89v8v7qj20o506gdfy.jpg
+  [78]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygasb3751j20ol025t8n.jpg
+  [79]: http://wx4.sinaimg.cn/large/7de6638dly1fyge09k72vg20o90bz0ul.gif
+  [80]: https://wx4.sinaimg.cn/mw690/7de6638dly1fygmf4e9o7j20o50900te.jpg
+  [81]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygl5uh8gqj20o802mwea.jpg
+  [82]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygkmm7npcj20o707raag.jpg
+  [83]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrl5hnnlj20o307g3yv.jpg
+  [84]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrslau0lj20o109b74q.jpg
+  [85]: http://wx4.sinaimg.cn/large/7de6638dly1fyggiuwz9gg20o709e74y.gif
+  [86]: http://wx1.sinaimg.cn/large/7de6638dly1fx293sfse8g20ob0a4dhy.gif
+  [87]: http://wx4.sinaimg.cn/large/7de6638dly1fx29et7b97g20ob0hst9i.gif
+  [88]: http://wx4.sinaimg.cn/large/7de6638dly1fx2acc89t6g21dy05it9i.gif
+  [89]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwmjcvcm4bj20o302f3ye.jpg
+  [90]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmj1wxaboj20o002ut8m.jpg
+  [91]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwkk4gj0tzj20o302f746.jpg
+  [92]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmjzp68rjj20o6088gls.jpg
+  [93]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwmjrrt5zxj20ny0ajdfs.jpg
+  [94]: http://wx1.sinaimg.cn/large/7de6638dly1fwml6uw2vpg20o604wjsi.gif
+  [95]: http://wx1.sinaimg.cn/large/7de6638dly1fwmlds4q7ug20o004z75f.gif
+  [96]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmkltlee0j20o409k3ym.jpg
+  [97]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
+  [98]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
+  [99]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmrf5cwh7j20ix0313yc.jpg
+  [100]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmqtrr4g7j20o107nt8p.jpg
+  [101]: http://wx1.sinaimg.cn/large/7de6638dly1fwmnebn13zg20l008cmz5.gif
+  [102]: http://wx1.sinaimg.cn/large/7de6638dly1fwmskfuxaog20nn07zgpy.gif
+  [103]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
+  [104]: http://wx4.sinaimg.cn/large/7de6638dly1fx0ig4sxiug20o4041myi.gif
+  [105]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
+  [106]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
+  [107]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0fse5bzlj20o103zwek.jpg
+  [108]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0heb8skoj20zd065gm0.jpg
