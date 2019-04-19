@@ -330,7 +330,7 @@ Email: <a href="mailto:shaw@example.com">shaw@example.com</a>
 ```
 ![此处输入图片的描述][13]
 
-- `button`
+- `<button>`
 ```html
 <button type="button">button按钮（IE默认值）</button>
 <button type="submit">submit按钮（其他浏览器默认值）</button>
@@ -456,7 +456,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 ```
 ![此处输入图片的描述][24]
 
-- `select` > `optgroup` > `option`
+- `<select>` > `<optgroup>` > `<option>`
 ```html
 <select>
 	<optgroup label="Junior">

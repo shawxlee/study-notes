@@ -1,7 +1,4 @@
-﻿# jQuery CDNs|选择器|方法|函数参考手册
-jQuery - 快速简洁的JavaScript框架
-
-标签（空格分隔）： jquery 语法 手册 cdn 
+﻿# jQuery - 快速简洁的JavaScript框架
 
 ---
 
