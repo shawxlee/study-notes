@@ -1,8 +1,6 @@
 ﻿# CSS 框架|属性|函数参考手册
 Cascading Style Sheets - 层叠样式表
 
-标签（空格分隔）： css 属性 
-
 ---
 
 ## CSS框架
@@ -502,7 +500,7 @@ p {cursor: auto;}
     sw-resize  指示矩形框的边缘可被向下（南）及向左（西）移动
     se-resize  指示矩形框的边缘可被向下（南）及向右（东）移动
 <br/>
-### • `display`：规定元素应该生成的框的类型
+### • `display`：规定元素应该生成的框的类型（不占页面空间）
 ```css
 /* 无法设置宽高的内联元素 */
 h1 {display: inline;}
@@ -520,6 +518,8 @@ h3 {
     height: 100px;
     display: inline-block;
 }
+
+/* display不可见时，元素占据的空间会由后面的元素自动填充 */
 ```
     inline  内联元素，不换行（默认值）
     none  不显示
@@ -1382,6 +1382,16 @@ h1 {vertical-align: baseline;}
     bottom  把元素的底端与行中最低的元素的底端对齐
     *px  元素偏移的距离，正值向上，负值向下
     *%  相对于line-height的百分比值来计算元素偏移的距离
+<br/>
+### • `visibility`：规定元素是否可见（占据页面空间）
+```css
+h1 {visibility: hidden;}
+
+/* visibility不可见时，元素仍会占据页面上的空间 */
+```
+    visible  元素是可见的（默认值）
+    hidden  元素是不可见的
+    collapse  当在表格元素中使用时，此值可删除一行或一列，但是它不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上，会呈现为 "hidden"
 <br/>
 ### • `white-space`：指定元素内的空白怎样处理
 ```css

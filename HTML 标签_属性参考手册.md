@@ -1,7 +1,5 @@
 ﻿# HTML 标签|属性参考手册
 Hyper Text Markup Language - 超级文本标记语言
- 
-标签（空格分隔）： html 标签 元素
 
 ---
 
@@ -291,7 +289,7 @@ The world’s leading conservation organization, WWF works in 100 countries and 
 ```
 <i>这是一段斜体字</i>
 <br/>
-### • `img/`：从网页上链接图像
+### • `img/`：向网页中嵌入一幅图像
 ```html
 <img src="/i/eg_tulip.jpg" alt="郁金香"/>
 <img src="http://www.w3school.com.cn/i/eg_tulip.jpg" alt="郁金香"/>
@@ -331,11 +329,11 @@ The world’s leading conservation organization, WWF works in 100 countries and 
 <br/>
 ### • `kbd`：定义键盘文本
 ```html
-<p>使用快捷键 <kbd>ctrl + c</kbd> 进行复制</p>
+使用快捷键 <kbd>Ctrl</kbd> + <kbd>C</kbd> 进行复制
 
 <!-- 不同的CSS设置下，kbd标签将显示不同的效果 -->
 ```
-<p>使用快捷键 <kbd>ctrl + c</kbd> 进行复制</p>
+使用快捷键 <kbd>Ctrl</kbd> + <kbd>C</kbd> 进行复制
 <br/>
 ### • `link/`：定义文档与外部资源的关系
 ```html
@@ -424,21 +422,34 @@ refresh:30
 ```
 <p>这是一段文本</p>
 <br/>
+### • `picture`：为不同的显示/设备场景提供图像版本
+浏览器会选择最匹配的 source 元素，如果没有匹配的，就显示 img 元素的内容
+```html
+<picture>
+  <source src="/img1.jpg" media="screen and (max-width:576px)">
+  <source src="/img2.jpg" media="screen and (max-width:1200px)">
+  ……
+  <img src="/img.jpg">
+</picture>
+```
+#### - `source`：为媒体元素（如 video、audio）定义媒体资源
+#### - `img`：定义 HTML 页面中的图像
+<br/>
 ### • `pre`：定义预格式化的文本
+pre元素中的文本通常会保留空格和换行符，而文本也会呈现为等宽字体；文本不可包含分段标签（如h*、p、address等）
 ```html
 <pre>
-pre标签可以对文本的
-换行和   空格    进行控制
-常用于展示计算机的源代码
+<code>&lt;p&gt;Sample text here&lt;/p&gt;
+&lt;p&gt;And another line of sample text here&lt;/p&gt;</code>
 </pre>
-    
-<!-- 保留文本格式中的空格和换行符，且呈现为等宽字体 -->
+
+<!-- 文本中需用字符实体表示特殊字符；通常与 code 标签结合使用 -->
 ```
 <pre>
-pre标签可以对文本的
-换行和   空格    进行控制
-常用于展示计算机的源代码
+<code>&lt;p&gt;Sample text here&lt;/p&gt;
+&lt;p&gt;And another line of sample text here&lt;/p&gt;</code>
 </pre>
+    width=""  定义每行的最大字符数（*number）
 <br/>
 ### • `q`：定义短的引用
 ```html
@@ -456,6 +467,14 @@ pre标签可以对文本的
 <p><s>My car is blue.</s></p>
 <p>My new car is silver.</p>
 <br/>
+### • `samp`：定义计算机程序的样本文本
+```html
+字符序列 <samp>ae</samp> 可能会被转换为 &aelig; 连字字符
+
+<!-- 只有在提取某些短字符序列加以强调的情况下，才使用这个标签 -->
+```
+字符序列 <samp>ae</samp> 可能会被转换为 &aelig; 连字字符
+<br/>
 ### • `script`：定义客户端脚本
 ```html
 <!-- 直接插入脚本语句 -->
@@ -467,7 +486,7 @@ pre标签可以对文本的
 <script type="text/javascript" src="script.js">
 </script>   
 
-<!-- type：脚本的MIME类型   src：规定外部脚本的URL -->
+<!-- type：脚本的MIME类型    src：规定外部脚本的URL -->
 ```
 
     async  异步执行脚本，仅适用于外部脚本
@@ -665,18 +684,25 @@ pre标签可以对文本的
 	    </ul>
 </ul>
 #### - `li`：定义列表项目
+<br/>
+### • `var`：定义变量，或者由用户提供的值
+```html
+<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+
+<!-- 文本通常显示为斜体；经常与 code 和 pre 标签一起使用 -->
+```
+<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
 
 ---
 
 ## HTML 5 新标签
 ### • `article`：规定独立的自包含内容（独立于站点的其余部分对其进行分发）
+文章潜在来源：论坛帖子、报纸文章、博客条目、用户评论……
 ```html
 <article>
     <h1>文章标题</h1>
     <p>文章内容</p>
 </article>
-
-<!-- 文章潜在来源：论坛帖子、报纸文章、博客条目、用户评论…… -->
 ```
 <br/>
 ### • `aside`：定义主题之外的相关内容，通常显示成侧边栏或注释（例如目录、索引、广告、简介等）
@@ -710,7 +736,7 @@ pre标签可以对文本的
     <figcaption>附加内容的小标题</figcaption>
 </figure>
 
-<!-- <figcaption>应被置于<figure>下的第一个或最后一个位置 -->
+<!-- figcaption 应被置于 figure 下的第一个或最后一个位置 -->
 ```
 ![此处输入图片的描述][16]
 #### - `figcaption`：定义 figure 元素的标题（caption）
@@ -766,6 +792,18 @@ pre标签可以对文本的
     <p>第二节内容</p>
 </section>
 ```
+<br/>
+### • `source`：为媒体元素（如 video、audio）定义媒体资源
+```html
+<audio controls>
+  <source src="horse.ogg" type="audio/ogg">
+  <source src="horse.mp3" type="audio/mpeg">
+  您的浏览器不支持 audio 元素
+</audio>
+
+<!-- src：媒体文件的URL    type：媒体资源的MIME类型 -->
+```
+    media=""  媒体资源的类型，供浏览器决定是否下载（*media_query）
 <br/>
 ### • `video`：定义视频
 ```html
