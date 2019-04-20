@@ -1,4 +1,5 @@
-﻿# Bootstrap(v4.3) - 用于HTML、CSS和JS开发的开源工具包
+﻿# Bootstrap4 - 用于HTML、CSS和JS开发的开源工具包
+Latest: v4.3.x
 
 ---
 
@@ -372,7 +373,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 - `<dl>` > `<dt>` `<dd>`
 
->★可使用网格系统布局
+>★ 可使用网格系统布局
 ```html
 <dl>
 	<dt>项目一名称</dt>
@@ -806,7 +807,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 <br/>
 ### 2、卡片：`.card`
->★可使用网格系统布局
+>★ 可使用网格系统布局
 
 #### • 主体内容：`.card-body` > `.card-title`/`.card-subtitle`/`.card-text`/`.card-link`
 ```html
@@ -1125,115 +1126,182 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 <br/>
 ### 4、表单
-#### • 输入表单：`.form-group` > `.form-control`/`.form-control-file`/`.form-control-range`
+>★ 可使用网格系统布局
+
+#### • 输入表单：`.form-group` > `.form-control`/`.form-control-file`
 ```html
 <form>
     <!-- 在form下创建带.form-group的div，作为一组 -->
     <div class="form-group">
-        <label for="inputText">请输入文本：</label>
-        <!-- 向text类型input元素添加.form-control -->
-        <input type="text" class="form-control" id="inputText">
-    </div>
-    <div class="form-group">
-        <label for="selectOption">请选择选项：</label>
-        <!-- 向select元素添加.form-control -->
-        <select class="form-control" id="selectOption">
-            <option>选项1</option>
-            <option>选项2</option>
-            <option>选项3</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="textareaRow">请输入多行文本：</label>
-        <!-- 向textarea元素添加.form-control -->
-        <textarea class="form-control" id="textareaRow" rows="3"></textarea>
+        <label for="text1">请输入文本：</label>
+        <!-- 向type="text"（及select/textarea元素）添加.form-control -->
+        <input type="text" id="text1" class="form-control">
     </div>
     
     <div class="form-group">
-        <label for="inputFile">请上传文件：</label>
-        <!-- 向file类型input元素添加.form-control-file -->
-        <input type="file" class="form-control-file" id="inputFile">
-    </div>
-    
-    <div class="form-group">
-        <label for="inputRange">请调节范围：</label>
-        <!-- 向range类型input元素添加.form-control-range -->
-        <input type="range" class="form-control-range" id="inputRange">
+        <label for="file1">请上传文件：</label>
+        <!-- 向type="file"添加.form-control-file -->
+        <input type="file" id="file1" class="form-control-file">
     </div>
 </form>
 ```
 ![此处输入图片的描述][70]
-##### - 输入框尺寸：`.form-control-lg|sm`
+
+##### - 输入框尺寸：`.form-control-sm|lg`
 ```html
-<!-- 在表单控件类后添加.form-control-lg或.form-control-sm -->
-<input type="text" class="form-control form-control-lg">
+<!-- 在.form-control后添加.form-control-sm|lg -->
 <input type="text" class="form-control form-control-sm">
 ```
 ![此处输入图片的描述][71]
-##### - 只读文本：`.form-control-plaintext`
+
+##### - 纯文本：`.form-control-plaintext`
 ```html
-<input type="text" readonly class="form-control" placeholder="readonly">
-<!-- readonly后添加.form-control-plaintext清除样式，显示纯文本 -->
-<input type="text" readonly class="form-control-plaintext" placeholder=".form-control-plaintext">
+<!-- .form-control-plaintext可清除边框样式，显示纯文本 -->
+<input type="text" class="form-control-plaintext" placeholder=".form-control-plaintext" readonly>
 ```
 ![此处输入图片的描述][72]
+
+##### - 自定义下拉框样式：`.custom-select`
+```html
+<!-- 向select元素添加.custom-select -->
+<select class="custom-select">
+    <option selected>.custom-select</option>
+    <option value="1">option 1</option>
+    <option value="2">option 2</option>
+    <option value="3">option 3</option>
+</select>
+
+<!-- select元素无法用br隔开，需用设置上/下外边距 -->
+```
+![此处输入图片的描述][73]
+
+##### - 自定义下拉框尺寸：`.custom-select-sm|lg`
+```html
+<!-- 在.custom-select后添加.custom-select-sm|lg，可改变尺寸 -->
+<select class="custom-select custom-select-sm">
+    ……
+</select>
+```
+![此处输入图片的描述][74]
+
+##### - 自定义区间条样式：`.custom-range`
+```html
+<label for="range1">.custom-range</label>
+<!-- 向type="range"添加.custom-range -->
+<input type="range" id="range1" class="custom-range">
+
+<label for="range2">区间0~5，每步0.5</label>
+<input type="range" id="range2" class="custom-range" min="0" max="5" step="0.5">
+```
+![此处输入图片的描述][75]
+<br/>
+#### • 自定义文件浏览框：`.custom-file` > `.custom-file-input`+`.custom-file-label`
+```html
+<!-- 将.form-group替换为.custom-file -->
+<div class="custom-file">
+    <!-- 将.form-control-file替换为.custom-file-input -->
+    <input type="file" id="file1" class="custom-file-input">
+    <!-- 向label添加.custom-file-label -->
+    <label class="custom-file-label" for="file1">选择文件</label>
+</div>
+
+<div class="custom-file">
+    <input type="file" id="file1" class="custom-file-input" lang="es">
+    <label class="custom-file-label" for="file1" data-browse="Bestand kiezen">选择文件</label>
+</div>
+```
+![此处输入图片的描述][76]
 <br/>
 #### • 选框表单：`.form-check` > `.form-check-input`+`.form-check-label`
 ```html
 <form>
     <!-- 在form下创建带.form-check的div，作为一组 -->
     <div class="form-check">
-        <!-- 向checkbox|radio类型添加.form-check-input -->
-        <input type="checkbox" class="form-check-input" id="checkbox1">
+        <!-- 向checkbox、radio类型添加.form-check-input -->
+        <input type="checkbox" id="checkbox1" class="form-check-input">
         <!-- 向label元素添加.form-check-label -->
         <label class="form-check-label" for="checkbox1">复选框1</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="checkbox2">
+        <input type="checkbox" id="checkbox2" class="form-check-input">
         <label class="form-check-label" for="checkbox2">复选框2</label>
     </div>
-    ……
-    <div class="form-check">
-        <input type="radio" name="radioGroup" class="form-check-input" id="radio1">
-        <label class="form-check-label" for="radio1">单选框1</label>
-    </div>
-    <div class="form-check">
-        <input type="radio" name="radioGroup" class="form-check-input" id="radio2">
-        <label class="form-check-label" for="radio2">单选框2</label>
-    </div>
-    ……
 </form>
 ```
-![此处输入图片的描述][73]
+![此处输入图片的描述][77]
+
 ##### - 行内选框：`.form-check-inline`
 ```html
 <!-- 每个.form-check后添加.form-check-inline，可将选项排成一行 -->
 <div class="form-check form-check-inline">
-    <input type="checkbox" class="form-check-input" id="check1">
-    <label class="form-check-label" for="check1">复选框1</label>
+    ……
 </div>
 <div class="form-check form-check-inline">
-    <input type="checkbox" class="form-check-input" id="check2">
-    <label class="form-check-label" for="check2">复选框2</label>
+    ……
 </div>
 ……
 ```
-![此处输入图片的描述][74]
+![此处输入图片的描述][78]
+
 ##### - 无标签选框：`.position-static`
 ```html
 <div class="form-check">
     <!-- 若无标签，需在.form-check-input后添加.position-static -->
-    <input type="checkbox" class="form-check-input position-static" id="check1">
+    <input type="checkbox" class="form-check-input position-static" id="checkbox1">
 </div>
 <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="check2">
-    <label class="form-check-label" for="check2">复选框2</label>
+    <input type="radio" class="form-check-input position-static" name="blankRadio" value="radio1">
 </div>
 ……
 ```
-![此处输入图片的描述][75]
+![此处输入图片的描述][79]
 <br/>
-#### • 表单网格：`.row`/`.form-row` > `.col-*`
+#### • 自定义选框样式：`.custom-control` `.custom-checkbox|switch|radio` > `.custom-control-input`+`.custom-control-label`
+```html
+<form>
+    <!-- 将.form-check替换为.custom-control加.custom-checkbox -->
+    <div class="custom-control custom-checkbox">
+        <!-- 将.form-check-input替换为.custom-control-input -->
+        <input type="checkbox" id="checkbox1" class="custom-control-input">
+        <!-- 将.form-check-label替换为.custom-control-label -->
+        <label class="custom-control-label" for="checkbox1">.custom-checkbox</label>
+    </div>
+    
+    <!-- 将.custom-checkbox替换为.custom-switch -->
+    <div class="custom-control custom-switch">
+        <input type="checkbox" id="checkbox2" class="custom-control-input">
+        <label class="custom-control-label" for="checkbox2">.custom-switch</label>
+    </div>
+</form>
+```
+```html
+<form>
+    <!-- 将.form-check替换为.custom-control，并添加.custom-radio -->
+    <div class="custom-control custom-radio">
+        <input type="radio" name="group" id="radio1" class="custom-control-input">
+        <label class="custom-control-label" for="radio1">.custom-radio 1</label>
+    </div>
+    <div class="custom-control custom-radio">
+        <input type="radio" name="group" id="radio2" class="custom-control-input">
+        <label class="custom-control-label" for="radio2">.custom-radio 2</label>
+    </div>
+</form>
+```
+![此处输入图片的描述][80]
+
+##### - 内联自定义选框：`.custom-control-inline`
+```html
+<div class="custom-control custom-radio custom-control-inline">
+    ……
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+    ……
+</div>
+……
+```
+![此处输入图片的描述][81]
+<br/>
+#### • 表单网格：`.form-row` > `.col-*`/`.form-group|check` > `.form-control`
 ```html
 <form>
     <!-- 在form下创建.form-row网格系统 -->
@@ -1245,9 +1313,9 @@ You can use the mark tag to <mark>highlight</mark> text.
             <input type="text" class="form-control" placeholder="Last name">
         </div>
     </div>
-    <br>
+    
     <div class="form-row">
-        <!-- 在.col-*后添加.form-group创建表单分组 -->
+        <!-- 在.col-*后添加.form-group|check创建表单分组 -->
         <div class="col-8 form-group">
             <label for="inputEmail">Email:</label>
             <input type="email" class="form-control" id="inputEmail" placeholder="Email">
@@ -1259,127 +1327,43 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </form>
 ```
-![此处输入图片的描述][76]
-##### - 行内标签：`.col-form-label`
-```html
-<form>
-    <div class="form-group row">
-        <!-- 在表单网格中，向label添加.col和.col-form-label -->
-        <label class="col-3 col-form-label" for="text1">lableExample:</label>
-        <div class="col-9">
-            <input type="text" id="text1" class="form-control">
-        </div>
-    </div>
-    <br>
-    <fieldset class="form-group">
-        <div class="row">
-            <!-- 向legend添加.col和.col-form-label，清除内边距 -->
-            <legend class="col-3 col-form-label pt-0">legendExample:</legend>
-            <div class="col-9">
-                <div class="form-check">
-                    <input type="radio" name="group" id="radio1" class="form-check-input" checked>
-                    <label class="form-check-label" for="radio1">Option 1</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="group" id="radio2" class="form-check-input">
-                    <label class="form-check-label" for="radio2">Option 2</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="group" id="radio3" class="form-check-input">
-                    <label class="form-check-label" for="radio3">Option 3</label>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-</form>
-```
-![此处输入图片的描述][77]
-##### - 行内标签尺寸：`.col-form-label-lg|sm`
-```html
-<div class="form-group row">
-    <label class="col-4 col-form-label col-form-label-lg" for="lg">.col-form-label-lg</label>
-    <div class="col-8">
-        <input type="text" id="lg" class="form-control form-control-lg" placeholder=".form-control-lg">
-    </div>
-</div>
-
-<div class="form-group row">
-    <label class="col-4 col-form-label" for="def">default</label>
-    <div class="col-8">
-        <input type="text" id="def" class="form-control" placeholder="default">
-    </div>
-</div>
-
-<div class="form-group row">
-    <label class="col-4 col-form-label col-form-label-sm" for="sm">.col-form-label-sm</label>
-    <div class="col-8">
-        <input type="text" id="sm" class="form-control form-control-sm" placeholder=".form-control-sm">
-    </div>
-</div>
-```
-![此处输入图片的描述][78]
-<br/>
-#### • 自定义表单样式：`.custom-*(表单类型)`
-##### - 自定义复选框/单选框：`.custom-control` `.custom-checkbox|radio` > `.custom-control-input`+`.custom-control-label`
-```html
-<form>
-    <!-- 将.form-check替换为.custom-control加.custom-* -->
-    <div class="custom-control custom-checkbox">
-        <!-- 将.form-check-input替换为.custom-control-input -->
-        <input type="checkbox" id="checkbox1" class="custom-control-input">
-        <!-- 将.form-check-label替换为.custom-control-label -->
-        <label class="custom-control-label" for="checkbox1">.custom-checkbox</label>
-    </div>
-    ……
-    <!-- 向每项添加.custom-control-inline，可将选项排成一行 -->
-    <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" name="group" id="radio1" class="custom-control-input">
-        <label class="custom-control-label" for="radio1">.custom-radio 1</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" name="group" id="radio2" class="custom-control-input">
-        <label class="custom-control-label" for="radio2">.custom-radio 2</label>
-    </div>
-    ……
-</form>
-```
-![此处输入图片的描述][79]
-##### - 自定义文件输入框：`.custom-file` > `.custom-file-input`+`.custom-file-label`
-```html
-<!-- 创建一个带.custom-file的div -->
-<div class="custom-file">
-    <!-- 向file类型添加.custom-file-input -->
-    <input type="file" id="exam" class="custom-file-input">
-    <!-- 向label元素添加.custom-file-label -->
-    <label class="custom-file-label" for="exam">上传文件</label>
-</div>
-```
-![此处输入图片的描述][80]
-##### - 自定义范围输入框：`.custom-range`
-```html
-<label for="rangeExample">请调节范围：</label>
-<!-- 向range类型添加.custom-range -->
-<input type="range" id="rangeExample" class="custom-range">
-```
-![此处输入图片的描述][81]
-##### - 自定义选择菜单（尺寸）：`.custom-select` `.custom-select-lg|sm`
-```html
-<!-- 向select元素添加.custom-select -->
-<select class="custom-select">
-    <option>.custom-select 1</option>
-    <option>.custom-select 2</option>
-    <option>.custom-select 3</option>
-</select>
-<!-- 在.custom-select后添加.custom-select-lg|sm，可改变尺寸 -->
-<select class="custom-select custom-select-lg">
-    <option>.custom-select 1</option>
-    <option>.custom-select 2</option>
-    <option>.custom-select 3</option>
-</select>
-
-<!-- select元素无法用br隔开，需用.m*-*设置外边距 -->
-```
 ![此处输入图片的描述][82]
+
+##### - 标签对齐：`.col-form-label`
+使用网格创建水平表单时，使标签与相关的表单控件垂直居中
+```html
+<div class="form-group row">
+    <!-- 在label的.col-*后添加.col-form-label -->
+    <label class="col-2 col-form-label" for="text1">lable: </label>
+    <div class="col-10">
+        <input type="text" id="text1" class="form-control">
+    </div>
+</div>
+    
+<fieldset class="form-group">
+    <div class="row">
+        <!-- 在legend的.col-*后添加.col-form-label -->
+        <legend class="col-3 col-form-label">legend: </legend>
+        <div class="col-9">
+            <label class="col-form-label" for="text2">lable: </label>
+            <input type="text" id="text2" class="form-control">
+        </div>
+    </div>
+</fieldset>
+```
+![此处输入图片的描述][83]
+
+##### - 标签尺寸：`.col-form-label-sm|lg`
+```html
+<div class="form-group row">
+    <!-- 在.col-form-label后添加.col-form-label-sm|lg以配合控件尺寸 -->
+    <label class="col-2 col-form-label col-form-label-sm" for="text1">label</label>
+    <div class="col-10">
+        <input type="text" id="text1" class="form-control form-control-sm">
+    </div>
+ </div>
+```
+![此处输入图片的描述][84]
 <br/>
 #### • 行内表单：`.form-inline`
 ```html
@@ -1394,7 +1378,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <button class="btn btn-primary">提交</button>
 </form>
 ```
-![此处输入图片的描述][83]
+![此处输入图片的描述][85]
 <br/>
 #### • 表单必填提示：`.was-validated` > `required`+`.invalid-feedback`
 ```html
@@ -1430,7 +1414,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </form>
 ```
-![此处输入图片的描述][84]
+![此处输入图片的描述][86]
 
 <br/>
 ### 5、输入框组合
@@ -1484,7 +1468,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </div>
 ```
-![此处输入图片的描述][85]
+![此处输入图片的描述][87]
 #### • 内联多个零件
 ```html
 <div class="input-group">
@@ -1498,7 +1482,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <input type="text" class="form-control" id="firstName">
 </div>
 ```
-![此处输入图片的描述][86]
+![此处输入图片的描述][88]
 <br/>
 #### • 输入组的尺寸：`.input-group-lg|sm`
 ```html
@@ -1513,7 +1497,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </div>
 ```
-![此处输入图片的描述][87]
+![此处输入图片的描述][89]
 
 <br/>
 ### 6、超大屏幕：`.jumbotron`
@@ -1524,7 +1508,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <p>这是jumbotron里的一些文本内容</p> 
 </div>
 ```
-![此处输入图片的描述][88]
+![此处输入图片的描述][90]
 #### • 全屏幕：`.jumbotron-fluid` > `.container|container-fluid`
 创建一个没有圆角的全屏幕
 ```html
@@ -1537,7 +1521,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </div>
 ```
-![此处输入图片的描述][89]
+![此处输入图片的描述][91]
 
 <br/>
 ### 7、模态框
@@ -1562,7 +1546,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 <!-- 模态框若未设置关闭按钮，点击页面其他位置也可以使其消失 -->
 <!-- 若内容过长使模态框超出视窗高度，浏览过程中它将独立滚动 -->
 ```
-![此处输入图片的描述][90]
+![此处输入图片的描述][92]
 
 ##### - 页眉与页脚：`.modal-header` > `.modal-title` + `.close` `data-dismiss="modal"` ↓ `.modal-footer` > `data-dismiss="modal"`
 ```html
@@ -1592,7 +1576,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 <!-- 向触发器添加data-backdrop="static"，可禁止点击其他位置关闭 -->
 ```
-![此处输入图片的描述][91]
+![此处输入图片的描述][93]
 <br/>
 #### • 模态框居中显示：`.modal-dialog-centered`
 ```html
@@ -1609,7 +1593,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </div>
 ```
-![此处输入图片的描述][92]
+![此处输入图片的描述][94]
 <br/>
 #### • 模态框尺寸：`.modal-lg|sm`
 ```html
@@ -1626,7 +1610,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </div>
 ```
-![此处输入图片的描述][93]
+![此处输入图片的描述][95]
 
 <br/>
 ### 8、导航列表
@@ -1646,7 +1630,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
 </ul>
 ```
-![此处输入图片的描述][94]
+![此处输入图片的描述][96]
 
 ##### - 导航样式：`.nav-tabs|pills`
 ```html
@@ -1672,8 +1656,8 @@ You can use the mark tag to <mark>highlight</mark> text.
 	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
 </ul>
 ```
-![此处输入图片的描述][95]
-![此处输入图片的描述][96]
+![此处输入图片的描述][97]
+![此处输入图片的描述][98]
 
 ##### - 导航对齐方式：`.nav-justified` / `.justify-content-center|end`
 ```html
@@ -1703,7 +1687,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
 </ul>
 ```
-![此处输入图片的描述][97]
+![此处输入图片的描述][99]
 
 ##### - 垂直导航：`.flex-column`
 ```html
@@ -1717,7 +1701,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
 </ul>
 ```
-![此处输入图片的描述][98]
+![此处输入图片的描述][100]
 <br/>
 #### • 选项卡切换
 设置选项卡对应的内容随导航链接的切换而更改
@@ -1742,7 +1726,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 <!-- 默认导航页的选项卡也要添加.active，否则内容显示为空白 -->
 ```
-![此处输入图片的描述][99]
+![此处输入图片的描述][101]
 
 ##### - 胶囊式选项卡切换：`.nav-pills` > `.nav-item` > `.nav-link` `data-toggle="pill"` `href="#idName"` ↓ `.tab-content` > `.tab-pane` `id="idName"`
 ```html
@@ -1763,7 +1747,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 <!-- 默认导航页的选项卡也要添加.active，否则内容显示为空白 -->
 ```
-![此处输入图片的描述][100]
+![此处输入图片的描述][102]
 <br/>
 #### • 带下拉菜单的导航：`.nav-item` `.dropdown|dropup`
 ```html
@@ -1787,7 +1771,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 	<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
 </ul>
 ```
-![此处输入图片的描述][101]
+![此处输入图片的描述][103]
 
 <br/>
 ### 9、导航栏
@@ -1845,7 +1829,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 	<span class="navbar-brand h1">Brand</span>
 </nav>
 ```
-![此处输入图片的描述][102]
+![此处输入图片的描述][104]
 
 ```html
 <nav class="navbar bg-light navbar-light">
@@ -1886,7 +1870,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 	</form>
 </nav>
 ```
-![此处输入图片的描述][103]
+![此处输入图片的描述][105]
 
 ##### - 文本：`.navbar-text`
 导航栏上的非链接文本，保证水平对齐，颜色与内边距一样
@@ -1896,7 +1880,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <span class="navbar-text">sometext</span>
 </nav>
 ```
-![此处输入图片的描述][104]
+![此处输入图片的描述][106]
 <br/>
 #### • 带下拉菜单：`.nav-item` `.dropdown|dropdown` > `.nav-link` `.dropdown-toggle` > `data-toggle="dropdown"` + （`.dropdown-menu` > `.dropdown-item`）
 ```html
@@ -1918,7 +1902,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </nav>
 ```
-![此处输入图片的描述][105]
+![此处输入图片的描述][107]
 <br/>
 #### • 颜色搭配：`.bg-背景颜色` `.navbar-light|dark`
 
@@ -1931,7 +1915,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 <!-- 浅色面板搭配.navbar-light，深色面板搭配.navbar-dark -->
 ```
-![此处输入图片的描述][106]
+![此处输入图片的描述][108]
 <br/>
 #### • 定位方式：`.fixed-top`/`.fixed-bottom`/`.sticky-top`
 ```html
@@ -1950,7 +1934,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <div>需为body设置padding-top，页面内容才不会被导航栏遮挡。</div>
 </body>
 ```
-![此处输入图片的描述][107]
+![此处输入图片的描述][109]
 
 ```html
 <head>
@@ -1968,7 +1952,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <div>为body设置padding-bottom，页面内容不会被导航栏遮挡。</div>
 </body>
 ```
-![此处输入图片的描述][108]
+![此处输入图片的描述][110]
 
 ```html
 <!-- 向nav添加.sticky-top，使导航栏磁铁在窗口顶部 -->
@@ -1992,27 +1976,27 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 })
 ```
-![此处输入图片的描述][109]
+![此处输入图片的描述][111]
 ##### - focus弹出框：`data-trigger="focus"` `tabindex="0"`
 点击元素显示弹出框后，再点击该元素之外的其他任意位置都可以关闭弹出框
 ```html
 <!-- 向基础弹出框再添加data-trigger="focus"和tabindex属性 -->
 <a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="focus" tabindex="0">点击显示弹出框</a>
 ```
-![此处输入图片的描述][110]
+![此处输入图片的描述][112]
 ##### - hover弹出框：`data-trigger="hover"`
 显示弹出框后，再点击除了该元素之外的其他任意位置都可以关闭弹出框
 ```html
 <!-- 向基础弹出框再添加data-trigger="hover" -->
 <a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="hover">点击显示弹出框</a>
 ```
-![此处输入图片的描述][111]
+![此处输入图片的描述][113]
 <br/>
 #### • 弹出框中的标题：`title="……"`
 ```html
 <a data-toggle="popover" title="这是标题" data-content="这是弹出框中的文本内容！">点击显示弹出框</a>
 ```
-![此处输入图片的描述][112]
+![此处输入图片的描述][114]
 <br/>
 #### • 指定弹出方向：`data-placement="top|right|bottom|left"`
 ```html
@@ -2023,7 +2007,7 @@ $(document).ready(function(){
 
 <!-- 仅当元素与页面边框间距足够时，该方向才能弹出，否则反方向弹出 -->
 ```
-![此处输入图片的描述][113]
+![此处输入图片的描述][115]
 
 ---
 
@@ -2034,47 +2018,47 @@ $(document).ready(function(){
 <div class="border"></div>
 <div class="border-top"></div>
 ```
-![此处输入图片的描述][114]
+![此处输入图片的描述][116]
 
 #### • 清除边框：`.border-0`/`.border-top|right|bottom|left-0`
 ```html
 <div class="border-0"></div>
 <div class="border-top-0"></div>
 ```
-![此处输入图片的描述][115]
+![此处输入图片的描述][117]
 
 #### • 边框颜色：`.border-primary|secondary|success|danger|warning|info|light|dark|white`
 ```html
 <div class="border border-primary"></div>
 ```
-![此处输入图片的描述][116]
-![此处输入图片的描述][117]
+![此处输入图片的描述][118]
+![此处输入图片的描述][119]
 
 #### • 边框圆角：`.rounded`/`.rounded-top|right|bottom|left|circle|pill|0`
 ```html
 <div class="rounded"></div>
 <div class="rounded-top"></div>
 ```
-![此处输入图片的描述][118]
+![此处输入图片的描述][120]
 
 #### • 圆角尺寸：`.rounded-sm|lg`
 ```html
 <div class="rounded-sm"></div>
 ```
-![此处输入图片的描述][119]
+![此处输入图片的描述][121]
 <br>
 ### 2、颜色
 #### • 文本颜色：`.text-primary|secondary|success|danger|warning|info|light|dark|body|muted|white|black-50|white-50`
 ```html
 <p class="text-primary">.text-primary</p>
 ```
-![此处输入图片的描述][120]
+![此处输入图片的描述][122]
 
 #### • 背景颜色：`.bg-primary|secondary|success|danger|warning|info|light|dark|white|transparent`
 ```html
 <p class="bg-primary">.bg-primary</p>
 ```
-![此处输入图片的描述][121]
+![此处输入图片的描述][123]
 <br>
 ### 3、显示
 #### • 元素框的类型：`.d-①`/`.d-②-①`
@@ -2170,7 +2154,7 @@ $(document).ready(function(){
 <p class="text-center">居中对齐</p>
 <p class="text-right">右对齐</p>
 ```
-![此处输入图片的描述][122]
+![此处输入图片的描述][124]
 
 #### • 文本换行/溢出/省略：`.text-wrap|nowrap|truncate`/`.text-break`
 ```html
@@ -2180,7 +2164,7 @@ $(document).ready(function(){
 <p class="bg-warning w-25 text-truncate">.text-truncate的文本不会溢出，不换行，溢出部分省略为...</p>
 <p class="bg-danger w-25 text-break">.text-break的文本不会溢出，换行显示</p>
 ```
-![此处输入图片的描述][123]
+![此处输入图片的描述][125]
 
 #### • 字母大小写转换：`.text-uppercase|lowercase|capitalize`
 ```html
@@ -2188,7 +2172,7 @@ $(document).ready(function(){
 <p class="text-uppercase">全大写 text-uppercase</p>      
 <p class="text-capitalize">首字母大写 text-capitalize</p>
 ```
-![此处输入图片的描述][124]
+![此处输入图片的描述][126]
 
 #### • 文本粗细与斜体：`.font-weight-bolder|bold|normal|light|lighter` `.font-italic`
 ```html
@@ -2201,13 +2185,13 @@ $(document).ready(function(){
 
 <!-- .font-weight-*和.font-italic可搭配使用 -->
 ```
-![此处输入图片的描述][125]
+![此处输入图片的描述][127]
 
 #### • 等宽英文字体：`.text-monospace`
 ```html
 <p class="text-monospace">This is in monospace</p>
 ```
-![此处输入图片的描述][126]
+![此处输入图片的描述][128]
 
 #### • 文本从父继承颜色：`.text-reset`
 ```html
@@ -2216,13 +2200,13 @@ $(document).ready(function(){
     <a href="#" class="text-reset">链接2：.text-reset从父继承颜色</a>
 </p>
 ```
-![此处输入图片的描述][127]
+![此处输入图片的描述][129]
 
 #### • 清除链接下划线：`.text-decoration-none`
 ```html
 <a href="#" class="text-decoration-none">没有下划线的链接文本</a>
 ```
-![此处输入图片的描述][128]
+![此处输入图片的描述][130]
 <br>
 ### 8、可见：`.visible`/`.invisible`
 >`visible` 可见占位 { visibility: visible !important; }
@@ -2302,62 +2286,64 @@ $(document).ready(function(){
   [67]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g27uuzsonhj20o8078t8s.jpg
   [68]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmia665e5j20o307bmxa.jpg
   [69]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27w3a52q5j20o50as0t3.jpg
-  [70]: https://wx1.sinaimg.cn/mw690/7de6638dly1fy45bi5t25j20si0itjs1.jpg
+  [70]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g29ebxidqej20o80g3gm4.jpg
   [71]: https://wx3.sinaimg.cn/mw690/7de6638dly1fy467yuyw3j20uy06gq2y.jpg
   [72]: https://wx2.sinaimg.cn/mw690/7de6638dly1fy441ms8jqj20nz03p0sx.jpg
-  [73]: https://wx4.sinaimg.cn/mw690/7de6638dly1fy46iibviuj20nt055q30.jpg
-  [74]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg75k5q40j20o401oq2u.jpg
-  [75]: https://wx4.sinaimg.cn/mw690/7de6638dly1fy47hzs0d4j20ny02at8j.jpg
-  [76]: https://wx1.sinaimg.cn/mw690/7de6638dly1fyg2yprbk3j20o106egln.jpg
-  [77]: https://wx4.sinaimg.cn/mw690/7de6638dly1fyg4qpk9o5j20o1072glq.jpg
-  [78]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg5alo8doj20o706y3yp.jpg
-  [79]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg7jfldbzj20o305pq36.jpg
-  [80]: https://wx2.sinaimg.cn/mw690/7de6638dly1fyg9038bvsj20o002a3yd.jpg
-  [81]: http://wx3.sinaimg.cn/large/7de6638dly1fyg8mk147og20o90420t0.gif
-  [82]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg89v8v7qj20o506gdfy.jpg
-  [83]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygasb3751j20ol025t8n.jpg
-  [84]: http://wx4.sinaimg.cn/large/7de6638dly1fyge09k72vg20o90bz0ul.gif
-  [85]: https://wx4.sinaimg.cn/mw690/7de6638dly1fygmf4e9o7j20o50900te.jpg
-  [86]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygl5uh8gqj20o802mwea.jpg
-  [87]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygkmm7npcj20o707raag.jpg
-  [88]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrl5hnnlj20o307g3yv.jpg
-  [89]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrslau0lj20o109b74q.jpg
-  [90]: http://wx4.sinaimg.cn/large/7de6638dly1fyggiuwz9gg20o709e74y.gif
-  [91]: http://wx1.sinaimg.cn/large/7de6638dly1fx293sfse8g20ob0a4dhy.gif
-  [92]: http://wx4.sinaimg.cn/large/7de6638dly1fx29et7b97g20ob0hst9i.gif
-  [93]: http://wx4.sinaimg.cn/large/7de6638dly1fx2acc89t6g21dy05it9i.gif
-  [94]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwmjcvcm4bj20o302f3ye.jpg
-  [95]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmj1wxaboj20o002ut8m.jpg
-  [96]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwkk4gj0tzj20o302f746.jpg
-  [97]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmjzp68rjj20o6088gls.jpg
-  [98]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwmjrrt5zxj20ny0ajdfs.jpg
-  [99]: http://wx1.sinaimg.cn/large/7de6638dly1fwml6uw2vpg20o604wjsi.gif
-  [100]: http://wx1.sinaimg.cn/large/7de6638dly1fwmlds4q7ug20o004z75f.gif
-  [101]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmkltlee0j20o409k3ym.jpg
-  [102]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
-  [103]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
-  [104]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmrf5cwh7j20ix0313yc.jpg
-  [105]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmqtrr4g7j20o107nt8p.jpg
-  [106]: http://wx1.sinaimg.cn/large/7de6638dly1fwmnebn13zg20l008cmz5.gif
-  [107]: http://wx1.sinaimg.cn/large/7de6638dly1fwmskfuxaog20nn07zgpy.gif
-  [108]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
-  [109]: http://wx4.sinaimg.cn/large/7de6638dly1fx0ig4sxiug20o4041myi.gif
-  [110]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
-  [111]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
-  [112]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0fse5bzlj20o103zwek.jpg
-  [113]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0heb8skoj20zd065gm0.jpg
-  [114]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nopn87wj20la04k0sh.jpg
-  [115]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nq7tmuoj20lc04f0sf.jpg
-  [116]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3pmkj20p202q0os.jpg
-  [117]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3olxj20oy02p0pc.jpg
-  [118]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27ofay2ijj20qq02n0sk.jpg
-  [119]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27oiue6h2j20p4044a9t.jpg
-  [120]: http://wx3.sinaimg.cn/large/7de6638dly1g2312pgh0zj20qu0m8wft.jpg
-  [121]: http://wx4.sinaimg.cn/large/7de6638dly1g231ah3ukkj20pw0gngmi.jpg
-  [122]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwof5hjxvjj20nz0admxw.jpg
-  [123]: http://wx4.sinaimg.cn/large/7de6638dly1g22zzaj64fj21du0gfmzh.jpg
-  [124]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwrq6t79hhj20o304lq33.jpg
-  [125]: http://wx2.sinaimg.cn/large/7de6638dly1g230cjtlytj20qz0a20tf.jpg
-  [126]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwofsmzi9ij20nx02rmx7.jpg
-  [127]: http://wx3.sinaimg.cn/large/7de6638dly1g230m0e0flj20p501q0su.jpg
-  [128]: http://wx1.sinaimg.cn/large/7de6638dly1g230s0hjj8j20pd01hq2v.jpg
+  [73]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g29dvt4mvvj20o7069gln.jpg
+  [74]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g29dyo2sjij20o6079mx8.jpg
+  [75]: http://wx3.sinaimg.cn/large/7de6638dly1g29gzdsu0kg20o3073mxy.gif
+  [76]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g29hnk732zj20o802n746.jpg
+  [77]: https://wx4.sinaimg.cn/mw690/7de6638dly1fy46iibviuj20nt055q30.jpg
+  [78]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg75k5q40j20o401oq2u.jpg
+  [79]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g299pnxk6ij20o902fdfl.jpg
+  [80]: http://wx2.sinaimg.cn/large/7de6638dly1g29dkea95pg20o5088dh4.gif
+  [81]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g29cryo3icj20o7027jrb.jpg
+  [82]: https://wx1.sinaimg.cn/mw690/7de6638dly1fyg2yprbk3j20o106egln.jpg
+  [83]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g29bjutqevj20o706ia9y.jpg
+  [84]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg5alo8doj20o706y3yp.jpg
+  [85]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygasb3751j20ol025t8n.jpg
+  [86]: http://wx4.sinaimg.cn/large/7de6638dly1fyge09k72vg20o90bz0ul.gif
+  [87]: https://wx4.sinaimg.cn/mw690/7de6638dly1fygmf4e9o7j20o50900te.jpg
+  [88]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygl5uh8gqj20o802mwea.jpg
+  [89]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygkmm7npcj20o707raag.jpg
+  [90]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrl5hnnlj20o307g3yv.jpg
+  [91]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrslau0lj20o109b74q.jpg
+  [92]: http://wx4.sinaimg.cn/large/7de6638dly1fyggiuwz9gg20o709e74y.gif
+  [93]: http://wx1.sinaimg.cn/large/7de6638dly1fx293sfse8g20ob0a4dhy.gif
+  [94]: http://wx4.sinaimg.cn/large/7de6638dly1fx29et7b97g20ob0hst9i.gif
+  [95]: http://wx4.sinaimg.cn/large/7de6638dly1fx2acc89t6g21dy05it9i.gif
+  [96]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwmjcvcm4bj20o302f3ye.jpg
+  [97]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmj1wxaboj20o002ut8m.jpg
+  [98]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwkk4gj0tzj20o302f746.jpg
+  [99]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmjzp68rjj20o6088gls.jpg
+  [100]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwmjrrt5zxj20ny0ajdfs.jpg
+  [101]: http://wx1.sinaimg.cn/large/7de6638dly1fwml6uw2vpg20o604wjsi.gif
+  [102]: http://wx1.sinaimg.cn/large/7de6638dly1fwmlds4q7ug20o004z75f.gif
+  [103]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmkltlee0j20o409k3ym.jpg
+  [104]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
+  [105]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
+  [106]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmrf5cwh7j20ix0313yc.jpg
+  [107]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmqtrr4g7j20o107nt8p.jpg
+  [108]: http://wx1.sinaimg.cn/large/7de6638dly1fwmnebn13zg20l008cmz5.gif
+  [109]: http://wx1.sinaimg.cn/large/7de6638dly1fwmskfuxaog20nn07zgpy.gif
+  [110]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
+  [111]: http://wx4.sinaimg.cn/large/7de6638dly1fx0ig4sxiug20o4041myi.gif
+  [112]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
+  [113]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
+  [114]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0fse5bzlj20o103zwek.jpg
+  [115]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0heb8skoj20zd065gm0.jpg
+  [116]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nopn87wj20la04k0sh.jpg
+  [117]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nq7tmuoj20lc04f0sf.jpg
+  [118]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3pmkj20p202q0os.jpg
+  [119]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3olxj20oy02p0pc.jpg
+  [120]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27ofay2ijj20qq02n0sk.jpg
+  [121]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27oiue6h2j20p4044a9t.jpg
+  [122]: http://wx3.sinaimg.cn/large/7de6638dly1g2312pgh0zj20qu0m8wft.jpg
+  [123]: http://wx4.sinaimg.cn/large/7de6638dly1g231ah3ukkj20pw0gngmi.jpg
+  [124]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwof5hjxvjj20nz0admxw.jpg
+  [125]: http://wx4.sinaimg.cn/large/7de6638dly1g22zzaj64fj21du0gfmzh.jpg
+  [126]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwrq6t79hhj20o304lq33.jpg
+  [127]: http://wx2.sinaimg.cn/large/7de6638dly1g230cjtlytj20qz0a20tf.jpg
+  [128]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwofsmzi9ij20nx02rmx7.jpg
+  [129]: http://wx3.sinaimg.cn/large/7de6638dly1g230m0e0flj20p501q0su.jpg
+  [130]: http://wx1.sinaimg.cn/large/7de6638dly1g230s0hjj8j20pd01hq2v.jpg
