@@ -57,13 +57,14 @@ Bootstrap 4 需要一个容器元素来包裹网站的内容
 <br/>
 ### 3、网格系统
 Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，随着屏幕或viewport尺寸的增加，系统会自动分为最多 12 列：
-![此处输入图片的描述][3]
 
-#### • 网格类：`.col-*|auto` `.col-sm|md|lg|xl-*|auto`
-    col  列
-    -sm  小屏幕    -md  中等屏幕    -lg  大屏幕    -xl  超大屏幕
-    -*  当屏幕为前缀规定的尺寸时，每个div所占列数（每row行共12列）
-    -auto  根据内容自动调整div宽度
+![此处输入图片的描述][3]
+<br/>
+#### • 网格的基本结构：`.row` > `.col-①`/`.col-②-①`
+>`.row` 行 &nbsp;&nbsp;&nbsp;`.col` 列
+① `1~12` 当前div在当前行中占据的列数（每行共12列） &nbsp;&nbsp;&nbsp;`auto` 适应内容
+② `sm` 小屏幕 &nbsp;&nbsp;&nbsp;`md` 中等屏幕 &nbsp;&nbsp;&nbsp;`lg` 大屏幕 &nbsp;&nbsp;&nbsp;`xl` 超大屏幕
+
 <table>
 <tr>
 <th></th>
@@ -98,8 +99,7 @@ Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，�
 <td style="text-align:center">1140px</td>
 </tr>
 </table>
-<br/>
-#### • 网格的基本结构
+
 ```html
 <!-- 首先创建一行row -->
 <div class="row">
@@ -920,8 +920,8 @@ You can use the mark tag to <mark>highlight</mark> text.
 ```
 ![此处输入图片的描述][59]
 <br/>
-#### • 卡片组：`.card-group|deck|columns`
-##### - 紧邻卡片组：`.card-group`
+### C2、卡片组
+#### 紧邻卡片组：`.card-group`
 将一系列卡片从左到右排列在一行显示，默认等宽且等高，卡片之间无间距紧邻
 ```html
 <!-- 将多个卡片包裹在一个带.card-group的div里 -->
@@ -949,7 +949,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 ```
 ![此处输入图片的描述][60]
 
-##### - 间隔卡片组：`.card-deck`
+#### 间隔卡片组：`.card-deck`
 将一系列卡片从左到右排列在一行显示，默认等宽且等高，卡片之间等间距间隔
 ```html
 <!-- 将多个卡片包裹在一个带.card-deck的div里 -->
@@ -970,7 +970,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 ```
 ![此处输入图片的描述][61]
 
-##### - 堆砌卡片组：`.card-columns`
+#### 堆砌卡片组：`.card-columns`
 将一系列卡片从上到下堆砌成三列，默认等宽，每个卡片的高度根据内容调整
 ```html
 <!-- 将多个卡片包裹在一个带.card-columns的div里 -->
@@ -1128,21 +1128,44 @@ You can use the mark tag to <mark>highlight</mark> text.
 ### 4、表单
 >★ 可使用网格系统布局
 
-#### • 输入表单：`.form-group` > `.form-control`/`.form-control-file`
+#### • 输入表单：`.form-group` > `.form-control`/`.form-control-file|range`
 ```html
+<!-- 以一个form标签开始 -->
 <form>
-    <!-- 在form下创建带.form-group的div，作为一组 -->
-    <div class="form-group">
-        <label for="text1">请输入文本：</label>
-        <!-- 向type="text"（及select/textarea元素）添加.form-control -->
-        <input type="text" id="text1" class="form-control">
-    </div>
-    
-    <div class="form-group">
-        <label for="file1">请上传文件：</label>
-        <!-- 向type="file"添加.form-control-file -->
-        <input type="file" id="file1" class="form-control-file">
-    </div>
+    <!-- 在form下创建带.form-group的块，作为一组 -->
+	<div class="form-group">
+		<label for="input1">input - .form-control</label>
+		<!-- 向input添加.form-control -->
+		<input type="text" class="form-control" id="input1">
+	</div>
+	
+	<div class="form-group">
+		<label for="select1">select - .form-control</label>
+		<!-- 向select添加.form-control -->
+		<select class="form-control" id="select1">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+	</div>
+	
+	<div class="form-group">
+		<label for="textarea1">textarea - .form-control</label>
+		<!-- 向textarea添加.form-control -->
+		<textarea class="form-control" id="textarea1" rows="3"></textarea>
+	</div>
+	
+	<div class="form-group">
+		<label for="file1">input[type="file"] - .form-control-file</label>
+		<!-- 向type="file"添加.form-control-file -->
+		<input type="file" class="form-control-file" id="file1">
+	</div>
+	
+	<div class="form-group">
+		<label for="range1">input[type="range"] - .form-control-range</label>
+		<!-- 向type="range"添加.form-control-range -->
+		<input type="range" class="form-control-range" id="range1">
+	</div>
 </form>
 ```
 ![此处输入图片的描述][70]
@@ -1194,6 +1217,15 @@ You can use the mark tag to <mark>highlight</mark> text.
 <input type="range" id="range2" class="custom-range" min="0" max="5" step="0.5">
 ```
 ![此处输入图片的描述][75]
+
+##### - 帮助文本：`.form-text`
+```html
+<label for="password1">设置密码：</label>
+<input type="password" class="form-control" id="password1">
+<!-- 插入内联文本元素，添加.form-text -->
+<small class="form-text text-muted" id="password1">您的密码长度必须为8-20个字符，包含字母和数字，且不得包含空格，特殊字符或表情符号。</small>
+```
+![此处输入图片的描述][76]
 <br/>
 #### • 自定义文件浏览框：`.custom-file` > `.custom-file-input`+`.custom-file-label`
 ```html
@@ -1202,15 +1234,16 @@ You can use the mark tag to <mark>highlight</mark> text.
     <!-- 将.form-control-file替换为.custom-file-input -->
     <input type="file" id="file1" class="custom-file-input">
     <!-- 向label添加.custom-file-label -->
-    <label class="custom-file-label" for="file1">选择文件</label>
+    <label class="custom-file-label" for="file1">Choose file</label>
 </div>
 
 <div class="custom-file">
-    <input type="file" id="file1" class="custom-file-input" lang="es">
-    <label class="custom-file-label" for="file1" data-browse="Bestand kiezen">选择文件</label>
+    <input type="file" id="file2" class="custom-file-input">
+    <!-- 添加 data-browse="……" 来修改浏览键的文本 -->
+    <label class="custom-file-label" for="file2" data-browse="浏览">选择文件</label>
 </div>
 ```
-![此处输入图片的描述][76]
+![此处输入图片的描述][77]
 <br/>
 #### • 选框表单：`.form-check` > `.form-check-input`+`.form-check-label`
 ```html
@@ -1228,9 +1261,9 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </form>
 ```
-![此处输入图片的描述][77]
+![此处输入图片的描述][78]
 
-##### - 行内选框：`.form-check-inline`
+##### - 内联选框：`.form-check-inline`
 ```html
 <!-- 每个.form-check后添加.form-check-inline，可将选项排成一行 -->
 <div class="form-check form-check-inline">
@@ -1241,7 +1274,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 </div>
 ……
 ```
-![此处输入图片的描述][78]
+![此处输入图片的描述][79]
 
 ##### - 无标签选框：`.position-static`
 ```html
@@ -1254,7 +1287,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 </div>
 ……
 ```
-![此处输入图片的描述][79]
+![此处输入图片的描述][80]
 <br/>
 #### • 自定义选框样式：`.custom-control` `.custom-checkbox|switch|radio` > `.custom-control-input`+`.custom-control-label`
 ```html
@@ -1287,7 +1320,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </form>
 ```
-![此处输入图片的描述][80]
+![此处输入图片的描述][81]
 
 ##### - 内联自定义选框：`.custom-control-inline`
 ```html
@@ -1299,7 +1332,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 </div>
 ……
 ```
-![此处输入图片的描述][81]
+![此处输入图片的描述][82]
 <br/>
 #### • 表单网格：`.form-row` > `.col-*`/`.form-group|check` > `.form-control`
 ```html
@@ -1327,7 +1360,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </form>
 ```
-![此处输入图片的描述][82]
+![此处输入图片的描述][83]
 
 ##### - 标签对齐：`.col-form-label`
 使用网格创建水平表单时，使标签与相关的表单控件垂直居中
@@ -1351,7 +1384,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </fieldset>
 ```
-![此处输入图片的描述][83]
+![此处输入图片的描述][84]
 
 ##### - 标签尺寸：`.col-form-label-sm|lg`
 ```html
@@ -1363,46 +1396,41 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
  </div>
 ```
-![此处输入图片的描述][84]
+![此处输入图片的描述][85]
 <br/>
-#### • 行内表单：`.form-inline`
+### C4、表单项
+#### • 内联表单：`.form-inline`
 ```html
 <!-- 向form添加.form-inline，使表单内所有元素排成一行 -->
 <form class="form-inline">
-    <label for="inputPassword">请输入密码：</label>
-    <input type="password" id="inputExample" class="form-control mr-3">
-    <div class="form-check">
-        <input type="checkbox" id="inputCheckbox" class="form-check-input">
-        <label class="form-check-label mr-3" for="inputCheckbox">记住密码</label>
-    </div>
-    <button class="btn btn-primary">提交</button>
+    ……
 </form>
 ```
-![此处输入图片的描述][85]
+![此处输入图片的描述][86]
 <br/>
-#### • 表单必填提示：`.was-validated` > `required`+`.invalid-feedback`
+#### • 表单验证：`.was-validated` > `required`+`.invalid-feedback`
 ```html
-<!-- 向form添加.was-validated，默认已验证表单未填写 -->
+<!-- 向form添加.was-validated，默认表单已验证（未通过） -->
 <form class="was-validated">
     <div class="form-group">
-        <label for="textExample">输入框：</label>
+        <label for="text1">输入框：</label>
         <!-- 向表单控件添加required属性，关联为必填项 -->
-        <input type="text" id="textExample" class="form-control" required>
-        <!-- 控件下创建带.invalid-feedback的div，设置提示文本 -->
+        <input type="text" id="text1" class="form-control" required>
+        <!-- 控件后插入.invalid-feedback，设置验证未通过时的提示文本 -->
         <div class="invalid-feedback">必填项，请输入内容！</div>
     </div>
-    <br>
+    
     <div class="form-check">
-        <input type="radio" name="group" id="radioExample1" class="form-check-input" required>
-        <label class="form-check-label" for="radioExample1">单选框1</label>
+        <input type="radio" name="group" id="radio1" class="form-check-input" required>
+        <label class="form-check-label" for="radio1">单选框1</label>
     </div>
     <div class="form-check">
-        <input type="radio" name="group" id="radioExample2" class="form-check-input" required>
-        <label class="form-check-label" for="radioExample2">单选框2</label>
+        <input type="radio" name="group" id="radio2" class="form-check-input" required>
+        <label class="form-check-label" for="radio2">单选框2</label>
         <!-- 单选框组的提示文本写在最后一项结尾 -->
         <div class="invalid-feedback">必填项，请选择一项！</div>
     </div>
-    <br>
+    
     <div class="form-group">
         <select class="form-control" required>
             <!-- 需预设一个非选项，向第一个option添加value="" -->
@@ -1414,422 +1442,435 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </form>
 ```
-![此处输入图片的描述][86]
+![此处输入图片的描述][87]
+
+##### - 服务器验证：`.is-valid|invalid`+`.valid|invalid-feedback`
+```html
+<label for="text1">请输入：</label>
+<!-- 在.form-control后添加.is-valid，预设验证通过 -->
+<input type="text" id="text1" class="form-control is-valid" required>
+<!-- .valid-feedback设置验证通过时的提示文本 -->
+<div class="valid-feedback">验证通过！</div>
+
+<label for="text2">请输入：</label>
+<!-- 在.form-control后添加.is-invalid，预设验证未通过 -->
+<input type="text" id="text2" class="form-control is-invalid" required>
+<!-- .invalid-feedback设置验证未通过时的提示文本 -->
+<div class="invalid-feedback">验证未通过！</div>
+```
+![此处输入图片的描述][88]
 
 <br/>
-### 5、输入框组合
-#### • 基础组合：`.input-group` > `.input-group-prepend|append` > `.input-group-text`
+### 5、输入框组：`.input-group` > `.input-group-prepend|append` > `.input-group-text`
 ```html
-<!-- 以一个带.input-group的div开始，创建输入框组合 -->
+<!-- 以一个带.input-group的div开始，作为一组 -->
 <div class="input-group">
     <!-- 创建.input-group-prepend，显示为前缀区域 -->
     <div class="input-group-prepend">
         <!-- 在带.input-group-text的span里设置文本内容 -->
         <span class="input-group-text">文本前缀</span>
     </div>
-    <!-- 主要的输入控件 -->
-    <input type="text" class="form-control" placeholder=".form-control输入框">
+    <input type="text" class="form-control">
 </div>
 
 <div class="input-group">
-    <select class="custom-select">
-        <option selected>.custom-select选择菜单</option>
-        <option value="1">选项1</option>
-        <option value="2">选项2</option>
-        <option value="3">选项3</option>
-  </select>
+    <input type="text" class="form-control">
     <!-- 创建.input-group-append，显示为后缀区域 -->
     <div class="input-group-append">
-        <!-- 使用选框控件替代文本内容 -->
         <div class="input-group-text">
-            <input type="checkbox">
+            <!-- 在.input-group-text里嵌入其他元素 -->
+            <input type="checkbox">选框后缀
         </div>
     </div>
 </div>
 
-<label for="idName">label标签：</label>
-<div class="input-group">
-    <div class="input-group-prepend">
-        <!-- 可组合按钮元素 -->
-        <button class="btn btn-primary">按钮前缀</button>
-    </div>
-    <div class="custom-file">
-        <input type="file" id="inputFile" class="custom-file-input">
-        <label class="custom-file-label" for="inputFile">.custom-file选择文件</label>
-    </div>
-    <div class="input-group-append">
-        <!-- 可组合下拉菜单组件 -->
-        <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">下拉菜单后缀</button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">链接1</a>
-            <a class="dropdown-item" href="#">链接2</a>
-            <a class="dropdown-item" href="#">链接3</a>
-        </div>
-    </div>
-</div>
+<!-- .input-group下可内联多个控件，前后缀中可内联多项内容 -->
 ```
-![此处输入图片的描述][87]
-#### • 内联多个零件
-```html
-<div class="input-group">
-    <div class="input-group-prepend">
-        <!-- .input-group-prepend|append下可内联多个内容 -->
-        <span class="input-group-text">姓</span>
-        <span class="input-group-text">名</span>
-    </div>
-    <!-- .input-group下可内联多个输入控件 -->
-    <input type="text" class="form-control" id="lastName">
-    <input type="text" class="form-control" id="firstName">
-</div>
-```
-![此处输入图片的描述][88]
+![此处输入图片的描述][89]
+![此处输入图片的描述][90]
 <br/>
 #### • 输入组的尺寸：`.input-group-lg|sm`
 ```html
 <!-- 在.input-group后添加.input-group-lg|sm -->
 <div class="input-group input-group-lg">
-    <div class="input-group-prepend">
-        <span class="input-group-text">前缀文本</span>
-    </div>
-    <input type="text" class="form-control" placeholder=".input-group .input-group-lg">
-    <div class="input-group-append">
-        <span class="input-group-text">后缀文本</span>
-    </div>
+    ……
 </div>
 ```
-![此处输入图片的描述][89]
+![此处输入图片的描述][91]
 
 <br/>
 ### 6、超大屏幕：`.jumbotron`
 创建一个大的灰色背景框，里面可以设置HTML标签等一些特殊的内容和信息
 ```html
 <div class="jumbotron">
-    <h1>这是jumbotron里的标题</h1> 
-    <p>这是jumbotron里的一些文本内容</p> 
+    ……
 </div>
 ```
-![此处输入图片的描述][90]
-#### • 全屏幕：`.jumbotron-fluid` > `.container|container-fluid`
+![此处输入图片的描述][92]
+<br/>
+#### • 全屏幕：`.jumbotron-fluid` > `.container`/`.container-fluid`
 创建一个没有圆角的全屏幕
 ```html
 <!-- 在.jumbotron后添加.jumbotron-fluid -->
 <div class="jumbotron jumbotron-fluid">
     <!-- 将内容包裹在一个带容器类的div里 -->
     <div class="container">
-        <h1>这是jumbotron-fluid里的标题</h1> 
-        <p>这是jumbotron-fluid里的一些文本内容</p>
+        ……
     </div>
 </div>
-```
-![此处输入图片的描述][91]
-
-<br/>
-### 7、模态框
-#### • 基础模态框：`data-toggle="modal"` `data-target="#idName"` + `.modal` `id="idName"` `tabindex="-1"` > `.modal-dialog` > `.modal-content` > `.modal-header`+`.modal-body`+`.modal-footer`
-```html
-<!-- 触发按钮，关键插件：data-toggle="modal" data-target="#……" -->
-<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
-<!-- 带.modal创建模态框组件，标记id，并添加tabindex="-1" -->
-<div class="modal" id="modalId" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- .modal-header为页眉部分 -->
-            <div class="modal-header">这是模态框的页眉</div>
-            <!-- .modal-body为模态框的主体部分，必需项 -->
-            <div class="modal-body">这是模态框的主体</div>
-            <!-- .modal-footer为页脚部分 -->
-            <div class="modal-footer">这是模态框的页脚</div>
-        </div>
-    </div>
-</div>
-
-<!-- 模态框若未设置关闭按钮，点击页面其他位置也可以使其消失 -->
-<!-- 若内容过长使模态框超出视窗高度，浏览过程中它将独立滚动 -->
-```
-![此处输入图片的描述][92]
-
-##### - 页眉与页脚：`.modal-header` > `.modal-title` + `.close` `data-dismiss="modal"` ↓ `.modal-footer` > `data-dismiss="modal"`
-```html
-<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
-
-<div class="modal" id="modalId" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <!-- .modal-header下创建.modal-title标题 -->
-                <h5 class="modal-title">这是模态框的标题</h5>
-                <!-- .close加data-dismiss="modal"创建关闭按钮 -->
-                <button class="close" data-dismiss="modal">
-                    <!-- 点击右上角的X符号关闭 -->
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">这是模态框的主体</div>
-            <div class="modal-footer">
-                <button>确定</button>
-                <!-- data-dismiss="modal"创建关闭按钮 -->
-		        <button data-dismiss="modal">取消</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 向触发器添加data-backdrop="static"，可禁止点击其他位置关闭 -->
 ```
 ![此处输入图片的描述][93]
-<br/>
-#### • 模态框居中显示：`.modal-dialog-centered`
-```html
-<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
 
-<div class="modal" id="modalId" tabindex="-1">
-    <!-- 在.modal-dialog后添加.modal-dialog-centered，即可居中 -->
-    <div class="modal-dialog modal-dialog-centered">
+<br/>
+### 7、模态框：`data-toggle="modal"` `data-target="#……"` + ( `.modal` `id="……"` `tabindex="-1"` > `.modal-dialog` > `.modal-content` > `.modal-header`+`.modal-body`+`.modal-footer` )
+>★ 可使用网格系统布局
+
+```html
+<!-- 触发按钮，关键插件：data-toggle="modal" data-target="#……" -->
+<button data-toggle="modal" data-target="#modal1">点击显示对话框</button>
+<!-- .modal创建模态框组件，标记id，并添加tabindex="-1" -->
+<div class="modal" id="modal1" tabindex="-1">
+    <!-- .modal-dialog创建对话框 -->
+    <div class="modal-dialog">
+        <!-- .modal-content设置对话框内容 -->
         <div class="modal-content">
-            <div class="modal-body">
-                <p>主体部分可以放各种内容，如文本、图像、样式等</p>
-            </div>
+            <!-- .modal-header为页眉部分 -->
+            <div class="modal-header">这是页眉</div>
+            <!-- .modal-body为主体部分（必需项） -->
+            <div class="modal-body">这是主体内容</div>
+            <!-- .modal-footer为页脚部分，内容自动右对齐 -->
+            <div class="modal-footer">这是页脚</div>
         </div>
     </div>
 </div>
+
+<!-- 默认点击页面其他位置可关闭对话框，向触发器添加data-backdrop="static"可禁止这一动作 -->
 ```
 ![此处输入图片的描述][94]
 <br/>
-#### • 模态框尺寸：`.modal-lg|sm`
+#### • 对话框可滚动：`.modal-dialog-scrollable`
 ```html
-<button data-toggle="modal" data-target="#modalId">点击显示模态框</button>
-
-<div class="modal" id="modalId" tabindex="-1">
-    <!-- 在.modal-dialog后添加.modal-lg或.modal-sm，改变大小 -->
-    <div class="modal-dialog modal-lg">
+<div class="modal" id="modal2" tabindex="-1">
+    <!-- 在.modal-dialog后添加.modal-dialog-scrollable -->
+    <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-body">
-                <p>主体部分可以放各种内容，如文本、图像、样式等</p>
+                ……
             </div>
         </div>
     </div>
 </div>
 ```
 ![此处输入图片的描述][95]
-
 <br/>
-### 8、导航列表
-#### • 基础导航：`.nav` > `.nav-item` > `.nav-link`
+#### • 对话框居中显示：`.modal-dialog-centered`
 ```html
-<!-- 以一个带.nav的无序列表ul开始 -->
-<ul class="nav">
-    <!-- 向li添加.nav-item，创建导航列表项 -->
-	<li class="nav-item">
-	    <!-- 在li下添加带.nav-link的a标签，生成导航链接 -->
-	    <a class="nav-link" href="#">Home</a>
-	</li>
-	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
-	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
-</ul>
+<div class="modal" id="modal3" tabindex="-1">
+    <!-- 在.modal-dialog后添加.modal-dialog-centered -->
+    <div class="modal-dialog modal-dialog-centered">
+        ……
+    </div>
+</div>
 ```
 ![此处输入图片的描述][96]
+<br/>
+#### • 对话框尺寸：`.modal-sm|lg|xl`
+<table>
+<tr>
+<th></th>
+<th style="text-align:center">Small</th>
+<th style="text-align:center">Default</th>
+<th style="text-align:center">Large</th>
+<th style="text-align:center">Extra large</th>
+</tr>
+<tr>
+<th style="text-align:center">Class</th>
+<td style="text-align:center;"><code>.modal-sm</code></td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"><code>.modal-lg</code></td>
+<td style="text-align:center;"><code>.modal-xl</code></td>
+</tr>
+<tr>
+<th style="text-align:center">Max-width</th>
+<td style="text-align:center">300px</td>
+<td style="text-align:center">500px</td>
+<td style="text-align:center">800px</td>
+<td style="text-align:center">1140px</td>
+</tr>
+</table>
 
-##### - 导航样式：`.nav-tabs|pills`
 ```html
-<!-- 在.nav后添加.nav-tabs，可创建标签式导航 -->
-<ul class="nav nav-tabs">
-    <!-- 对选中的链接使用.active来标记 -->
-	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
-	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
-</ul>
-```
-```html
-<!-- 在.nav后添加.nav-pills，可创建胶囊式导航 -->
-<ul class="nav nav-pills">
-	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">VB.Net</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
-</ul>
+<div class="modal" id="modal3" tabindex="-1">
+    <!-- 在.modal-dialog后添加.modal-sm|lg|xl -->
+    <div class="modal-dialog modal-sm">
+        ……
+    </div>
+</div>
 ```
 ![此处输入图片的描述][97]
+<br/>
+#### • 页眉与页脚
+##### - 对话框标题：`.modal-title`
+```html
+<div class="modal-header">
+    <!-- 在.modal-header下创建.modal-title文本 -->
+    <h5 class="modal-title">这是标题</h5>
+</div>
+```
 ![此处输入图片的描述][98]
 
-##### - 导航对齐方式：`.nav-justified` / `.justify-content-center|end`
+##### - 关闭对话框：`data-dismiss="modal"`
 ```html
-<!-- 向ul添加.nav-justified，使导航列表两端对齐等间距显示 -->
-<ul class="nav nav-tabs nav-justified">
-	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
-	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
-</ul>
-```
-```html
-<!-- 向ul添加.justify-content-center，使导航列表居中显示 -->
-<ul class="nav nav-tabs justify-content-center">
-	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
-	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
-</ul>
-```
-```html
-<!-- 向ul添加.justify-content-end，使导航列表右对齐显示 -->
-<ul class="nav nav-tabs justify-content-end">
-	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
-	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
-</ul>
+<div class="modal-content">
+    <div class="modal-header">
+        <!-- 在.modal-header下创建关闭按钮，可使用.close小工具 -->
+        <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        ……
+    </div>
+    
+    <div class="modal-footer">
+        <!-- 在.modal-footer下创建关闭按钮 -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+    </div>
+</div>
+
+<!-- 默认点击页面其他位置可关闭对话框，向触发器添加data-backdrop="static"可禁止这一动作 -->
 ```
 ![此处输入图片的描述][99]
 
-##### - 垂直导航：`.flex-column`
+<br/>
+### 8、导航列表
+#### • 基础导航：`.nav` > `.nav-link`
 ```html
-<!-- 向ul添加.flex-column，创建垂直导航列表 -->
-<ul class="nav nav-pills flex-column">
-	<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">iOS</a></li>
-	<li class="nav-item"><a class="nav-link disabled" href="#">VB.Net</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">Java</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">PHP</a></li>
-</ul>
+<!-- 以一个带.nav的nav标签开始 -->
+<nav class="nav">
+    <!-- 直接在nav下创建导航链接.nav-link -->
+	<a href="#" class="nav-link">导航链接1</a>
+	<a href="#" class="nav-link">导航链接2</a>
+	……
+</nav>
 ```
 ![此处输入图片的描述][100]
 <br/>
-#### • 选项卡切换
-设置选项卡对应的内容随导航链接的切换而更改
-##### - 标签式选项卡切换：`.nav-tabs` > `.nav-item` > `.nav-link` `data-toggle="tab"` `href="#idName"` ↓ `.tab-content` > `.tab-pane` `id="idName"`
+#### • 项目导航：`.nav` > `.nav-item` > `.nav-link`
 ```html
-<ul class="nav nav-tabs">
-    <!-- nav-tabs下，向a添加data-toggle="tab"，并绑定选项卡id -->
-	<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab2">iOS</a></li>
-	<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab3">Java</a></li>
-	<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab4">PHP</a></li>
+<!-- 以一个带.nav的ul/ol标签开始 -->
+<ul class="nav">
+    <!-- 向li添加.nav-item，创建导航列表项 -->
+	<li class="nav-item">
+	    <!-- 在li下创建导航链接.nav-link -->
+	    <a href="#" class="nav-link">导航链接1</a>
+	</li>
+	<li class="nav-item">
+	    <a href="#" class="nav-link">导航链接2</a>
+	</li>
+	……
 </ul>
-<!-- 将所有选项卡内容包裹在一个带有.tab-content的div里 -->
-<div class="tab-content">
-    <!-- 将每个选项卡div标记id，并添加.tab-pane切换内容 -->
-	<div id="tab1" class="tab-pane active">SVN是Subversion的简称……</div>
-	<div id="tab2" class="tab-pane">iOS是由苹果公司开发的移动操作系统……</div>
-	<!-- 可以在.tab-pane后添加.fade以实现淡入效果 -->
-	<div id="tab3" class="tab-pane fade">Java是一门面向对象编程语言……</div>
-	<div id="tab4" class="tab-pane fade">PHP是一种通用开源脚本语言……</div>
-</div>
 
-<!-- 默认导航页的选项卡也要添加.active，否则内容显示为空白 -->
+<!-- 若导航项的顺序很重要，建议使用ul/ol标签 -->
 ```
 ![此处输入图片的描述][101]
 
-##### - 胶囊式选项卡切换：`.nav-pills` > `.nav-item` > `.nav-link` `data-toggle="pill"` `href="#idName"` ↓ `.tab-content` > `.tab-pane` `id="idName"`
+##### - 导航样式：`.nav-tabs|pills`
 ```html
-<ul class="nav nav-pills">
-    <!-- nav-pills下，向a添加data-toggle="pill"，绑定选项卡id -->
-	<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#tab1">SVN</a></li>
-	<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab2">iOS</a></li>
-	<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab3">Java</a></li>
-	<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab4">PHP</a></li>
+<!-- 在.nav后添加.nav-tabs|pills，可创建标签式/胶囊式导航 -->
+<ul class="nav nav-tabs">
+	<li class="nav-item">
+	    <!-- 当前项用.active标记 -->
+	    <a href="#" class="nav-link active">导航链接1</a>
+	</li>
+	<li class="nav-item">
+	    <a href="#" class="nav-link">导航链接2</a>
+	</li>
+	……
 </ul>
-<!-- 创建对应的选项卡组件 -->
-<div class="tab-content">
-	<div id="tab1" class="tab-pane active">SVN是Subversion的简称……</div>
-	<div id="tab2" class="tab-pane">iOS是由苹果公司开发的移动操作系统……</div>
-	<div id="tab3" class="tab-pane fade">Java是一门面向对象编程语言……</div>
-	<div id="tab4" class="tab-pane fade">PHP是一种通用开源脚本语言……</div>
-</div>
-
-<!-- 默认导航页的选项卡也要添加.active，否则内容显示为空白 -->
 ```
 ![此处输入图片的描述][102]
-<br/>
-#### • 带下拉菜单的导航：`.nav-item` `.dropdown|dropup`
+![此处输入图片的描述][103]
+
+##### - 排列方式：`.nav-fill|justified`
 ```html
-<ul class="nav nav-tabs">
-	<li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-	<!-- 向li添加.dropdown/.dropup，创建下拉菜单组件 -->
+<!-- 在.nav后添加.nav-fill，使导航项填充排列，每项宽度自适应内容 -->
+<ul class="nav nav-pills nav-fill">
+	<li class="nav-item"><a href="#" class="nav-link active">导航链接1</a></li>
+	<li class="nav-item"><a href="#" class="nav-link">导航链接2</a></li>
+	……
+</ul>
+
+<!-- 在.nav后添加.nav-justified，使导航项等宽排列，每项宽度均等 -->
+<ul class="nav nav-pills nav-justified">
+	<li class="nav-item"><a href="#" class="nav-link active">导航链接1</a></li>
+	<li class="nav-item"><a href="#" class="nav-link">导航链接2</a></li>
+	……
+</ul>
+
+<!-- 必须要有.nav-item才能使排列生效 -->
+```
+![此处输入图片的描述][104]
+![此处输入图片的描述][105]
+
+##### - 带下拉菜单的导航：`.nav-item` `.dropdown` > `.nav-link` `.dropdown-toggle`
+```html
+<ul class="nav">
+	<li class="nav-item"><a href="#" class="nav-link active">Active</a></li>
+	<!-- 在.nav-item后添加.dropdown，创建下拉菜单组件 -->
 	<li class="nav-item dropdown">
-	    <!-- 向a添加.dropdown-toggle和data-toggle="dropdown" -->
-	    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
+	    <!-- 在.nav-link后添加.dropdown-toggle、data-toggle="dropdown" -->
+	    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
 	    <!-- 创建下拉菜单 -->
 	    <div class="dropdown-menu">
-	        <p class="dropdown-header">This is a title</p>
-	        <a class="dropdown-item" href="#">link 1</a>
-	        <a class="dropdown-item" href="#">link 2</a>
-	        <div class="dropdown-divider"></div>
-	        <a class="dropdown-item" href="#">link 3</a>
+	        ……
 	    </div>
 	</li>
-	<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-	<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+	<li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+	……
 </ul>
 ```
-![此处输入图片的描述][103]
+![此处输入图片的描述][106]
+<br/>
+#### • 选项卡切换
+>★ 可使用网格系统布局
+
+##### - 标签式选项卡切换：( `.nav` `.nav-tabs` > `.nav-item` > `.nav-link` `data-toggle="tab"` `href="#……"` ) + ( `.tab-content` > `.tab-pane` `id="……"` )
+```html
+<ul class="nav nav-tabs">
+    <!-- nav-tabs下，向a添加data-toggle="tab"，绑定对应页面id -->
+	<li class="nav-item"><a href="#tab1" class="nav-link active" data-toggle="tab">Tab 1</a></li>
+	<li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="tab">Tab 2</a></li>
+	……
+</ul>
+
+<!-- 所有页面需包裹在.tab-content里 -->
+<div class="tab-content">
+    <!-- .tab-pane创建页面，标记唯一id，.active标记当前页面 -->
+	<div class="tab-pane active" id="tab1">这是Tab 1的页面内容</div>
+	<div class="tab-pane" id="tab2">这是Tab 2的页面内容</div>
+	……
+</div>
+```
+```html
+<!-- nav标签的标签式选项卡切换样式 -->
+<nav>
+    <div class="nav nav-tabs">
+        <a href="#tab1" class="nav-item nav-link active"data-toggle="tab">Tab 1</a>
+        <a href="#tab2" class="nav-item nav-link" data-toggle="tab">Tab 2</a>
+        ……
+    </div>
+</nav>
+<div class="tab-content">
+	<div class="tab-pane active" id="tab1">这是Tab 1的页面内容</div>
+	<div class="tab-pane" id="tab2">这是Tab 2的页面内容</div>
+	……
+</div>
+```
+![此处输入图片的描述][107]
+
+##### - 胶囊式选项卡切换：( `.nav` `.nav-pills` > `.nav-item` > `.nav-link` `data-toggle="pill"` `href="#……"` ) + ( `.tab-content` > `.tab-pane` `id="……"` )
+```html
+<ul class="nav nav-pills">
+    <!-- nav-pills下，向a添加data-toggle="pill"，绑定对应页面id -->
+	<li class="nav-item"><a href="#tab1" class="nav-link active" data-toggle="pill">Tab 1</a></li>
+	<li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="pill">Tab 2</a></li>
+	……
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="tab1">这是Tab 1的页面内容</div>
+	<div class="tab-pane" id="tab2">这是Tab 2的页面内容</div>
+	……
+</div>
+```
+```html
+<!-- nav标签的胶囊式选项卡切换样式 -->
+<nav>
+    <div class="nav nav-pills">
+        <a href="#tab1" class="nav-item nav-link active" data-toggle="pill">Tab 1</a>
+        <a href="#tab2" class="nav-item nav-link" data-toggle="pill">Tab 2</a>
+        ……
+    </div>
+</nav>
+<div class="tab-content">
+	<div class="tab-pane active" id="tab1">这是Tab 1的页面内容</div>
+	<div class="tab-pane" id="tab2">这是Tab 2的页面内容</div>
+	……
+</div>
+```
+![此处输入图片的描述][108]
 
 <br/>
 ### 9、导航栏
-#### • 基础样式：`.navbar` `navbar-expand-*` > `navbar-brand` + （`.navbar-toggler` `data-toggle="collapse"` `data-target="#……"` > `.navbar-toggler-icon`）+ （`.collapse` `.navbar-collapse` `#……` > `.navbar-nav` > `.nav-item` > `.nav-link`）
+#### • 响应式导航栏：`.navbar` `navbar-expand-*` > ( `.navbar-toggler` `data-toggle="collapse"` `data-target="#……"` > `.navbar-toggler-icon` )+( `.collapse` `.navbar-collapse` `id="……"` > `.navbar-nav` > `.nav-item` > `.nav-link` )
 ```html
 <!-- 以一个带.navbar和.navbar-expand-*的nav标签开始 -->
-<nav class="navbar navbar-expand-lg bg-light navbar-light">
-    <!-- 创建一个带.navbar-toggler、data-toggle="collapse"、data-target="#……"的响应式折叠按钮，仅折叠时可见 -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv">
-        <!-- 用带.navbar-toggler-icon的span内置按钮样式图标 -->
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- 创建导航菜单 -->
-    <div class="collapse navbar-collapse" id="navDiv">
-        <!-- 菜单可以用ul列表设置 -->
-        <ul class="navbar-nav">
-	        <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	        </li>
-	        ……
-        </ul>
-    </div>
+<nav class="navbar navbar-expand-lg">
+	<!-- 创建一个带.navbar-toggler、data-toggle="collapse"、data-target="#……"的响应式折叠按钮，仅折叠时可见 -->
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapseDiv">
+		<!-- 用带.navbar-toggler-icon的span内置按钮样式图标 -->
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- 创建导航菜单 -->
+	<div class="collapse navbar-collapse" id="collapseDiv">
+		<!-- 创建导航列表 -->
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a href="#" class="nav-link">导航链接1</a></li>
+			<li class="nav-item"><a href="#" class="nav-link">导航链接2</a></li>
+			……
+		</ul>
+		<!-- 导航栏上的其他元素 -->
+		<form class="form-inline">
+			<input type="search" class="form-control">
+			<button type="submit" class="btn btn-primary">搜索</button>
+		</form>
+		……
+	</div>
 </nav>
 ```
-…… `.navbar-nav` > `.nav-item` `.nav-link`
 ```html
-<nav class="navbar navbar-expand-lg bg-light navbar-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navDiv">
-        <!-- 菜单也可以用div > a设置，避免表格样式的困扰-->
-        <div class="navbar-nav">
-	        <a class="nav-item nav-link" href="#">Link</a>
-	        ……
-        </div>
-    </div>
-</nav>
+<div class="collapse navbar-collapse" id="collapseDiv">
+	<!-- 也可不使用列表标签创建导航菜单 -->
+	<div class="navbar-nav">
+		<a href="#" class="nav-item nav-link active">导航链接1</a>
+		<a href="#" class="nav-item nav-link">导航链接2</a>
+		……
+	</div>
+	……
+</div>
 ```
+![此处输入图片的描述][109]
 
 ##### - 品牌标志：`.navbar-brand`
 ```html
-<nav class="navbar bg-light navbar-light">
+<nav class="navbar navbar-expand-lg">
     <!-- 在nav下添加带.navbar-brand的a标签，生成品牌链接 -->
-	<a class="navbar-brand" href="#">Brand</a>
+	<a href="#" class="navbar-brand">Brand</a>
 </nav>
 
-<nav class="navbar bg-light navbar-light">
-    <!-- 在a中插入图片作为品牌logo -->
-	<a class="navbar-brand" href="#">
-	    <img src="icon.jpg" alt="icon">
+<nav class="navbar navbar-expand-lg">
+    <!-- 使用span生成品牌文本 -->
+	<span class="navbar-brand">Brand</span>
+</nav>
+```
+```html
+<nav class="navbar navbar-expand-lg">
+	<a href="#" class="navbar-brand">
+	    <!-- 在.navbar-brand中插入图片作为品牌logo，需调整尺寸 -->
+	    <img src="/image.jpg" height="30">
 	</a>
 </nav>
 
-<nav class="navbar bg-light navbar-light">
-    <!-- 在nav下添加带.navbar-brand的aspan，生成品牌文本 -->
-	<span class="navbar-brand h1">Brand</span>
+<nav class="navbar navbar-expand-lg">
+	<a href="#" class="navbar-brand">
+	    <!-- 添加.align-top使图片与文字对齐 -->
+	    <img src="/image.jpg" height="30" class="align-top"> Brand
+	</a>
 </nav>
 ```
-![此处输入图片的描述][104]
+![此处输入图片的描述][110]
 
 ```html
 <nav class="navbar bg-light navbar-light">
@@ -1870,7 +1911,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 	</form>
 </nav>
 ```
-![此处输入图片的描述][105]
+![此处输入图片的描述][111]
 
 ##### - 文本：`.navbar-text`
 导航栏上的非链接文本，保证水平对齐，颜色与内边距一样
@@ -1880,7 +1921,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <span class="navbar-text">sometext</span>
 </nav>
 ```
-![此处输入图片的描述][106]
+![此处输入图片的描述][112]
 <br/>
 #### • 带下拉菜单：`.nav-item` `.dropdown|dropdown` > `.nav-link` `.dropdown-toggle` > `data-toggle="dropdown"` + （`.dropdown-menu` > `.dropdown-item`）
 ```html
@@ -1902,7 +1943,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     </div>
 </nav>
 ```
-![此处输入图片的描述][107]
+![此处输入图片的描述][113]
 <br/>
 #### • 颜色搭配：`.bg-背景颜色` `.navbar-light|dark`
 
@@ -1915,7 +1956,7 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 <!-- 浅色面板搭配.navbar-light，深色面板搭配.navbar-dark -->
 ```
-![此处输入图片的描述][108]
+![此处输入图片的描述][114]
 <br/>
 #### • 定位方式：`.fixed-top`/`.fixed-bottom`/`.sticky-top`
 ```html
@@ -1934,7 +1975,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <div>需为body设置padding-top，页面内容才不会被导航栏遮挡。</div>
 </body>
 ```
-![此处输入图片的描述][109]
+![此处输入图片的描述][115]
 
 ```html
 <head>
@@ -1952,7 +1993,7 @@ You can use the mark tag to <mark>highlight</mark> text.
     <div>为body设置padding-bottom，页面内容不会被导航栏遮挡。</div>
 </body>
 ```
-![此处输入图片的描述][110]
+![此处输入图片的描述][116]
 
 ```html
 <!-- 向nav添加.sticky-top，使导航栏磁铁在窗口顶部 -->
@@ -1976,27 +2017,27 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 })
 ```
-![此处输入图片的描述][111]
+![此处输入图片的描述][117]
 ##### - focus弹出框：`data-trigger="focus"` `tabindex="0"`
 点击元素显示弹出框后，再点击该元素之外的其他任意位置都可以关闭弹出框
 ```html
 <!-- 向基础弹出框再添加data-trigger="focus"和tabindex属性 -->
 <a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="focus" tabindex="0">点击显示弹出框</a>
 ```
-![此处输入图片的描述][112]
+![此处输入图片的描述][118]
 ##### - hover弹出框：`data-trigger="hover"`
 显示弹出框后，再点击除了该元素之外的其他任意位置都可以关闭弹出框
 ```html
 <!-- 向基础弹出框再添加data-trigger="hover" -->
 <a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="hover">点击显示弹出框</a>
 ```
-![此处输入图片的描述][113]
+![此处输入图片的描述][119]
 <br/>
 #### • 弹出框中的标题：`title="……"`
 ```html
 <a data-toggle="popover" title="这是标题" data-content="这是弹出框中的文本内容！">点击显示弹出框</a>
 ```
-![此处输入图片的描述][114]
+![此处输入图片的描述][120]
 <br/>
 #### • 指定弹出方向：`data-placement="top|right|bottom|left"`
 ```html
@@ -2007,7 +2048,7 @@ $(document).ready(function(){
 
 <!-- 仅当元素与页面边框间距足够时，该方向才能弹出，否则反方向弹出 -->
 ```
-![此处输入图片的描述][115]
+![此处输入图片的描述][121]
 
 ---
 
@@ -2018,51 +2059,52 @@ $(document).ready(function(){
 <div class="border"></div>
 <div class="border-top"></div>
 ```
-![此处输入图片的描述][116]
+![此处输入图片的描述][122]
 
 #### • 清除边框：`.border-0`/`.border-top|right|bottom|left-0`
 ```html
 <div class="border-0"></div>
 <div class="border-top-0"></div>
 ```
-![此处输入图片的描述][117]
+![此处输入图片的描述][123]
 
 #### • 边框颜色：`.border-primary|secondary|success|danger|warning|info|light|dark|white`
 ```html
 <div class="border border-primary"></div>
 ```
-![此处输入图片的描述][118]
-![此处输入图片的描述][119]
+![此处输入图片的描述][124]
+![此处输入图片的描述][125]
 
 #### • 边框圆角：`.rounded`/`.rounded-top|right|bottom|left|circle|pill|0`
 ```html
 <div class="rounded"></div>
 <div class="rounded-top"></div>
 ```
-![此处输入图片的描述][120]
+![此处输入图片的描述][126]
 
 #### • 圆角尺寸：`.rounded-sm|lg`
 ```html
 <div class="rounded-sm"></div>
 ```
-![此处输入图片的描述][121]
+![此处输入图片的描述][127]
 <br>
 ### 2、颜色
 #### • 文本颜色：`.text-primary|secondary|success|danger|warning|info|light|dark|body|muted|white|black-50|white-50`
 ```html
 <p class="text-primary">.text-primary</p>
 ```
-![此处输入图片的描述][122]
+![此处输入图片的描述][128]
 
 #### • 背景颜色：`.bg-primary|secondary|success|danger|warning|info|light|dark|white|transparent`
 ```html
 <p class="bg-primary">.bg-primary</p>
 ```
-![此处输入图片的描述][123]
+![此处输入图片的描述][129]
 <br>
 ### 3、显示
 #### • 元素框的类型：`.d-①`/`.d-②-①`
->① `none` 不显示 &nbsp;&nbsp;&nbsp;`inline` 内联元素 &nbsp;&nbsp;&nbsp;`inline-block` 行内块元素 &nbsp;&nbsp;&nbsp;`block` 块元素 &nbsp;&nbsp;&nbsp;`table` 块级表格元素 &nbsp;&nbsp;&nbsp;`table-cell` 表格单元格元素 &nbsp;&nbsp;&nbsp;`table-row` 表格行元素 &nbsp;&nbsp;&nbsp;`flex` 弹性布局块元素 &nbsp;&nbsp;&nbsp;`inline-flex` 弹性布局内联元素
+>`.d` display
+① `none` 不显示 &nbsp;&nbsp;&nbsp;`inline` 内联元素 &nbsp;&nbsp;&nbsp;`inline-block` 行内块元素 &nbsp;&nbsp;&nbsp;`block` 块元素 &nbsp;&nbsp;&nbsp;`table` 块级表格元素 &nbsp;&nbsp;&nbsp;`table-cell` 表格单元格元素 &nbsp;&nbsp;&nbsp;`table-row` 表格行元素 &nbsp;&nbsp;&nbsp;`flex` 弹性布局块元素 &nbsp;&nbsp;&nbsp;`inline-flex` 弹性布局内联元素
 ② `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
 
 <table>
@@ -2154,7 +2196,7 @@ $(document).ready(function(){
 <p class="text-center">居中对齐</p>
 <p class="text-right">右对齐</p>
 ```
-![此处输入图片的描述][124]
+![此处输入图片的描述][130]
 
 #### • 文本换行/溢出/省略：`.text-wrap|nowrap|truncate`/`.text-break`
 ```html
@@ -2164,7 +2206,7 @@ $(document).ready(function(){
 <p class="bg-warning w-25 text-truncate">.text-truncate的文本不会溢出，不换行，溢出部分省略为...</p>
 <p class="bg-danger w-25 text-break">.text-break的文本不会溢出，换行显示</p>
 ```
-![此处输入图片的描述][125]
+![此处输入图片的描述][131]
 
 #### • 字母大小写转换：`.text-uppercase|lowercase|capitalize`
 ```html
@@ -2172,7 +2214,7 @@ $(document).ready(function(){
 <p class="text-uppercase">全大写 text-uppercase</p>      
 <p class="text-capitalize">首字母大写 text-capitalize</p>
 ```
-![此处输入图片的描述][126]
+![此处输入图片的描述][132]
 
 #### • 文本粗细与斜体：`.font-weight-bolder|bold|normal|light|lighter` `.font-italic`
 ```html
@@ -2185,13 +2227,13 @@ $(document).ready(function(){
 
 <!-- .font-weight-*和.font-italic可搭配使用 -->
 ```
-![此处输入图片的描述][127]
+![此处输入图片的描述][133]
 
 #### • 等宽英文字体：`.text-monospace`
 ```html
 <p class="text-monospace">This is in monospace</p>
 ```
-![此处输入图片的描述][128]
+![此处输入图片的描述][134]
 
 #### • 文本从父继承颜色：`.text-reset`
 ```html
@@ -2200,13 +2242,13 @@ $(document).ready(function(){
     <a href="#" class="text-reset">链接2：.text-reset从父继承颜色</a>
 </p>
 ```
-![此处输入图片的描述][129]
+![此处输入图片的描述][135]
 
 #### • 清除链接下划线：`.text-decoration-none`
 ```html
 <a href="#" class="text-decoration-none">没有下划线的链接文本</a>
 ```
-![此处输入图片的描述][130]
+![此处输入图片的描述][136]
 <br>
 ### 8、可见：`.visible`/`.invisible`
 >`visible` 可见占位 { visibility: visible !important; }
@@ -2286,64 +2328,70 @@ $(document).ready(function(){
   [67]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g27uuzsonhj20o8078t8s.jpg
   [68]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmia665e5j20o307bmxa.jpg
   [69]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27w3a52q5j20o50as0t3.jpg
-  [70]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g29ebxidqej20o80g3gm4.jpg
+  [70]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2b0qouxa4j20qt0j9js1.jpg
   [71]: https://wx3.sinaimg.cn/mw690/7de6638dly1fy467yuyw3j20uy06gq2y.jpg
   [72]: https://wx2.sinaimg.cn/mw690/7de6638dly1fy441ms8jqj20nz03p0sx.jpg
   [73]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g29dvt4mvvj20o7069gln.jpg
   [74]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g29dyo2sjij20o6079mx8.jpg
   [75]: http://wx3.sinaimg.cn/large/7de6638dly1g29gzdsu0kg20o3073mxy.gif
-  [76]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g29hnk732zj20o802n746.jpg
-  [77]: https://wx4.sinaimg.cn/mw690/7de6638dly1fy46iibviuj20nt055q30.jpg
-  [78]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg75k5q40j20o401oq2u.jpg
-  [79]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g299pnxk6ij20o902fdfl.jpg
-  [80]: http://wx2.sinaimg.cn/large/7de6638dly1g29dkea95pg20o5088dh4.gif
-  [81]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g29cryo3icj20o7027jrb.jpg
-  [82]: https://wx1.sinaimg.cn/mw690/7de6638dly1fyg2yprbk3j20o106egln.jpg
-  [83]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g29bjutqevj20o706ia9y.jpg
-  [84]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg5alo8doj20o706y3yp.jpg
-  [85]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygasb3751j20ol025t8n.jpg
-  [86]: http://wx4.sinaimg.cn/large/7de6638dly1fyge09k72vg20o90bz0ul.gif
-  [87]: https://wx4.sinaimg.cn/mw690/7de6638dly1fygmf4e9o7j20o50900te.jpg
-  [88]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygl5uh8gqj20o802mwea.jpg
-  [89]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygkmm7npcj20o707raag.jpg
-  [90]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrl5hnnlj20o307g3yv.jpg
-  [91]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrslau0lj20o109b74q.jpg
-  [92]: http://wx4.sinaimg.cn/large/7de6638dly1fyggiuwz9gg20o709e74y.gif
-  [93]: http://wx1.sinaimg.cn/large/7de6638dly1fx293sfse8g20ob0a4dhy.gif
-  [94]: http://wx4.sinaimg.cn/large/7de6638dly1fx29et7b97g20ob0hst9i.gif
-  [95]: http://wx4.sinaimg.cn/large/7de6638dly1fx2acc89t6g21dy05it9i.gif
-  [96]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwmjcvcm4bj20o302f3ye.jpg
-  [97]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmj1wxaboj20o002ut8m.jpg
-  [98]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwkk4gj0tzj20o302f746.jpg
-  [99]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmjzp68rjj20o6088gls.jpg
-  [100]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwmjrrt5zxj20ny0ajdfs.jpg
-  [101]: http://wx1.sinaimg.cn/large/7de6638dly1fwml6uw2vpg20o604wjsi.gif
-  [102]: http://wx1.sinaimg.cn/large/7de6638dly1fwmlds4q7ug20o004z75f.gif
-  [103]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmkltlee0j20o409k3ym.jpg
-  [104]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
-  [105]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
-  [106]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmrf5cwh7j20ix0313yc.jpg
-  [107]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmqtrr4g7j20o107nt8p.jpg
-  [108]: http://wx1.sinaimg.cn/large/7de6638dly1fwmnebn13zg20l008cmz5.gif
-  [109]: http://wx1.sinaimg.cn/large/7de6638dly1fwmskfuxaog20nn07zgpy.gif
-  [110]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
-  [111]: http://wx4.sinaimg.cn/large/7de6638dly1fx0ig4sxiug20o4041myi.gif
-  [112]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
-  [113]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
-  [114]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0fse5bzlj20o103zwek.jpg
-  [115]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0heb8skoj20zd065gm0.jpg
-  [116]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nopn87wj20la04k0sh.jpg
-  [117]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nq7tmuoj20lc04f0sf.jpg
-  [118]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3pmkj20p202q0os.jpg
-  [119]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3olxj20oy02p0pc.jpg
-  [120]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27ofay2ijj20qq02n0sk.jpg
-  [121]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27oiue6h2j20p4044a9t.jpg
-  [122]: http://wx3.sinaimg.cn/large/7de6638dly1g2312pgh0zj20qu0m8wft.jpg
-  [123]: http://wx4.sinaimg.cn/large/7de6638dly1g231ah3ukkj20pw0gngmi.jpg
-  [124]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwof5hjxvjj20nz0admxw.jpg
-  [125]: http://wx4.sinaimg.cn/large/7de6638dly1g22zzaj64fj21du0gfmzh.jpg
-  [126]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwrq6t79hhj20o304lq33.jpg
-  [127]: http://wx2.sinaimg.cn/large/7de6638dly1g230cjtlytj20qz0a20tf.jpg
-  [128]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwofsmzi9ij20nx02rmx7.jpg
-  [129]: http://wx3.sinaimg.cn/large/7de6638dly1g230m0e0flj20p501q0su.jpg
-  [130]: http://wx1.sinaimg.cn/large/7de6638dly1g230s0hjj8j20pd01hq2v.jpg
+  [76]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2b2cwa7ksj20o904g3yk.jpg
+  [77]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g2azvjp06wj20o5054t8q.jpg
+  [78]: https://wx4.sinaimg.cn/mw690/7de6638dly1fy46iibviuj20nt055q30.jpg
+  [79]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg75k5q40j20o401oq2u.jpg
+  [80]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g299pnxk6ij20o902fdfl.jpg
+  [81]: http://wx2.sinaimg.cn/large/7de6638dly1g29dkea95pg20o5088dh4.gif
+  [82]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g29cryo3icj20o7027jrb.jpg
+  [83]: https://wx1.sinaimg.cn/mw690/7de6638dly1fyg2yprbk3j20o106egln.jpg
+  [84]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g29bjutqevj20o706ia9y.jpg
+  [85]: https://wx3.sinaimg.cn/mw690/7de6638dly1fyg5alo8doj20o706y3yp.jpg
+  [86]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygasb3751j20ol025t8n.jpg
+  [87]: http://wx4.sinaimg.cn/large/7de6638dly1fyge09k72vg20o90bz0ul.gif
+  [88]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2b3frbu6uj20o309nq2z.jpg
+  [89]: https://wx4.sinaimg.cn/mw690/7de6638dly1fygmf4e9o7j20o50900te.jpg
+  [90]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygl5uh8gqj20o802mwea.jpg
+  [91]: https://wx2.sinaimg.cn/mw690/7de6638dly1fygkmm7npcj20o707raag.jpg
+  [92]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrl5hnnlj20o307g3yv.jpg
+  [93]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwnrslau0lj20o109b74q.jpg
+  [94]: http://wx1.sinaimg.cn/large/7de6638dly1g2b5qpv8xng20n50b83z6.gif
+  [95]: http://wx4.sinaimg.cn/large/7de6638dly1g2b5vj1isvg20ln0mgtib.gif
+  [96]: http://wx3.sinaimg.cn/large/7de6638dly1g2b68ykt4sg20o40hk74w.gif
+  [97]: http://wx2.sinaimg.cn/large/7de6638dly1g2b7po3smtg21ef03wq63.gif
+  [98]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g2b8d1iyc6j20n505rjrd.jpg
+  [99]: http://wx2.sinaimg.cn/large/7de6638dly1g2b8xty6dyg20n508njsp.gif
+  [100]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwmjcvcm4bj20o302f3ye.jpg
+  [101]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwmjcvcm4bj20o302f3ye.jpg
+  [102]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmj1wxaboj20o002ut8m.jpg
+  [103]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwkk4gj0tzj20o302f746.jpg
+  [104]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g2ba4ojko7j20vs02mglj.jpg
+  [105]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2bacdqw27j20w002lglj.jpg
+  [106]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmkltlee0j20o409k3ym.jpg
+  [107]: http://wx1.sinaimg.cn/large/7de6638dly1fwml6uw2vpg20o604wjsi.gif
+  [108]: http://wx1.sinaimg.cn/large/7de6638dly1fwmlds4q7ug20o004z75f.gif
+  [109]: http://wx1.sinaimg.cn/large/7de6638dly1g2bd2cliq5g21ej0b10un.gif
+  [110]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g2bds6aovcj20oc0d6q2x.jpg
+  [111]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
+  [112]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmrf5cwh7j20ix0313yc.jpg
+  [113]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmqtrr4g7j20o107nt8p.jpg
+  [114]: http://wx1.sinaimg.cn/large/7de6638dly1fwmnebn13zg20l008cmz5.gif
+  [115]: http://wx1.sinaimg.cn/large/7de6638dly1fwmskfuxaog20nn07zgpy.gif
+  [116]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
+  [117]: http://wx4.sinaimg.cn/large/7de6638dly1fx0ig4sxiug20o4041myi.gif
+  [118]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
+  [119]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
+  [120]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0fse5bzlj20o103zwek.jpg
+  [121]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0heb8skoj20zd065gm0.jpg
+  [122]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nopn87wj20la04k0sh.jpg
+  [123]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nq7tmuoj20lc04f0sf.jpg
+  [124]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3pmkj20p202q0os.jpg
+  [125]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3olxj20oy02p0pc.jpg
+  [126]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27ofay2ijj20qq02n0sk.jpg
+  [127]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27oiue6h2j20p4044a9t.jpg
+  [128]: http://wx3.sinaimg.cn/large/7de6638dly1g2312pgh0zj20qu0m8wft.jpg
+  [129]: http://wx4.sinaimg.cn/large/7de6638dly1g231ah3ukkj20pw0gngmi.jpg
+  [130]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwof5hjxvjj20nz0admxw.jpg
+  [131]: http://wx4.sinaimg.cn/large/7de6638dly1g22zzaj64fj21du0gfmzh.jpg
+  [132]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwrq6t79hhj20o304lq33.jpg
+  [133]: http://wx2.sinaimg.cn/large/7de6638dly1g230cjtlytj20qz0a20tf.jpg
+  [134]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwofsmzi9ij20nx02rmx7.jpg
+  [135]: http://wx3.sinaimg.cn/large/7de6638dly1g230m0e0flj20p501q0su.jpg
+  [136]: http://wx1.sinaimg.cn/large/7de6638dly1g230s0hjj8j20pd01hq2v.jpg
