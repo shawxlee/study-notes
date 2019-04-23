@@ -1803,17 +1803,18 @@ You can use the mark tag to <mark>highlight</mark> text.
 ![此处输入图片的描述][108]
 
 <br/>
-### 9、导航栏
-#### • 响应式导航栏：`.navbar` `navbar-expand-*` > ( `.navbar-toggler` `data-toggle="collapse"` `data-target="#……"` > `.navbar-toggler-icon` )+( `.collapse` `.navbar-collapse` `id="……"` > `.navbar-nav` > `.nav-item` > `.nav-link` )
+### 9、导航栏：`.navbar`
+#### • 折叠导航栏： ( `.navbar-toggler` `data-toggle="collapse"` `data-target="#……"` > `.navbar-toggler-icon` )+( `.collapse` `.navbar-collapse` `id="……"` > `.navbar-nav` > `.nav-item` > `.nav-link` )
 ```html
-<!-- 以一个带.navbar和.navbar-expand-*的nav标签开始 -->
-<nav class="navbar navbar-expand-lg">
-	<!-- 创建一个带.navbar-toggler、data-toggle="collapse"、data-target="#……"的响应式折叠按钮，仅折叠时可见 -->
+<!-- 以一个带.navbar的nav标签开始 -->
+<nav class="navbar">
+	<!-- 创建一个带.navbar-toggler、data-toggle="collapse"、data-target="#……"的折叠按钮 -->
 	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapseDiv">
 		<!-- 用带.navbar-toggler-icon的span内置按钮样式图标 -->
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<!-- 创建导航菜单 -->
+	
+	<!-- 创建折叠面板，包裹所有折叠内容 -->
 	<div class="collapse navbar-collapse" id="collapseDiv">
 		<!-- 创建导航列表 -->
 		<ul class="navbar-nav">
@@ -1821,18 +1822,17 @@ You can use the mark tag to <mark>highlight</mark> text.
 			<li class="nav-item"><a href="#" class="nav-link">导航链接2</a></li>
 			……
 		</ul>
-		<!-- 导航栏上的其他元素 -->
-		<form class="form-inline">
-			<input type="search" class="form-control">
-			<button type="submit" class="btn btn-primary">搜索</button>
-		</form>
+		<!-- 导航列表之外的其他元素 -->
+		<form class="form-inline">……</form>
 		……
 	</div>
 </nav>
+
+<!-- 此外，折叠杆中的id属性也可匹配网页其他内容 -->
 ```
 ```html
 <div class="collapse navbar-collapse" id="collapseDiv">
-	<!-- 也可不使用列表标签创建导航菜单 -->
+	<!-- 也可不使用列表标签创建导航菜单，避免格式困扰 -->
 	<div class="navbar-nav">
 		<a href="#" class="nav-item nav-link active">导航链接1</a>
 		<a href="#" class="nav-item nav-link">导航链接2</a>
@@ -1845,25 +1845,25 @@ You can use the mark tag to <mark>highlight</mark> text.
 
 ##### - 品牌标志：`.navbar-brand`
 ```html
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar">
     <!-- 在nav下添加带.navbar-brand的a标签，生成品牌链接 -->
 	<a href="#" class="navbar-brand">Brand</a>
 </nav>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar">
     <!-- 使用span生成品牌文本 -->
 	<span class="navbar-brand">Brand</span>
 </nav>
 ```
 ```html
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar">
 	<a href="#" class="navbar-brand">
 	    <!-- 在.navbar-brand中插入图片作为品牌logo，需调整尺寸 -->
 	    <img src="/image.jpg" height="30">
 	</a>
 </nav>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar">
 	<a href="#" class="navbar-brand">
 	    <!-- 添加.align-top使图片与文字对齐 -->
 	    <img src="/image.jpg" height="30" class="align-top"> Brand
@@ -1872,183 +1872,127 @@ You can use the mark tag to <mark>highlight</mark> text.
 ```
 ![此处输入图片的描述][110]
 
+##### - 导航栏中的文本：`.navbar-text`
+导航栏上的非链接文本，保证水平对齐，颜色与内边距一样
 ```html
-<nav class="navbar bg-light navbar-light">
-    <!-- nav下的所有元素呈两端对齐方式显示 -->
-    <a class="navbar-brand" href="#">Brand</a>
-    <form class="form-inline">……</form>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv">……</button>
-    <!-- 仅折叠杆中的内容在小屏时总是被折叠 -->
-    <div class="collapse navbar-collapse" id="navDiv">
-        ……
-    </div>
-</nav>
-
-<!-- 此外，折叠杆中的id属性也可匹配网页其他内容 -->
-```
-
-##### - 输入表单：`.form-inline` > `.form-control`
-```html
-<nav class="navbar bg-light navbar-light">
-    <!-- 在nav下添加带.form-inline的form标签，创建表单组件 -->
-	<form class="form-inline">
-	    <input class="form-control" type="search" placeholder="Search">
-	    <button class="btn btn-info" type="submit">Search</button>
-	</form>
-</nav>
-```
-`.form-inline` > `.input-group` > `.form-control`
-```html
-<nav class="navbar bg-light navbar-light">
-	<form class="form-inline">
-	    <!-- 在form下添加带.input-group的div，创建输入组 -->
-	    <div class="input-group">
-	        <input class="form-control" type="text" placeholder="sometext">
-	        <div class="input-group-append">
-	            <button class="btn btn-info" type="button">GO!</button>
-	        </div>
-	    </div>
-	</form>
+<nav class="navbar">
+    <!-- 在nav下添加带.navbar-text的span -->
+    <span class="navbar-text">Navbar text</span>
 </nav>
 ```
 ![此处输入图片的描述][111]
-
-##### - 文本：`.navbar-text`
-导航栏上的非链接文本，保证水平对齐，颜色与内边距一样
+<br/>
+#### • 响应式导航栏：`.navbar-expand-sm|md|lg|xl`
 ```html
-<nav class="navbar navbar-light bg-light">
-    <!-- 在nav下添加带.navbar-text的span -->
-    <span class="navbar-text">sometext</span>
+<!-- 在.navbar后添加.navbar-expand-*，小于此尺寸时导航栏才折叠 -->
+<nav class="navbar navbar-expand-lg">
+    <!-- 除折叠按钮外，nav下所有元素默认完整显示，按顺序横向排列 -->
+    <a href="#" class="navbar-brand">Brand</a>
+    <span class="navbar-text mr-3">Navbar text</span>
+	<!-- 默认隐藏此按钮，仅在折叠时可见 -->
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapseDiv">……</button>
+	<!-- 菜单内容默认两端对齐显示，仅在折叠时收起，竖向排列 -->
+	<div class="collapse navbar-collapse" id="collapseDiv">
+		<ul class="navbar-nav">……</ul>
+		<span class="navbar-text">Navbar text</span>
+	</div>
 </nav>
 ```
 ![此处输入图片的描述][112]
 <br/>
-#### • 带下拉菜单：`.nav-item` `.dropdown|dropdown` > `.nav-link` `.dropdown-toggle` > `data-toggle="dropdown"` + （`.dropdown-menu` > `.dropdown-item`）
+#### • 导航栏配色：`.navbar-light|dark`
 ```html
-<nav class="navbar navbar-expand-lg bg-light navbar-light">
-    <a class="navbar-brand" href="#">Brand</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navDiv"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navDiv">
-        <ul class="navbar-nav">
-	        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-	        <!-- 向li添加.dropdown/.dropup，创建下拉/弹出菜单 -->
-	        <li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
-	            <div class="dropdown-menu">
-	                <a class="dropdown-item" href="#">link 1</a>
-	                <a class="dropdown-item" href="#">link 2</a>
-	            </div>
-            </li>
-        </ul>
-    </div>
-</nav>
-```
-![此处输入图片的描述][113]
-<br/>
-#### • 颜色搭配：`.bg-背景颜色` `.navbar-light|dark`
-
-    .navbar-light  深色文本        .navbar-dark  浅色文本
-```html
-<!-- 向nav添加背景颜色类和导航栏文本颜色类 -->
+<!-- 在.navbar后添加.navbar-light|dark，一般搭配.bg-*背景色 -->
 <nav class="navbar bg-light navbar-light">
     ……
 </nav>
 
-<!-- 浅色面板搭配.navbar-light，深色面板搭配.navbar-dark -->
+<!-- 浅色背景搭配.navbar-light，深色背景搭配.navbar-dark -->
+```
+![此处输入图片的描述][113]
+<br/>
+#### • 定位方式
+##### - 固定在顶部：`.fixed-top`
+```css
+/* 需为body设置padding-top大于导航栏高度，至少50px */
+body {padding-top: 70px;}
+```
+```html
+<!-- 在.navbar后添加.fixed-top，使导航栏固定在窗口顶部 -->
+<nav class="navbar fixed-top">
+    ……
+</nav>
+<div>需为body设置padding-top，页面内容才不会被导航栏遮挡。</div>
 ```
 ![此处输入图片的描述][114]
-<br/>
-#### • 定位方式：`.fixed-top`/`.fixed-bottom`/`.sticky-top`
-```html
-<head>
-    <style type="text/css">
-        /* 向body添加样式padding-top ≥ 50px */
-		body {padding-top: 70px;}
-	</style>
-</head>
 
-<body>
-    <!-- 向nav添加.fixed-top，使导航栏固定在窗口顶部 -->
-    <nav class="navbar bg-light navbar-light fixed-top">
-        <a class="navbar-brand" href="#">Brand</a>
-    </nav>
-    <div>需为body设置padding-top，页面内容才不会被导航栏遮挡。</div>
-</body>
+##### - 固定在底部：`.fixed-bottom`
+```css
+/* 需为body设置padding-bottom大于导航栏高度，至少50px */
+body {padding-bottom: 70px;}
+```
+```html
+<!-- 在.navbar后添加.fixed-bottom，使导航栏固定在窗口顶部 -->
+<nav class="navbar fixed-bottom">
+    ……
+</nav>
+<div>需为body设置padding-bottom，页面内容才不会被导航栏遮挡。</div>
 ```
 ![此处输入图片的描述][115]
 
+##### - 粘黏在顶部：`.sticky-top`
 ```html
-<head>
-    <style type="text/css">
-        /* 向body添加样式padding-bottom ≥ 50px */
-		body {padding-bottom: 70px;}
-	</style>
-</head>
-
-<body>
-    <!-- 向nav添加.fixed-bottom，使导航栏固定在窗口底部 -->
-    <nav class="navbar bg-light navbar-light fixed-bottom">
-        <a class="navbar-brand" href="#">Brand</a>
-    </nav>
-    <div>为body设置padding-bottom，页面内容不会被导航栏遮挡。</div>
-</body>
+<!-- 在.navbar后添加.sticky-top，使导航栏粘黏在窗口顶部 -->
+<nav class="navbar sticky-top">
+    ……
+</nav>
 ```
 ![此处输入图片的描述][116]
 
-```html
-<!-- 向nav添加.sticky-top，使导航栏磁铁在窗口顶部 -->
-<nav class="navbar bg-light navbar-light sticky-top">
-    <a class="navbar-brand" href="#">Brand</a>
-</nav>
-```
-
 <br/>
-### 10、弹出框
->**※** 要使弹出框生效，需在 jQuery 里初始化所有弹出框
-#### • 基础弹出框：`data-toggle="popover"` `data-content="……"`
+### 10、弹出框：`data-toggle="popover"` `data-content="……"`
 鼠标点击到元素后，在旁边显示弹出框，需再次点击该元素才能关闭
-```html
-<!-- 向a元素添加data-toggle="popover"和data-content="……" -->
-<a data-toggle="popover" data-content="这是弹出框中的文本内容！">点击显示弹出框</a>
-```
+>**※** 要使弹出框生效，需在 jQuery 里初始化所有控件
 ```javascript
-$(document).ready(function(){
-    //初始化弹出框，在指定元素上调用popover()方法
-    $('[data-toggle="popover"]').popover();
+$(function () {
+    $('[data-toggle="popover"]').popover()
 })
 ```
+```html
+<!-- 向button/a标签添加data-toggle="popover"、data-content="……" -->
+<button type="button" data-toggle="popover" data-content="这是弹出框中的文本内容！">点击显示弹出框</button>
+```
 ![此处输入图片的描述][117]
-##### - focus弹出框：`data-trigger="focus"` `tabindex="0"`
-点击元素显示弹出框后，再点击该元素之外的其他任意位置都可以关闭弹出框
-```html
-<!-- 向基础弹出框再添加data-trigger="focus"和tabindex属性 -->
-<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="focus" tabindex="0">点击显示弹出框</a>
-```
-![此处输入图片的描述][118]
-##### - hover弹出框：`data-trigger="hover"`
-显示弹出框后，再点击除了该元素之外的其他任意位置都可以关闭弹出框
-```html
-<!-- 向基础弹出框再添加data-trigger="hover" -->
-<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="hover">点击显示弹出框</a>
-```
-![此处输入图片的描述][119]
 <br/>
 #### • 弹出框中的标题：`title="……"`
 ```html
-<a data-toggle="popover" title="这是标题" data-content="这是弹出框中的文本内容！">点击显示弹出框</a>
+<button type="button" data-toggle="popover" title="这是标题" data-content="这是弹出框中的文本内容！">点击显示弹出框</button>
 ```
 ![此处输入图片的描述][120]
 <br/>
 #### • 指定弹出方向：`data-placement="top|right|bottom|left"`
 ```html
-<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="top">向上弹出框</a>
-<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="right">向右弹出框</a>
-<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="bottom">向下弹出框</a>
-<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="left">向左弹出框</a>
+<button type="button" data-toggle="popover" data-content="这是弹出框中的文本内容！" data-placement="top">向上弹出框</button>
 
 <!-- 仅当元素与页面边框间距足够时，该方向才能弹出，否则反方向弹出 -->
 ```
 ![此处输入图片的描述][121]
+<br/>
+#### • focus弹出框：`data-trigger="focus"` `tabindex="0"`
+点击元素显示弹出框后，再点击该元素之外的其他任意位置都可以关闭弹出框
+```html
+<!-- 必须使用a标签，再添加data-trigger="focus"、tabindex="0" -->
+<a class="btn btn-primary" data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="focus" tabindex="0">点击显示弹出框</a>
+```
+![此处输入图片的描述][118]
+<br/>
+#### • hover弹出框：`data-trigger="hover"`
+显示弹出框后，再点击除了该元素之外的其他任意位置都可以关闭弹出框
+```html
+<!-- 必须使用a标签，再添加data-trigger="hover" -->
+<a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="hover">鼠标移到a上显示弹出框，移走消失</a>
+```
+![此处输入图片的描述][119]
 
 ---
 
@@ -2367,14 +2311,14 @@ $(document).ready(function(){
   [106]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmkltlee0j20o409k3ym.jpg
   [107]: http://wx1.sinaimg.cn/large/7de6638dly1fwml6uw2vpg20o604wjsi.gif
   [108]: http://wx1.sinaimg.cn/large/7de6638dly1fwmlds4q7ug20o004z75f.gif
-  [109]: http://wx1.sinaimg.cn/large/7de6638dly1g2bd2cliq5g21ej0b10un.gif
+  [109]: http://wx2.sinaimg.cn/large/7de6638dly1g2cb6hmnpbg21em0e1mzv.gif
   [110]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g2bds6aovcj20oc0d6q2x.jpg
-  [111]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmolfcl1xj20om07c3yo.jpg
-  [112]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwmrf5cwh7j20ix0313yc.jpg
-  [113]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwmqtrr4g7j20o107nt8p.jpg
-  [114]: http://wx1.sinaimg.cn/large/7de6638dly1fwmnebn13zg20l008cmz5.gif
-  [115]: http://wx1.sinaimg.cn/large/7de6638dly1fwmskfuxaog20nn07zgpy.gif
-  [116]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
+  [111]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g2cchmljpoj20o1036glh.jpg
+  [112]: http://wx1.sinaimg.cn/large/7de6638dly1g2cetetm5rg21em0abdj7.gif
+  [113]: http://wx1.sinaimg.cn/large/7de6638dly1fwmnebn13zg20l008cmz5.gif
+  [114]: http://wx1.sinaimg.cn/large/7de6638dly1fwmskfuxaog20nn07zgpy.gif
+  [115]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
+  [116]: http://wx3.sinaimg.cn/large/7de6638dly1g2cfuz5et8g20o00h9js9.gif
   [117]: http://wx4.sinaimg.cn/large/7de6638dly1fx0ig4sxiug20o4041myi.gif
   [118]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
   [119]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
