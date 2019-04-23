@@ -273,3 +273,5 @@ getDiff: function (item) {
 ```html
 <a @eventName="methA();methB();methC()"></a>
 ```
+
+## 5. Others
