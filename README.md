@@ -275,3 +275,4 @@ getDiff: function (item) {
 ```
 
 ## 5. Others
+![bits](https://github.com/shawxlee/study-notes/blob/master/md%E5%9B%BE%E7%89%87/bits.jpg?raw=true)
