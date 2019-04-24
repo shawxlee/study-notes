@@ -21,6 +21,26 @@
 
 ## 2. HTML/CSS
 
+- 电影海报尺寸：
+原版/再版：99*69cm
+授权：88*59cm
+
+- 内联元素自适应父元素尺寸：
+```css
+/* 先给父元素设置宽高 */
+.child {
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;    /* 避免元素内文字换行 */
+}
+```
+
+- 选择器层级：
+```css
+/* 同一元素，位于id选择器下优先级更高 */
+#idName button {……} > .className button {……}
+```
+
 - 调整按钮尺寸：
 ```css
 margin: 0;
@@ -215,6 +235,26 @@ $(document).scrollLeft(0);
 ```
 
 ## 4. Vue.js
+
+- v-for循环中，给style动态绑定函数，根据条件改变样式：
+```html
+<p :style="changeColor(item)">{{ item.score }}</p>
+```
+```javascript
+changeColor: function (item) {
+    if (item.score >= 9) {
+        return 'color: #551A8B';
+    }
+    else if (item.score < 9 && item.score >= 8) {
+        return 'color: #00008B';
+    }
+    else {
+        return 'color: #8B0000';
+    }
+},
+```
+
+- v-for循环中尽量不使用id，因为id是唯一的，无法循环！但如果非要使用id，可利用index动态绑定不同的id值~
 
 - 命名法：
 ```
