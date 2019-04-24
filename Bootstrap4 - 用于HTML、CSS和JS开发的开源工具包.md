@@ -186,7 +186,7 @@ Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，�
 ![此处输入图片的描述][6]
 <br>
 #### • 网格的排列方式
-##### - row垂直对齐：`.align-items-start|center|end`
+##### - row内垂直对齐方式：`.align-items-start|center|end`
 ```html
 <div class="container">
     <div class="row align-items-start">
@@ -204,7 +204,7 @@ Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，�
 </div>
 ```
 
-##### - row水平对齐：`.justify-content-start|center|end|around|between`
+##### - row内水平对齐方式：`.justify-content-start|center|end|around|between`
 ```html
 <div class="container">
     <div class="row justify-content-start">
@@ -231,7 +231,7 @@ Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，�
 ```
 ![此处输入图片的描述][7]
 
-##### - col垂直对齐：`.align-self-start|center|end`
+##### - col内垂直对齐方式：`.align-self-start|center|end`
 ```html
 <div class="container">
     <div class="row">
