@@ -1,8 +1,6 @@
 ﻿# JS 属性|函数|方法|事件|运算符参考手册
 JavaScript - 直译式脚本语言
 
-标签（空格分隔）： javascript dom 语法 手册 
-
 ---
 
 ## JavaScript 对象
@@ -822,6 +820,7 @@ while (条件);
 ---
 
 ## JavaScript 运算符
+>**※** 建议在运算符前后都空一格
 ### 1、**算术**运算
 <table>
     <tr style="background: #555555; color: #fff;">

@@ -2,7 +2,7 @@
 
 ---
 
-## 一、Vue.js安装
+## 安装
 ### 1、官网下载独立版本
 下载地址：[https://vuejs.org/v2/guide/installation.html][1]
 
@@ -18,8 +18,10 @@ cdnjs：[https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js][5]
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 </head>
 ```
-<br/>
-## 二、Vue.js起步
+
+---
+
+## 起步
 ### 1、Vue实例：`var varName = new Vue({el: '#idName', ……});`
 每个Vue应用都需要通过创建一个Vue实例来启动，即声明一个变量，这个变量称为“根实例”
 ```html
@@ -106,8 +108,10 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 </body>
 ```
 ![效果示例][7]
-<br/>
-## 三、插值
+
+---
+
+## 插值
 ### 1、文本插值：`{{ text }}`
 文本插值只输出绑定数据的值的文本，不进行运算解析
 ```html
@@ -187,8 +191,9 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 ```
 ![效果示例][10]
 
-<br/>
-## 四、属性
+---
+
+## 属性
 ### 1、计算属性：`computed: {exprName: function() {……},},`
 用于计算复杂的逻辑表达式，可以像绑定普通属性一样在模板中绑定计算属性
 ```html
@@ -292,12 +297,15 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 </body>
 ```
 
-<br/>
-## 五、指令
+---
+
+## 指令
 指令是带有前缀v-的特殊属性，当表达式的值改变时，将影响作用到HTML文件
 ### 1、`v-bind:propName` / `:propName`：动态地绑定元素的属性
+>★ 组件中的 prop 可以通过 v-bind 动态赋值
 #### • 绑定href/src/title属性：`:href|src|title`
-`:href|src|title="keyName"` → `keyName: value`
+Step1 `:href|src|title="keyName"`
+Step2 `keyName: 'value'`
 ```html
 <body>
 	<div id="example">
@@ -322,8 +330,8 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 
 #### • 绑定class属性：`:class`
 ##### - 对象语法：传给 v-bind:class 一个或多个对象，以动态地切换 class
-`:class="{className: keyName}"` → `keyName: true|false`
-/ `:class="ObjName"` → `ObjName: {'className': true|false}`
+Step1 `:class="{className: keyName}"` / `:class="ObjName"`
+Step2 `keyName: true|false` / `ObjName: {'className': true|false}`
 ```html
 <body>
 	<div id="example">
@@ -352,9 +360,8 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 <!-- :class同样适用于自定义组件，元素上已经存在的类不会被覆盖 -->
 ```
 ##### - 数组语法：把一个数组传给 v-bind:class，以应用一个 class 列表
-`:class="[keyName1, keyName2]"` → `keyName1: 'className1', keyName2: 'className2'`
-/ `:class="[condName ? keyName1 : '', keyName2]"` → `keyName1: 'className1', keyName2: 'className2', condName: truthy|false`
-/ `:class="[{ className: keyName1 }, keyName2]"` → `keyName1: true|false, keyName2: 'className2'`
+Step1 `:class="[keyName1, keyName2]"` / `:class="[condName ? keyName1 : '', keyName2]"` / `:class="[{className: keyName1}, keyName2]"`
+Step2 `keyName1: 'className1', keyName2: 'className2'` / `keyName1: 'className1', keyName2: 'className2', condName: true|false` / `keyName1: true|false, keyName2: 'className2'`
 ```html
 <body>
 	<div id="example">
@@ -386,8 +393,8 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 
 #### • 绑定style属性：`:style`
 ##### - 对象语法：传给 v-bind:style 一个或多个对象
-`:style="{styleName: keyName}"` → `keyName: value,`
-/ `:style="ObjName"` → `ObjName: {styleName: value},`
+Step1 `:style="{styleName: keyName}"` / `:style="ObjName"`
+Step2 `keyName: value` / `ObjName: {styleName: value}`
 ```html
 <body>
 	<div id="example">
@@ -415,8 +422,8 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 <!-- :style会自动侦测兼容性，并向CSS属性添加浏览器引擎前缀 -->
 ```
 ##### - 数组语法：将多个样式对象应用到同一个元素上
-/ `:style="[ObjName1, ObjName2]"` → `ObjName1: {styleName: value}, ObjName2: {styleName: value}`
-/ `:style="[ObjName2, condName ? ObjName2 :'']"` → `ObjName1: {styleName: value}, ObjName2: {styleName: value}, condName: true|false`
+Step1 `:style="[ObjName1, ObjName2]"` / `:style="[ObjName2, condName ? ObjName2 :'']"`
+Step2 `ObjName1: {styleName: value}, ObjName2: {styleName: value}` / `ObjName1: {styleName: value}, ObjName2: {styleName: value}, condName: true|false`
 ```html
 <body>
 	<div id="example">
@@ -465,8 +472,9 @@ Vue实例向响应式系统中加入了data对象中能找到的所有属性，�
 <br/>
 ### 2、`v-for`：列表循环
 #### • 数组：绑定数据到数组来渲染一个列表
-`v-for="itemName in|for arrName"` `{{ itemName.keyName }}` → `arrName: [{ keyName: value1 }, { keyName: value2 }, ……],`
-/ `v-for="(itemName, index) in|for arrName"` `{{ index }}`
+Step1 `v-for="itemName in|for arrName"` / `v-for="(itemName, index) in|for arrName"`
+Step2 `{{ itemName.keyName }}` `{{ index }}`
+Step3 `arrName: [{ keyName: value1 }, { keyName: value2 }, ……],`
 ```html
 <body>
 	<ul id="example">
@@ -543,8 +551,9 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 <!-- 作为Vue识别节点的一个通用机制，key并不与v-for特别关联 -->
 ```
 ##### - 过滤/排序：显示一个数组的过滤或排序副本，而不改变原始数据
-`v-for="n in exprName"` `{{ n }}` → `computed: {exprName: function() {……}}`
-/ `v-for="n in methName(parmName)"` `{{ n }}` → `methods: {methName: function(parmName) {……}}`
+Step1 `v-for="n in exprName"` / `v-for="n in methName(parmName)"`
+Step2 `{{ n }}`
+Step3 `computed: {exprName: function() {……}}` / `methods: {methName: function(parmName) {……}}`
 ```html
 <body>
 	<ul id="nInComp">
@@ -587,9 +596,9 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 ```
 ![此处输入图片的描述][14]
 #### • 对象：通过一个对象的属性来迭代
-`v-for="itemName in objName"` `{{ itemName }}` → `objName: { keyName1: value, keyName2: value, …… },`
-/ `v-for="(itemName, key) in objName"` `{{ key }}`
-/ `v-for="(itemName, key, index) in objName"` `{{ key }}` `{{ index }}`
+Step1 `v-for="itemName in objName"` / `v-for="(itemName, key) in objName"` / `v-for="(itemName, key, index) in objName"`
+Step2 `{{ itemName }}` `{{ key }}` `{{ index }}`
+Step3 `objName: { keyName1: value, keyName2: value, …… },`
 ```html
 <body>
     <ul id="example">
@@ -637,7 +646,8 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 ```
 ![此处输入图片的描述][15]
 #### • 取整：在指定的范围内取整数，将重复多次模板
-`v-for="n in rangeNumber"` `{{ n }}`
+Step1 `v-for="n in rangeNumber"`
+Step2 `{{ n }}`
 ```html
 <body>
 	<div id="example">
@@ -681,7 +691,9 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 ```
 ![此处输入图片的描述][17]
 #### • 搭配v-if：同一节点优先级v-for＞v-if，v-if重复在每个v-for循环中
-`v-for="itemName in|for arrName" v-if="condName"` `{{ itemName.keyName }}` → `arrName: [{keyName: value1, condName: true|false}, {keyName: value2, condName: true|false}, ……],`
+Step1 `v-for="itemName in|for arrName" v-if="condName"`
+Step2 `{{ itemName.keyName }}`
+Step3 `arrName: [{keyName: value1, condName: true|false}, {keyName: value2, condName: true|false}, ……],`
 ```html
 <body>
     <div id="apple">
@@ -812,7 +824,8 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 ```
 <br/>
 ### 2、`v-html`：输出解析后的html，替换标签的内容
-`v-html="keyName"` → `keyName: '……',`
+Step1 `v-html="keyName"`
+Step2 `keyName: '……'`
 ```html
 <body>
 	<div id="apple">
@@ -832,10 +845,11 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![效果示例][20]
+![效果示例][19]
 <br/>
 ### 3、`v-if`：表达式的值为true时渲染元素，false时不显示元素
-`v-if="keyName"` → `keyName: true|false,`
+Step1 `v-if="keyName"`
+Step2 `keyName: true|false`
 ```html
 <body>
 	<div id="example">
@@ -854,7 +868,7 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![效果示例][21]
+![效果示例][20]
 #### • `template`：要切换多个元素，可包裹在一个不可见的template元素内
 `<template v-if="keyName">……</template>`
 ```html
@@ -877,10 +891,10 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![此处输入图片的描述][22]
+![此处输入图片的描述][21]
 #### • `v-else`：若v-if指令的值为false，则渲染v-else的元素
-`v-if="keyName"` → `keyName: true|false,`
-`v-else`
+Step1 `v-if="keyName"` `v-else`
+Step2 `keyName: true|false`
 ```html
 <body>
 	<div id="example">
@@ -900,11 +914,10 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![此处输入图片的描述][23]
+![此处输入图片的描述][22]
 #### • `v-else-if`：若v-if指令的值为false，则渲染v-else的元素，可多个
-`v-if="keyName1"` → `keyName1: true|false,`
-`v-else-if="keyName2"` → `keyName2: true|false,`
-`v-else`
+Step1 `v-if="keyName1"` `v-else-if="keyName2"` `v-else`
+Step2 `keyName1: true|false,` `keyName2: true|false`
 ```html
 <body>
 	<div id="example">
@@ -926,10 +939,10 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![此处输入图片的描述][24]
+![此处输入图片的描述][23]
 #### • `key`：在多个相同类型的元素间切换时，使他们相互独立，避免复用
-`v-if="keyName" key="keyword1"` → `keyName: true|false,`
-`v-else key="keyword2"`
+Step1 `v-if="keyName"` `key="keyword1"` `v-else` `key="keyword2"`
+Step2 `keyName: true|false,`
 ```html
 <!-- 切换v-if将不会清除已输入的内容，因为两个模板使用了相同的元素 -->
 <template v-if="loginType === 'username'">
@@ -941,7 +954,7 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	<input placeholder="Enter your email address">
 </template>
 ```
-![此处输入图片的描述][25]
+![此处输入图片的描述][24]
 ```html
 <!-- 向被复用的元素添加一个具有唯一值的key属性，即可重新渲染 -->
 <template v-if="loginType === 'username'">
@@ -953,10 +966,12 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	<input placeholder="Enter your email address" key="email-input">
 </template>
 ```
-![此处输入图片的描述][26]
+![此处输入图片的描述][25]
 <br/>
 ### 4、`v-model`：在表单元素上创建双向数据绑定，实时更新数据
-`v-model="keyName"` `{{ keyName }}` → `keyName: '……',`
+Step1 `v-model="keyName"`
+Step2 `{{ keyName }}`
+Step3 `keyName: '……'`
 ```html
 <body>
 	<div id="apple">
@@ -977,10 +992,10 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 
 <!-- v-model指令会忽略表单元素的value、checked、selected属性 -->
 ```
-![效果示例][27]
+![效果示例][26]
 <br/>
 ### 5、`v-on:eventName` / `@eventName`：绑定事件监听器，触发JS代码
->eventName：DOM事件属性名去掉on前缀
+>**※** eventName：DOM事件属性名去掉on前缀
 #### • 事件表达式：在表达式中运行简单的JavaScript代码
 `@eventName="expression"`
 ```html
@@ -1005,11 +1020,11 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![效果示例][28]
+![效果示例][27]
 
 #### • 事件处理方法：绑定一个需要调用的方法名称
-`@eventName="methName"` → `methName: function() {……},`
-/ `v-on="{eventName: methName}"` → `methName: function() {……},`
+Step1 `@eventName="methName"` / `v-on="{eventName: methName}"`
+Step2 `methName: function() {……}`
 ```html
 <body>
 	<div class="apple">
@@ -1046,10 +1061,11 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![效果示例][29]
+![效果示例][28]
 
 #### • 内联处理器中的方法：在内联JavaScript语句中调用方法
-`@eventName="methName(……)"` → `methName: function(x) {……},`
+Step1 `@eventName="methName(……)"`
+Step2 `methName: function(p){……}`
 ```html
 <body>
 	<div id="apple">
@@ -1059,8 +1075,8 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 
 	<script type="text/javascript">
 	    var meth = {
-	        onClick: function(x){
-		        alert(x);          //参数x可在多个表达式内赋值
+	        onClick: function(p){
+		        alert(p);          //参数p可在多个表达式内赋值
 	        },
         };
         new Vue({
@@ -1070,7 +1086,7 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 	</script>
 </body>
 ```
-![效果示例][30]
+![效果示例][29]
 
 #### • 事件修饰符
 `.stop` &nbsp;阻止事件继续传播（发生到此元素为止）
@@ -1102,7 +1118,7 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 
 <!-- 打印键，建议使用keypress事件；功能键，可使用keydown或keyup -->
 ```
-##### - 自定义按键修饰符别名：`Vue.config.keyCodes`对象
+##### - 自定义按键修饰符别名：`Vue.config.keyCodes.keyName`
 ```html
 <body>
 	<div id="apple">
@@ -1147,7 +1163,7 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 
 <!-- 全局字符串下区分大小写，不受命名法转换的限制 -->
 ```
-##### - 自动匹配按键修饰符：将[KeyboardEvent.key][31]中任意有效按键名转换为kebab-case来作为修饰符
+##### - 自动匹配按键修饰符：将 [*KeyboardEvent.key*][30] 中任意有效按键名转换为kebab-case来作为修饰符
 ```html
 <input @keyup.page-down="onPageDown">
 <!-- 函数仅在 $event.key === 'PageDown' 时被调用 -->
@@ -1180,7 +1196,8 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 ```
 <br/>
 ### 6、`v-show`：切换元素的display属性，true可见，false不可见
-`v-show="keyName"` → `keyName: true|false,`
+Step1 `v-show="keyName"`
+Step2 `keyName: true|false`
 ```html
 <body>
 	<div id="example">
@@ -1203,118 +1220,427 @@ Step2 在v-for后用v-bind绑定一个key属性，id作为值：`:key="itemName.
 
 <!-- 若需要频繁切换，建议使用v-show；若条件很少改变，建议使用v-if -->
 ```
-<br/>
-## 六、组件
+
+---
+
+## 组件
 组件是可复用的Vue实例，且带有一个名字；用独立可复用的小组件来构建大型应用，几乎任意类型的应用都可以抽象为一个组件树：
-![组件][32]
+![组件][31]
 
-### 1、全局组件：可应用于所有实例
-Step1 构造组件：`var varName = Vue.extend({……})`
-Step2 注册组件：`Vue.component('tag-name', varName)`
-Step3 绑定元素：`new Vue({el: '#idName'})`
-Step4 调用组件：`<tag-name></tag-name>`
-```html
-<body>
-    <div id="apple">
-	    <example></example>      <!-- 在HTML中调用组件 -->
-    </div>
-    <div id="pear">
-	    <example></example>      <!-- 可挂载多个元素 -->
-    </div>
-
-    <script type="text/javascript">
-        //在JS中构造组件
-        var exam = Vue.extend({
-            template: '<h1>这是一个组件</h1>',   //组件的内容模板
-    	});
-        //注册为全局组件
-        Vue.component('example', exam);
-        //创建根实例
-        new Vue({
-            el: '#apple',   //在挂载的元素范围内使用组件
-        });
-        new Vue({        //可应用于多个实例
-            el: '#pear',
-        });
-    </script>
-</body>
-```
-![效果示例][33]
-<br/>
-### 2、局部组件：只能应用于注册的该实例中
-Step1 构造组件：`var varName = Vue.extend({……})`
-Step2 注册组件：`new Vue({el:'#idName', components:{'tag-name':varName})`
+### 1、组件注册
+#### • 全局组件：可以用在任何新创建的根实例的模板中，在各自内部也都可以相互使用
+Step1 构造并注册全局组件：`Vue.component('tag-name', {……});`
+Step2 创建根实例：`new Vue({el: '#……'});`
 Step3 调用组件：`<tag-name></tag-name>`
 ```html
-<body>
-    <div id="apple">
-	    <my-counter></my-counter>      <!-- 在HTML中调用组件 -->
-	    <my-counter></my-counter>
-	    <my-counter></my-counter>   <!-- 可复用多次，互不影响 -->
-    </div>
-    <div id="pear">
-	    <my-counter></my-counter>   <!-- ×此处无效，浏览器报错 -->
-    </div>
-
-    <script type="text/javascript">
-        //在JS中构造组件
-        var myCounter = Vue.extend({
-    		data: function(){   //组件的data选项必须是一个函数
-                return {
-                    count: 0
-                };
-            },
-            template: '<button @click="count++">点击 {{ count }} 次</button>',
-    	});
-        //创建根实例
-        new Vue({
-            el: '#apple',   //仅在此实例范围内使用
-            components: {
-                'my-counter': myCounter,   //注册为局部组件
-            },
-        });
-        new Vue({        //×不能应用于其它实例
-            el: '#pear',
-        });
-    </script>
-</body>
+<!-- 在HTML中调用组件，可复用多次，互不影响 -->
+<div id="example">
+    <tag-name></tag-name>
+    <tag-name></tag-name>
+</div>
+<!-- 可应用于多个实例 -->
+<div id="example2">
+    <tag-name></tag-name>
+</div>
 ```
-![效果示例][34]
+```javascript
+//在JS中构造组件，注册为全局组件
+Vue.component('tag-name', {
+    //组件的data选项必须是一个函数，否则会影响到其它所有实例
+    data() {
+        return {
+            keyName1: value1,
+            keyName2: value2,
+            ……
+        }
+    },
+    //组件的内容模板，书写HTML表达式
+    template: '……'
+});
+//创建根实例，在挂载的元素范围内使用组件
+new Vue({
+    el: '#example'
+});
+new Vue({
+    el: '#example2'
+})
+```
 <br/>
-### 3、Prop：自定义组件的属性，通过props传递数据
-`var varName = Vue.extend({ props: ['propName1', 'propName2', ……], template: …… })`
+#### • 局部组件：只能用在注册的根实例的模板中，且在其子组件中不可用
+Step1 构造组件：`var varName = {……};`
+Step2 注册局部组件：`new Vue({el: '#……', components: {'tag-name': varName})`
+Step3 调用组件：`<tag-name></tag-name>`
 ```html
-<body>
-    <div id="apple">
-	    <my-tag lowercase="username" camel-case="userName" pascal-case="UserName" kebab-case="user-name"></my-tag>
-	    <!-- HTML不区分大小写，需用全小写/短横线命名才能匹配数据 -->
-    </div>
-
-    <script type="text/javascript">
-        var myTag = Vue.extend({
-            //组件中不支持短横线命名，但传递到HTML时会自动转换
-            props: ['lowercase', 'camelCase', 'PascalCase', 'kebabCase'],
-            //多行模板须包裹在一个父元素中，并在模板字符串`……`内书写
-            template: `
-            <div>
-                <p>全小写命名：{{ lowercase }}</p>
-                <p>驼峰式命名：{{ camelCase }}</p>
-                <p>帕斯卡命名：{{ PascalCase }}</p>
-                <p>短横线命名：{{ kebabCase }}</p>
-            </div>
-            `,
-    	});
-        Vue.component('my-tag', myTag);
-        new Vue({
-            el: '#apple',
-        });
-    </script>
-</body>
-
-<!-- 全局字符串下区分大小写，不受命名法转换的限制 -->
+<!-- 仅可在挂载的根实例中调用组件 -->
+<div id="example">
+    <tag-name></tag-name>
+</div>
+<div id="example2">
+    <!-- ×不能应用于其它根实例，浏览器报错 -->
+    <tag-name></tag-name>
+</div>
 ```
-![效果示例][35]
+```javascript
+//在JS中构造组件
+var myTag = {
+    data() {
+        return {
+            keyName1: value1,
+            keyName2: value2,
+            ……
+        }
+    },
+    template: '……'
+};
+new Vue({
+    el: '#example',
+    //在根实例的components选项中注册为局部组件
+    components: {
+        'tag-name': myTag
+    }
+});
+new Vue({
+    el: '#example2'
+})
+```
 
+<br/>
+### 2、Prop
+#### • `props`：自定义组件的属性，通过props传递数据
+Step1 定义特性：`props: ['propName1', 'propName2', ……]`
+Step2 传递数据：`<tag-name prop-name="……"></tag-name>`
+```html
+<div id="example">
+    <!-- HTML大小写不敏感，所以 camelCase 命名的 prop 需使用其等价的 kebab-case 命名 -->
+	<tag-name prop-a="valueA" prop-b="valueB"></tag-name>
+	<!-- 可以通过 v-bind 动态赋予一个变量的值 -->
+	<tag-name :prop-c="keyName"></tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //用一个 props 选项将组件的属性包含在 prop 列表中
+    props: ['propA', 'propB', 'propC'],
+    //多行模板须包裹在一个父元素中，并在模板字符串`……`内书写
+    template: `
+        <div>
+            <p>属性1：{{ propA }}</p>
+            <p>属性2：{{ propB }}</p>
+            <p>属性3：{{ propC }}</p>
+        </div>
+    `
+});
+new Vue({
+    el: '#example',
+    data: {
+        keyName: 'valueC'
+    }
+})
+
+//如果包裹在字符串'……'中，那么就不受命名法转换的限制
+```
+<br/>
+#### • 组件v-for：使用 v-bind 来动态传递 prop
+```html
+<div id="example">
+    <!-- 使用一个 v-bind 绑定 prop 参数，传入所有列表数据 -->
+	<tag-name v-for="item in items" :key="item.id" :item="item"></tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //只需定义一个prop
+    props: ['item'],
+    template: `……`
+});
+new Vue({
+    el: '#example',
+    data: {
+        items: [
+        { 
+            id: 1,
+            keyName1: '……',
+            keyName2: '……',
+            ……
+        },
+        { 
+            id: 2,
+            keyName1: '……',
+            keyName2: '……',
+            ……
+        },
+        ……
+        ]
+    }
+})
+```
+<br/>
+#### • Prop类型：以对象形式列出每项 prop 指定的名称和类型
+```html
+<div id="example">
+    <!-- 需使用 v-bind 来表明这是 JavaScript 表达式而不是字符串 -->
+	<tag-name :prop-b="42"></tag-name>
+	<tag-name :prop-c="false"></tag-name>
+	<tag-name :prop-d="[234, 266, 273]"></tag-name>
+	<tag-name :prop-e="{name: 'Shaw', age: '26'}"></tag-name>
+	<!-- 使用不带参数的 v-bind 将一个对象的所有属性都传入 -->
+	<tag-name v-bind="objectE"></tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    props: {
+        propA: String,
+        propB: Number,
+        propC: Boolean,
+        propD: Array,
+        propE: Object,
+        propF: Function,
+        propG: Promise
+    },
+    template: `……`
+});
+new Vue({
+    el: '#example',
+    data: {
+        objectE: {
+            id: 1,
+            name: 'Shaw',
+            age: '26'
+        }
+    }
+})
+
+//不仅为组件提供了文档，还会在遇到错误的类型时从浏览器的控制台提示用户
+```
+
+<br/>
+### 3、自定义事件
+#### • 监听子组件事件：父级组件可以通过 v-on 监听子组件的任意事件
+```html
+<div id="example">
+	<tag-name @eventName="count += 1"></tag-name>
+	<!-- 通过 $event 访问 $emit 第二个参数提供的值 -->
+	<tag-name @eventName="count += $event"></tag-name>
+	<!-- 这个事件处理函数也可以是一个方法 -->
+	<tag-name @eventName="methName"></tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    props: ……,
+    //子组件可以通过调用内建的 $emit 方法传入事件名称来触发一个事件
+    template: `
+        <div>
+            <button @click="$emit('eventName')">点击这个按钮会触发eventName事件</button>
+            <button @click="$emit('eventName', 1)">使用 $emit 的第二个参数来提供一个特定的值</button>
+        </div>
+    `
+});
+new Vue({
+    el: '#example',
+    data: {
+        count: 0
+    },
+    methods: {
+        //$emit 提供的这个值将会作为方法的第一个参数传入
+        methName: function (p) {
+            this.count += p
+        }
+    }
+})
+```
+<br/>
+#### • 组件v-model：创建支持 v-model 的自定义输入组件
+```html
+<div id="example">
+	<tag-name v-model="……"></tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //将其 value 特性绑定到一个名叫 value 的 prop 上
+    props: ['value'],
+    //在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出
+    template: `
+        <input :value="value" @input="$emit('input', $event.target.value)">
+    `
+});
+new Vue({
+    el: '#example'
+})
+```
+
+<br/>
+### 4、插槽
+#### • 插槽内容：将 slot 元素作为承载分发内容的出口
+Step1 向模板添加slot：`<slot></slot>`
+Step2 向组件添加内容：`<tag-name>……</tag-name>`
+```html
+<div id="example">
+    <!-- 未添加内容的组件将显示原本的模板内容 -->
+	<tag-name></tag-name>
+	<!-- 添加的内容将替换模板中的slot位置显示 -->
+	<tag-name>
+	    <a href="#">这是组件添加的内容，会替换模板中的slot</a>
+	</tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //在模板中待替换的位置添加slot元素
+    template: `
+        <div>
+            <span>这是模板中原本的内容</span>
+            <slot></slot>
+        </div>
+    `
+});
+new Vue({
+    el: '#example'
+})
+
+//父级模板里的所有内容都是在父级作用域中编译的，子模板里的所有内容都是在子作用域中编译的
+```
+![此处输入图片的描述][35]
+<br>
+#### • 后备内容：为插槽设置默认内容，它只在组件没有提供内容时被渲染
+```html
+<div id="example">
+    <!-- 未添加内容的组件将渲染后备内容 -->
+	<tag-name></tag-name>
+	<!-- 添加的内容将替换掉模板中的slot -->
+	<tag-name><a href="#">这是组件添加的内容1</a></tag-name>
+	<tag-name><a href="#">这是组件添加的内容2</a></tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //在slot中设置后备内容
+    template: `
+        <div>
+            <span>这是模板中原本的内容</span>
+            <slot><a href="#">这是slot中的后备内容</a></slot>
+        </div>
+    `
+});
+new Vue({
+    el: '#example'
+})
+```
+![此处输入图片的描述][36]
+<br>
+#### • 具名插槽：定义额外的插槽
+Step1 定义具名插槽：`<slot name="slotName"></slot>`
+Step2 向具名插槽提供内容：`<template v-slot:slotName>……</template>`
+```html
+<div id="example">
+    <tag-name>
+	    <!-- 在template元素上使用v-slot指令，向具名插槽提供内容 -->
+	    <template v-slot:header>
+	        <h1>这是替换header插槽的内容</h1>
+        </template>
+	    <!-- 所有没被包裹在v-slot中的内容都会提供给默认插槽 -->
+	    <p>这是替换默认插槽的内容</p>
+	    <template v-slot:footer>
+	        <h5>这是替换footer插槽的内容</h5>
+	    </template>
+    </tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //向额外的插槽添加name属性
+    template: `
+        <div>
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+    `
+});
+new Vue({
+    el: '#example'
+})
+```
+![此处输入图片的描述][37]
+<br>
+#### • 作用域插槽：让插槽内容能够访问子组件中才有的数据
+```html
+<div id="example">
+    <!-- 若只有一个默认插槽，可直接在组件上使用 v-slot 来定义插槽 prop 的名字 -->
+    <tag-name v-slot="slotProps">{{ slotProps.user.firstName }}</tag-name>
+    <!-- 若有多个插槽，需使用完整的基于 template 的语法 -->
+    <tag-name>
+        <template v-slot:default="slotProps">{{ slotProps.user.firstName }}</template>
+        <template v-slot:footer="footerProps">{{ footerProps.user.middleName }}</template>
+    </tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //将 user 作为一个 slot 元素的特性绑定上去，称为插槽 prop
+    template: `
+        <div>
+            <main>
+                <slot :user="user">{{ user.lastName }}</slot>
+            </main>
+            <footer>
+                <slot name="footer" :user="user">{{ user.lastName }}</slot>
+            </footer>
+        </div>
+    `
+});
+new Vue({
+    el: '#example',
+    data: {
+        user: { 
+            firstName: '……',
+            middleName: '……',
+            lastName: '……',
+            ……
+        }
+    }
+})
+```
+
+<br>
+### 5、动态组件
+#### • `:is="……"`：在不同组件之间进行动态切换
+Step1 绑定插槽prop：`<slot v-bind:dataName="dataName">{{ …… }}</slot>`
+Step2 给插槽prop赋值：`<template v-slot:default="slotProps">{{ slotProps.…… }}</template>`
+```html
+<div id="example">
+    <!-- 在一个template元素上使用v-slot指令，向具名插槽提供内容 -->
+    <tag-name v-slot="slotProps">{{ slotProps.user.firstName }}</tag-name>
+</div>
+```
+```javascript
+Vue.component('tag-name', {
+    //向额外的插槽添加name属性
+    template: `
+        <span>
+            <slot v-bind:user="user">{{ user.lastName }}</slot>
+        </span>
+    `
+});
+new Vue({
+    el: '#example'
+})
+```
+
+---
+
+## 工具
+### 1、单文件组件：文件扩展名为 *.vue 的单文件组件
+
+---
 
   [1]: https://vuejs.org/v2/guide/installation.html
   [2]: https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js
@@ -1334,20 +1660,22 @@ Step3 调用组件：`<tag-name></tag-name>`
   [16]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwun7x5v9kj20p600ojr7.jpg
   [17]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwvwr0r7slj20mq05adfs.jpg
   [18]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwwhvq4690j20nn04ajrh.jpg
-  [19]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwwhkfey81j20nr01qwed.jpg
-  [20]: https://wx4.sinaimg.cn/mw690/7de6638dly1fw63wqjsb9j20o704mjrf.jpg
-  [21]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwvwa59kvhj20nr03u74g.jpg
-  [22]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwvw6pbbysj20nt03naa3.jpg
-  [23]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwsk1fx20bj20om0150so.jpg
-  [24]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwskdfwf2bj20pa01m3yn.jpg
-  [25]: http://wx4.sinaimg.cn/large/7de6638dly1fwskxgf0yrg20ou04amy2.gif
-  [26]: http://wx2.sinaimg.cn/large/7de6638dly1fwskzkquofg20ou04aq3n.gif
-  [27]: https://wx4.sinaimg.cn/mw690/7de6638dly1fw4r2rscnkg20f00400sv.gif
-  [28]: https://wx3.sinaimg.cn/mw690/7de6638dly1fw64fq6uyug20eb03ydgu.gif
-  [29]: http://wx4.sinaimg.cn/large/7de6638dly1fw63gobgmmg210a05pdhe.gif
-  [30]: http://wx2.sinaimg.cn/large/7de6638dly1fw8qls0qv4g2107041dhb.gif
-  [31]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
-  [32]: https://cn.vuejs.org/images/components.png
-  [33]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwe6qal2z5j20ip04jwej.jpg
-  [34]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwe4wm8ckcg20bh03xt9e.gif
-  [35]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwebunw3t0j20p605vq39.jpg
+  [19]: https://wx4.sinaimg.cn/mw690/7de6638dly1fw63wqjsb9j20o704mjrf.jpg
+  [20]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwvwa59kvhj20nr03u74g.jpg
+  [21]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwvw6pbbysj20nt03naa3.jpg
+  [22]: https://wx1.sinaimg.cn/mw690/7de6638dly1fwsk1fx20bj20om0150so.jpg
+  [23]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwskdfwf2bj20pa01m3yn.jpg
+  [24]: http://wx4.sinaimg.cn/large/7de6638dly1fwskxgf0yrg20ou04amy2.gif
+  [25]: http://wx2.sinaimg.cn/large/7de6638dly1fwskzkquofg20ou04aq3n.gif
+  [26]: https://wx4.sinaimg.cn/mw690/7de6638dly1fw4r2rscnkg20f00400sv.gif
+  [27]: https://wx3.sinaimg.cn/mw690/7de6638dly1fw64fq6uyug20eb03ydgu.gif
+  [28]: http://wx4.sinaimg.cn/large/7de6638dly1fw63gobgmmg210a05pdhe.gif
+  [29]: http://wx2.sinaimg.cn/large/7de6638dly1fw8qls0qv4g2107041dhb.gif
+  [30]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
+  [31]: https://cn.vuejs.org/images/components.png
+  [32]: https://wx2.sinaimg.cn/mw690/7de6638dly1fwe6qal2z5j20ip04jwej.jpg
+  [33]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwe4wm8ckcg20bh03xt9e.gif
+  [34]: https://wx4.sinaimg.cn/mw690/7de6638dly1fwebunw3t0j20p605vq39.jpg
+  [35]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2eqrfpobcj20o602k3yu.jpg
+  [36]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2er9qsh8lj20o403faaq.jpg
+  [37]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2es35fkjgj20o205ogma.jpg
