@@ -148,6 +148,17 @@ vertical-align: middle;   /* 一般不理想，设置padding-*更方便 */
 
 ## 3. JavaScript/jQuery
 
+- 点击除该元素以外的其他位置触发事件：
+```javascript
+//需是同一类事件（如click事件）
+$(document).click(function(){
+    ……
+});
+$("#idName").click(function(event){
+    event.stopPropagation();
+});
+```
+
 - Truthy（真值）：
 ```javascript
 true    {}    []    42    -42    "foo"    new Date()    3.14    -3.14    Infinity    -Infinity
