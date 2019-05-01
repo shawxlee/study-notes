@@ -271,7 +271,7 @@ Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，�
 
 ##### - 重新排序：`.order-*|first|last` `.order-sm|md|lg|xl-*`
 按照*的大小重新排列div的显示顺序，其中1≤ * ≤12
->优先级：**.order-first|last** ＞ **无order** ＞ **.order-* / .order-sm|md|lg|xl-***
+>优先级：`.order-first|last` ＞ 无 ＞ `.order-*`/`.order-sm|md|lg|xl-*`
 ```html
 <div class="row">
 	<div class="col">这是第一个div，无order，所以排在第二个</div>
@@ -1968,7 +1968,7 @@ $(function () {
 ```html
 <button type="button" data-toggle="popover" title="这是标题" data-content="这是弹出框中的文本内容！">点击显示弹出框</button>
 ```
-![此处输入图片的描述][120]
+![此处输入图片的描述][118]
 <br/>
 #### • 指定弹出方向：`data-placement="top|right|bottom|left"`
 ```html
@@ -1976,7 +1976,7 @@ $(function () {
 
 <!-- 仅当元素与页面边框间距足够时，该方向才能弹出，否则反方向弹出 -->
 ```
-![此处输入图片的描述][121]
+![此处输入图片的描述][119]
 <br/>
 #### • focus弹出框：`data-trigger="focus"` `tabindex="0"`
 点击元素显示弹出框后，再点击该元素之外的其他任意位置都可以关闭弹出框
@@ -1984,7 +1984,7 @@ $(function () {
 <!-- 必须使用a标签，再添加data-trigger="focus"、tabindex="0" -->
 <a class="btn btn-primary" data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="focus" tabindex="0">点击显示弹出框</a>
 ```
-![此处输入图片的描述][118]
+![此处输入图片的描述][120]
 <br/>
 #### • hover弹出框：`data-trigger="hover"`
 显示弹出框后，再点击除了该元素之外的其他任意位置都可以关闭弹出框
@@ -1992,7 +1992,7 @@ $(function () {
 <!-- 必须使用a标签，再添加data-trigger="hover" -->
 <a data-toggle="popover" data-content="这是弹出框中的文本内容！" data-trigger="hover">鼠标移到a上显示弹出框，移走消失</a>
 ```
-![此处输入图片的描述][119]
+![此处输入图片的描述][121]
 
 ---
 
@@ -2046,8 +2046,8 @@ $(function () {
 ![此处输入图片的描述][129]
 <br>
 ### 3、显示
-#### • 元素框的类型：`.d-①`/`.d-②-①`
->`.d` display
+#### • 元素框的类型：`.d-②-①`
+> `d` display
 ① `none` 不显示 &nbsp;&nbsp;&nbsp;`inline` 内联元素 &nbsp;&nbsp;&nbsp;`inline-block` 行内块元素 &nbsp;&nbsp;&nbsp;`block` 块元素 &nbsp;&nbsp;&nbsp;`table` 块级表格元素 &nbsp;&nbsp;&nbsp;`table-cell` 表格单元格元素 &nbsp;&nbsp;&nbsp;`table-row` 表格行元素 &nbsp;&nbsp;&nbsp;`flex` 弹性布局块元素 &nbsp;&nbsp;&nbsp;`inline-flex` 弹性布局内联元素
 ② `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
 
@@ -2114,25 +2114,129 @@ $(function () {
 >① `none` 不显示 &nbsp;&nbsp;&nbsp;`inline` 内联元素 &nbsp;&nbsp;&nbsp;`inline-block` 行内块元素 &nbsp;&nbsp;&nbsp;`block` 块元素 &nbsp;&nbsp;&nbsp;`table` 块级表格元素 &nbsp;&nbsp;&nbsp;`table-cell` 表格单元格元素 &nbsp;&nbsp;&nbsp;`table-row` 表格行元素 &nbsp;&nbsp;&nbsp;`flex` 弹性布局块元素 &nbsp;&nbsp;&nbsp;`inline-flex` 弹性布局内联元素
 
 <br>
-### 4、浮动：`.float-①`/`.float-②-①`
->① `left` 向左浮动 &nbsp;&nbsp;&nbsp;`right` 向右浮动 &nbsp;&nbsp;&nbsp;`none` 不浮动
+### 4、弹性布局：`.d-①-flex`/`.d-①-inline-flex`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+#### • 项目在容器内的水平方向：`.flex-①-row`/`.flex-①-row-reverse`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex flex-row">……</div>
+<div class="d-flex flex-row-reverse">……</div>
+```
+![此处输入图片的描述][130]
+#### • 项目在容器内的垂直方向：`.flex-①-column`/`.flex-①-column-reverse`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex flex-column">……</div>
+<div class="d-flex flex-column-reverse">……</div>
+```
+![此处输入图片的描述][131]
+#### • 项目在容器内的水平对齐方式：`.justify-content-①-start|end|center|between|around`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex justify-content-start">左对齐</div>
+<div class="d-flex justify-content-end">右对齐</div>
+<div class="d-flex justify-content-center">居中对齐</div>
+<div class="d-flex justify-content-between">两端对齐</div>
+<div class="d-flex justify-content-around">分散对齐</div>
+```
+![此处输入图片的描述][132]
+#### • 项目在容器内的垂直对齐方式：`.align-items-①-start|end|center|baseline|stretch`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex align-items-start">左对齐</div>
+<div class="d-flex align-items-end">右对齐</div>
+<div class="d-flex align-items-center">居中对齐</div>
+<div class="d-flex align-items-baseline">基线对齐</div>
+<div class="d-flex align-items-stretch">伸展对齐</div>
+```
+![此处输入图片的描述][133]
+#### • 项目在容器内是否溢出/换行：`.flex-①-nowrap|wrap`/`.flex-①-wrap-reverse`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex flex-nowrap">……</div>
+<div class="d-flex flex-wrap">……</div>
+<div class="d-flex flex-wrap-reverse">……</div>
+```
+![此处输入图片的描述][134]
+![此处输入图片的描述][135]
+![此处输入图片的描述][136]
+#### • 行在容器内的垂直对齐方式：`.align-content-①-start|end|center|between|around|stretch`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex align-content-start flex-wrap">……</div>
+<div class="d-flex align-content-end flex-wrap">……</div>
+<div class="d-flex align-content-center flex-wrap">……</div>
+<div class="d-flex align-content-between flex-wrap">……</div>
+<div class="d-flex align-content-around flex-wrap">……</div>
+<div class="d-flex align-content-stretch flex-wrap">……</div>
+```
+![此处输入图片的描述][137]
+![此处输入图片的描述][138]
+![此处输入图片的描述][139]
+![此处输入图片的描述][140]
+![此处输入图片的描述][141]
+![此处输入图片的描述][142]
+#### • 单个项目的水平对齐方式：`.flex-①-fill`/`.flex-①-grow|shrink-0|1`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex">
+  <div class="flex-fill">Flex item</div>
+  <div class="flex-grow-1">Flex item</div>
+  <div class="flex-shrink-1">Flex item</div>
+</div>
+```
+![此处输入图片的描述][143]
+![此处输入图片的描述][144]
+![此处输入图片的描述][145]
+#### • 单个项目的垂直对齐方式：`.align-self-①-start|end|center|baseline|stretch`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex">
+  <div class="align-self-start">Aligned flex item</div>
+</div>
+```
+![此处输入图片的描述][146]
+#### • 单个项目在容器内的顺序：`.order-①-*`
+> ① `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
+
+```html
+<div class="d-flex">
+  <div class="order-3">First flex item</div>
+  <div class="order-2">Second flex item</div>
+  <div class="order-1">Third flex item</div>
+</div>
+```
+![此处输入图片的描述][147]
+<br>
+### 5、浮动：`.float-②-①`
+> ① `left` 向左浮动 &nbsp;&nbsp;&nbsp;`right` 向右浮动 &nbsp;&nbsp;&nbsp;`none` 不浮动
 ② `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
 
-<br>
-### 5、尺寸：`.①②-③`/`.min-①②-③`
->① `m` max &nbsp;&nbsp;&nbsp;`v` viewport
-② `w` width &nbsp;&nbsp;&nbsp;`h` height &nbsp;&nbsp;&nbsp;
-③ `25` 25% &nbsp;&nbsp;&nbsp;`50` 50% &nbsp;&nbsp;&nbsp;`75` 75% &nbsp;&nbsp;&nbsp;`100` 100% &nbsp;&nbsp;&nbsp;`auto` 适应内容
 
 <br>
-### 6、间距：`.①②-③-④`
->① `m` margin &nbsp;&nbsp;&nbsp;`p` padding
-② `t` top &nbsp;&nbsp;&nbsp;`r` right &nbsp;&nbsp;&nbsp;`b` bottom &nbsp;&nbsp;&nbsp;`l` left &nbsp;&nbsp;&nbsp;`x` X轴方向 &nbsp;&nbsp;&nbsp;`y` Y轴方向
+### 6、尺寸：`.②-w-①`/`.②-h-①`
+> `w` width &nbsp;&nbsp;&nbsp;`h` height &nbsp;&nbsp;&nbsp;
+① `25` 25% &nbsp;&nbsp;&nbsp;`50` 50% &nbsp;&nbsp;&nbsp;`75` 75% &nbsp;&nbsp;&nbsp;`100` 100% &nbsp;&nbsp;&nbsp;`auto` 适应内容
+② `m` max &nbsp;&nbsp;&nbsp;`v` viewport &nbsp;&nbsp;&nbsp;`min` min
+
+<br>
+### 7、间距：`.m①-③-②`/`.p①-③-②`
+> `m` margin &nbsp;&nbsp;&nbsp;`p` padding
+① `t` top &nbsp;&nbsp;&nbsp;`r` right &nbsp;&nbsp;&nbsp;`b` bottom &nbsp;&nbsp;&nbsp;`l` left &nbsp;&nbsp;&nbsp;`x` X轴方向 &nbsp;&nbsp;&nbsp;`y` Y轴方向
+② `auto` 适应内容 &nbsp;&nbsp;&nbsp;`0` 清除间距 &nbsp;&nbsp;&nbsp;`1` 0.25rem &nbsp;&nbsp;&nbsp;`2` 0.5rem &nbsp;&nbsp;&nbsp;`3` 1rem &nbsp;&nbsp;&nbsp;`4` 1.5rem &nbsp;&nbsp;&nbsp;`5` 3rem
 ③ `sm` ≥576px &nbsp;&nbsp;&nbsp;`md` ≥768px &nbsp;&nbsp;&nbsp;`lg` ≥992px &nbsp;&nbsp;&nbsp;`xl` ≥1200px
-④ `auto` 适应内容 &nbsp;&nbsp;&nbsp;`0` 清除间距 &nbsp;&nbsp;&nbsp;`1` 0.25rem &nbsp;&nbsp;&nbsp;`2` 0.5rem &nbsp;&nbsp;&nbsp;`3` 1rem &nbsp;&nbsp;&nbsp;`4` 1.5rem &nbsp;&nbsp;&nbsp;`5` 3rem
 
 <br>
-### 7、文本
+### 8、文本
 #### • 文本水平对齐方式：`.text-justify|left|center|right`
 ```html
 <p class="text-justify">左起两端对齐</p>
@@ -2140,7 +2244,7 @@ $(function () {
 <p class="text-center">居中对齐</p>
 <p class="text-right">右对齐</p>
 ```
-![此处输入图片的描述][130]
+![此处输入图片的描述][148]
 
 #### • 文本换行/溢出/省略：`.text-wrap|nowrap|truncate`/`.text-break`
 ```html
@@ -2150,7 +2254,7 @@ $(function () {
 <p class="bg-warning w-25 text-truncate">.text-truncate的文本不会溢出，不换行，溢出部分省略为...</p>
 <p class="bg-danger w-25 text-break">.text-break的文本不会溢出，换行显示</p>
 ```
-![此处输入图片的描述][131]
+![此处输入图片的描述][149]
 
 #### • 字母大小写转换：`.text-uppercase|lowercase|capitalize`
 ```html
@@ -2158,7 +2262,7 @@ $(function () {
 <p class="text-uppercase">全大写 text-uppercase</p>      
 <p class="text-capitalize">首字母大写 text-capitalize</p>
 ```
-![此处输入图片的描述][132]
+![此处输入图片的描述][150]
 
 #### • 文本粗细与斜体：`.font-weight-bolder|bold|normal|light|lighter` `.font-italic`
 ```html
@@ -2171,13 +2275,13 @@ $(function () {
 
 <!-- .font-weight-*和.font-italic可搭配使用 -->
 ```
-![此处输入图片的描述][133]
+![此处输入图片的描述][151]
 
 #### • 等宽英文字体：`.text-monospace`
 ```html
 <p class="text-monospace">This is in monospace</p>
 ```
-![此处输入图片的描述][134]
+![此处输入图片的描述][152]
 
 #### • 文本从父继承颜色：`.text-reset`
 ```html
@@ -2186,15 +2290,15 @@ $(function () {
     <a href="#" class="text-reset">链接2：.text-reset从父继承颜色</a>
 </p>
 ```
-![此处输入图片的描述][135]
+![此处输入图片的描述][153]
 
 #### • 清除链接下划线：`.text-decoration-none`
 ```html
 <a href="#" class="text-decoration-none">没有下划线的链接文本</a>
 ```
-![此处输入图片的描述][136]
+![此处输入图片的描述][154]
 <br>
-### 8、可见：`.visible`/`.invisible`
+### 9、可见：`.visible`/`.invisible`
 >`visible` 可见占位 { visibility: visible !important; }
 `invisible` 不可见占位 { visibility: hidden !important; }
 
@@ -2320,10 +2424,10 @@ $(function () {
   [115]: http://wx4.sinaimg.cn/large/7de6638dly1fwmsprbcm7g20nn07zn15.gif
   [116]: http://wx3.sinaimg.cn/large/7de6638dly1g2cfuz5et8g20o00h9js9.gif
   [117]: http://wx4.sinaimg.cn/large/7de6638dly1fx0ig4sxiug20o4041myi.gif
-  [118]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
-  [119]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
-  [120]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0fse5bzlj20o103zwek.jpg
-  [121]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0heb8skoj20zd065gm0.jpg
+  [118]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0fse5bzlj20o103zwek.jpg
+  [119]: https://wx3.sinaimg.cn/mw690/7de6638dly1fx0heb8skoj20zd065gm0.jpg
+  [120]: http://wx1.sinaimg.cn/large/7de6638dly1fx0ihanzu6g20o4041wfg.gif
+  [121]: http://wx1.sinaimg.cn/large/7de6638dly1fx0johdsecg20o80413yx.gif
   [122]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nopn87wj20la04k0sh.jpg
   [123]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g27nq7tmuoj20lc04f0sf.jpg
   [124]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g27o4j3pmkj20p202q0os.jpg
@@ -2332,10 +2436,28 @@ $(function () {
   [127]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g27oiue6h2j20p4044a9t.jpg
   [128]: http://wx3.sinaimg.cn/large/7de6638dly1g2312pgh0zj20qu0m8wft.jpg
   [129]: http://wx4.sinaimg.cn/large/7de6638dly1g231ah3ukkj20pw0gngmi.jpg
-  [130]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwof5hjxvjj20nz0admxw.jpg
-  [131]: http://wx4.sinaimg.cn/large/7de6638dly1g22zzaj64fj21du0gfmzh.jpg
-  [132]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwrq6t79hhj20o304lq33.jpg
-  [133]: http://wx2.sinaimg.cn/large/7de6638dly1g230cjtlytj20qz0a20tf.jpg
-  [134]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwofsmzi9ij20nx02rmx7.jpg
-  [135]: http://wx3.sinaimg.cn/large/7de6638dly1g230m0e0flj20p501q0su.jpg
-  [136]: http://wx1.sinaimg.cn/large/7de6638dly1g230s0hjj8j20pd01hq2v.jpg
+  [130]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2m0x0zk7vj20up056mx6.jpg
+  [131]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g2m1fy3kkbj20us0bvmx9.jpg
+  [132]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g2m1pu868xj20uo0ciq38.jpg
+  [133]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2m1sx3nesj20vp0jhwek.jpg
+  [134]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2m2e3kzdpj20uq0383yg.jpg
+  [135]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2m2e3hapkj20uq03ywej.jpg
+  [136]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2m2e3gvisj20um043wej.jpg
+  [137]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2m30ck8w5j20un08laa5.jpg
+  [138]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2m30cjik7j20ul08oaa5.jpg
+  [139]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g2m30cjca8j20ui08taa5.jpg
+  [140]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2m30cjc1tj20uk08oaa5.jpg
+  [141]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2m30cjaf7j20ul08ndfx.jpg
+  [142]: https://wx4.sinaimg.cn/mw1024/7de6638dly1g2m30cipb5j20uk08kaa5.jpg
+  [143]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2m28cdd5sj20um02aq2u.jpg
+  [144]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2m28ccblxj20uk029745.jpg
+  [145]: https://wx2.sinaimg.cn/mw1024/7de6638dly1g2m28ccbpyj20ug03b744.jpg
+  [146]: https://wx1.sinaimg.cn/mw1024/7de6638dly1g2m1xigxwfj20vs0jegls.jpg
+  [147]: https://wx3.sinaimg.cn/mw1024/7de6638dly1g2m36dc90aj20uq02h3yf.jpg
+  [148]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwof5hjxvjj20nz0admxw.jpg
+  [149]: http://wx4.sinaimg.cn/large/7de6638dly1g22zzaj64fj21du0gfmzh.jpg
+  [150]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwrq6t79hhj20o304lq33.jpg
+  [151]: http://wx2.sinaimg.cn/large/7de6638dly1g230cjtlytj20qz0a20tf.jpg
+  [152]: https://wx3.sinaimg.cn/mw690/7de6638dly1fwofsmzi9ij20nx02rmx7.jpg
+  [153]: http://wx3.sinaimg.cn/large/7de6638dly1g230m0e0flj20p501q0su.jpg
+  [154]: http://wx1.sinaimg.cn/large/7de6638dly1g230s0hjj8j20pd01hq2v.jpg
