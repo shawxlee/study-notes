@@ -127,6 +127,16 @@ event.stopPropagation();
 
 #### • `focus()`：当元素获得焦点时发生 focus 事件
 ```javascript
+$(selector).on(event,childSelector,data,function);
+
+//*event：规定要从被选元素移除的一个或多个有效事件或命名空间，由空格分隔多个事件值，也可以是数组
+```
+    *childSelector  规定只能添加到指定的子元素上的事件处理程序（且不是选择器本身）
+    *data  规定传递到函数的额外数据
+    *function  规定当事件发生时运行的函数
+
+#### • `on()`：在被选元素及子元素上添加一个或多个事件处理程序
+```javascript
 $(selector).focus();    //触发focus事件
 $(selector).focus(function);    //将函数绑定到focus事件
 ```
