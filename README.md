@@ -148,6 +148,8 @@ vertical-align: middle;   /* 一般不理想，设置padding-*更方便 */
 
 ## 3. JavaScript/jQuery
 
+- `display:none` 之后，元素依然存在文档中，所以绑定的事件等脚本仍有效
+
 - 点击除该元素以外的其他位置触发事件：
 ```javascript
 //需是同一类事件（如click事件）
