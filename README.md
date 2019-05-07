@@ -21,6 +21,36 @@
 
 ## 2. HTML/CSS
 
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="……">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <title>……</title>
+</head>
+<body>
+    <!-- HTML属性建议书写顺序： -->
+    <div class="" id="" name="" data-*="" src="" for="" type="" href="" title="" alt="" aria-*="" role="" disabled></div>
+    <!-- 减少标签的数量，尽量避免多余的父元素；尽量避免通过 JavaScript 生成标签 -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="……"></script>
+</body>
+</html>
+```
+
 - 电影海报尺寸：
 ```
 原版/再版：99cm x 69cm
@@ -147,6 +177,10 @@ vertical-align: middle;   /* 一般不理想，设置padding-*更方便 */
 ```
 
 ## 3. JavaScript/jQuery
+
+- document对象和window对象不能执行animate()
+
+- `display:none` 之后，元素依然存在文档中，所以绑定的事件等脚本仍有效
 
 - 点击除该元素以外的其他位置触发事件：
 ```javascript
