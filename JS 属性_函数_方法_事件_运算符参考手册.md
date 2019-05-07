@@ -277,6 +277,13 @@ alert(message);
 //*message：要显示的纯文本（非HTML文本）
 ```
 
+#### • `clearInterval()`：取消由 setInterval() 函数设定的定时执行操作
+```javascript
+clearInterval(id_of_setinterval);
+
+//*id_of_setinterval：调用 setInterval() 函数时所获得的返回值，使用该返回标识符作为参数，可以取消该 setInterval() 所设定的定时执行操作
+```
+
 #### • `close()`：关闭浏览器窗口
 ```javascript
 window.close();
@@ -299,6 +306,16 @@ setTimeout(function, milliseconds, param1, param2, ……);
 //*code|*function：要调用一个代码串，也可以是一个函数
 ```
     *milliseconds  执行代码串或调用函数需要等待的时间，以毫秒计（默认值：0）
+    *param  传给执行函数的其他参数（IE9 及其更早版本不支持该参数）
+    
+#### • `setInterval()`：按照指定的周期（以毫秒计）来调用函数或计算表达式
+```javascript
+setInterval(code, milliseconds);
+setInterval(function, milliseconds, param1, param2, ...)
+
+//*code|*function：要调用一个代码串，也可以是一个函数
+//*milliseconds：周期性执行或调用 code/function 之间的时间间隔，以毫秒计
+```
     *param  传给执行函数的其他参数（IE9 及其更早版本不支持该参数）
 
 ---

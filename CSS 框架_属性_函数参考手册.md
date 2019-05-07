@@ -193,6 +193,62 @@ Cascading Style Sheets - 层叠样式表
 ---
 
 ## CSS规范属性
+### • `animation`：设置六个动画属性
+```css
+div {
+    width:100px;
+	height:100px;
+	background:red;
+	position:relative;
+	animation:mymove 5s infinite;
+}
+@keyframes mymove {
+    from {left:0px;}
+	to {left:200px;}
+}
+```
+
+#### - `animation-name`：为 @keyframes 动画指定名称
+    *keyframename  指定要绑定到选择器的关键帧的名称
+    none  指定有没有动画（可用于覆盖从级联的动画）
+
+#### - `animation-duration`：定义动画完成一个周期需要多少秒或毫秒
+    *time  指定动画播放完成花费的时间。默认值为 0，意味着没有动画效果
+
+#### - `animation-timing-function`：指定动画将如何完成一个周期
+    linear  动画从头到尾的速度是相同的
+    ease  默认。动画以低速开始，然后加快，在结束前变慢
+    ease-in  动画以低速开始
+    ease-out  动画以低速结束
+    ease-in-out  动画以低速开始和结束
+    cubic-bezier(*n,*n,*n,*n)  在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值
+
+#### - `animation-delay`：定义动画什么时候开始
+    *time  定义动画开始前等待的时间，以秒或毫秒计。默认值为0
+
+#### - `animation-iteration-count`：定义动画应该播放多少次
+    *n  一个数字，定义应该播放多少次动画
+    infinite  指定动画应该播放无限次（永远）
+
+#### - `animation-direction`：定义是否循环交替反向播放动画
+    normal  默认值。动画按正常播放
+    reverse  动画反向播放
+    alternate  动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放
+    alternate-reverse  动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放
+
+#### - `animation-fill-mode`：规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式
+    none  默认值。动画在动画执行之前和之后不会应用任何样式到目标元素
+    
+    forwards  在动画结束后（由 animation-iteration-count 决定），动画将应用该属性值
+    
+    backwards  动画将应用在 animation-delay 定义期间启动动画的第一次迭代的关键帧中定义的属性值。这些都是 from 关键帧中的值（当 animation-direction 为 "normal" 或 "alternate" 时）或 to 关键帧中的值（当 animation-direction 为 "reverse" 或 "alternate-reverse" 时）
+    
+    both  动画遵循 forwards 和 backwards 的规则。也就是说，动画会在两个方向上扩展动画属性。
+
+#### - `animation-play-state`：指定动画是否正在运行或已暂停
+    paused  指定暂停动画
+    running  指定正在运行的动画
+<br/>
 ### • `background`：设置所有的背景属性
 ```css
 div {background: blue url(/image.jpg) cover fixed center;}
@@ -684,6 +740,34 @@ h2 {display: inline-flex;}
     flex-end  容器终点对齐
     baseline  项目内容沿基线对齐
 ![单独对齐方式][23]
+<br/>
+### • `filter`：定义了元素（通常是img）的可视效果
+```css
+img {filter: none;}
+```
+    none  没有效果（默认值）
+    
+    blur(*px)  给图像设置高斯模糊。"radius"一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值
+    
+    brightness(*%)  给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1
+    
+    contrast(*%)  调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1
+    
+    drop-shadow(*h-shadow *v-shadow *blur *spread *color)  给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。函数接受<shadow>(在CSS3背景中定义)类型的值，除了"inset"关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速
+    
+    grayscale(*%)  将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0
+    
+    hue-rotate(*deg)  给图像应用色相旋转。"angle"一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈
+    
+    invert(*%)  反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是
+    
+    opacity(*%)  转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速
+    
+    saturate(*%)  转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1
+    
+    sepia(*%)  将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0
+    
+    url()  URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素
 <br/>
 ### • `float`：定义元素在哪个方向浮动
 ```css

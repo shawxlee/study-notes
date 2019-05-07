@@ -496,17 +496,17 @@ pre元素中的文本通常会保留空格和换行符，而文本也会呈现�
 ### • `select`：创建下拉列表
 ```html
 <select>
-    <option value="optA">optionA</option>
-    <option value="optB">optionB</option>
-    <option value="optC">optionC</option>
+    <option value="1">option 1</option>
+    <option value="2">option 2</option>
+    <option value="3">option 3</option>
 </select>
 
 <!-- value：定义送往服务器的选项值 -->
 ```
 <select>
-    <option value="optA">optionA</option>
-    <option value="optB">optionB</option>
-    <option value="optC">optionC</option>
+    <option value="1">option 1</option>
+    <option value="2">option 2</option>
+    <option value="3">option 3</option>
 </select>
 
     autofocus  规定在页面加载时下拉列表自动获得焦点
@@ -516,6 +516,7 @@ pre元素中的文本通常会保留空格和换行符，而文本也会呈现�
     form=""  定义 select 字段所属的一个或多个表单（*form_id）
     name=""  定义下拉列表的名称（*name）
     size=""  规定下拉列表中可见选项的数目（*number）
+
 #### - `optgroup`：把相关的选项组合在一起
 ```html
 <select>
@@ -534,6 +535,7 @@ pre元素中的文本通常会保留空格和换行符，而文本也会呈现�
 ![此处输入图片的描述][11]
 
     disabled  规定禁用该选项组
+
 ##### - `option`：定义下拉列表中的一个选项（一个条目）
     disabled  规定此选项应在首次加载时被禁用
     label=""  定义当使用optgroup时所使用的标注（*text）
