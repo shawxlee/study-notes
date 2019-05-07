@@ -51,6 +51,59 @@
 </html>
 ```
 
+```css
+/* 为选择器分组时，每个选择器独占一行 */
+/* rgb()、rgba()、hsl()、hsla()、rect() 内部只加逗号不加空格 */
+/* 省略小数点前面的0（例如：.5 代替 0.5，-.5px 代替 -0.5px） */
+/* 十六进制值应该全部小写，并且尽量简写（例如：用 #fff 代替 #ffffff） */
+/* 为选择器中的属性添加双引号（例如：input[type="text"]） */
+.selector,
+.selector-secondary,
+.selector[type="text"] {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
+}
+
+/* 相关的属性声明应当归为一组，书写顺序： */
+.declaration-order {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  /* Box-model */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+
+  /* Typography */
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+
+  /* Visual */
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+
+  /* Misc */
+  opacity: 1;
+}
+
+/* 带有前缀的属性，多行缩进对齐 */
+.selector {
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+```
+
 - 电影海报尺寸：
 ```
 原版/再版：99cm x 69cm
