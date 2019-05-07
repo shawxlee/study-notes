@@ -17,6 +17,11 @@
 2. 有序列表
 
 **加粗**   _斜体_   `代码`
+
+表头1|表头2
+-|-
+单元格1-1|单元格1-2
+单元格2-1|单元格2-2
 ```
 
 ## 2. HTML/CSS
@@ -231,7 +236,26 @@ vertical-align: middle;   /* 一般不理想，设置padding-*更方便 */
 
 ## 3. JavaScript/jQuery
 
-- document对象和window对象不能执行animate()
+- jQuery选择器建议：
+```javascript
+`$("#idName")`  //首选
+`$("tagName")`  //其次
+`$("Parent").find("Child")`  //父子
+
+//优先使用原生javascript方法，尽量避免使用jQuery方法
+
+//声明变量做好缓存，使用选择器的次数越少越好
+var cached = jQuery('#top');
+cached.find('p.classA');
+cached.find('p.classB');
+
+//使用链式写法
+$('div').find('h3').eq(2).html('Hello');
+
+//尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
+```
+
+- document对象和window对象不能执行`animate()`
 
 - `display:none` 之后，元素依然存在文档中，所以绑定的事件等脚本仍有效
 
