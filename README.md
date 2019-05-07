@@ -238,9 +238,9 @@ vertical-align: middle;   /* 一般不理想，设置padding-*更方便 */
 
 - jQuery选择器建议：
 ```javascript
-`$("#idName")`  //首选
-`$("tagName")`  //其次
-`$("Parent").find("Child")`  //父子
+$("#idName")  //首选
+$("tagName")  //其次
+$("Parent").find("Child")  //父子
 
 //优先使用原生javascript方法，尽量避免使用jQuery方法
 
