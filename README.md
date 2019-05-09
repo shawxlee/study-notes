@@ -108,6 +108,14 @@
           box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 ```
+- 实现动画效果的经验小结:
+滚动条/多个属性值过渡：jQuery方法 - animate()
+hover/单个属性值过渡：CSS方法 - transition
+延迟执行/循环动画：CSS方法 - animation
+
+- 元素添加绝对定位后会覆盖在同级元素之上，不用z-index
+绝对定位-相对父元素偏移：absolute（荐）
+绝对定位-相对浏览器偏移：fixed
 
 - 电影海报尺寸：
 ```
@@ -360,22 +368,27 @@ $(document).scrollLeft(0);
 
 ## 4. Vue.js
 
+- 单选切换效果：
+```html
+<button :class="{active: order == 0}" @click="order = 0">单选框</button>
+```
+
 - v-for循环中，给style动态绑定函数，根据条件改变样式：
 ```html
-<p :style="changeColor(item)">{{ item.score }}</p>
+<p :style="{color: scoreColor(item)}">{{ item.score }}</p>
 ```
 ```javascript
 changeColor: function (item) {
     if (item.score >= 9) {
-        return 'color: #551A8B';
+        return '#551A8B';
     }
     else if (item.score < 9 && item.score >= 8) {
-        return 'color: #00008B';
+        return '#00008B';
     }
     else {
-        return 'color: #8B0000';
+        return '#8B0000';
     }
-},
+}
 ```
 
 - v-for循环中尽量不使用id，因为id是唯一的，无法循环！但如果非要使用id，可利用index动态绑定不同的id值~
