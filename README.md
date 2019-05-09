@@ -108,14 +108,15 @@
           box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 ```
+
 - 实现动画效果的经验小结:
+```
 滚动条/多个属性值过渡：jQuery方法 - animate()
 hover/单个属性值过渡：CSS方法 - transition
 延迟执行/循环动画：CSS方法 - animation
+```
 
 - 元素添加绝对定位后会覆盖在同级元素之上，不用z-index
-绝对定位-相对父元素偏移：absolute（荐）
-绝对定位-相对浏览器偏移：fixed
 
 - 电影海报尺寸：
 ```
