@@ -17,6 +17,11 @@
 2. 有序列表
 
 **加粗**   _斜体_   `代码`
+
+表头1|表头2
+-|-
+单元格1-1|单元格1-2
+单元格2-1|单元格2-2
 ```
 
 ## 2. HTML/CSS
@@ -49,6 +54,59 @@
     <script type="text/javascript" src="……"></script>
 </body>
 </html>
+```
+
+```css
+/* 为选择器分组时，每个选择器独占一行 */
+/* rgb()、rgba()、hsl()、hsla()、rect() 内部只加逗号不加空格 */
+/* 省略小数点前面的0（例如：.5 代替 0.5，-.5px 代替 -0.5px） */
+/* 十六进制值应该全部小写，并且尽量简写（例如：用 #fff 代替 #ffffff） */
+/* 为选择器中的属性添加双引号（例如：input[type="text"]） */
+.selector,
+.selector-secondary,
+.selector[type="text"] {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
+}
+
+/* 相关的属性声明应当归为一组，书写顺序： */
+.declaration-order {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  /* Box-model */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+
+  /* Typography */
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+
+  /* Visual */
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+
+  /* Misc */
+  opacity: 1;
+}
+
+/* 带有前缀的属性，多行缩进对齐 */
+.selector {
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
 ```
 
 - 电影海报尺寸：
@@ -178,7 +236,26 @@ vertical-align: middle;   /* 一般不理想，设置padding-*更方便 */
 
 ## 3. JavaScript/jQuery
 
-- document对象和window对象不能执行animate()
+- jQuery选择器建议：
+```javascript
+$("#idName")  //首选
+$("tagName")  //其次
+$("Parent").find("Child")  //父子
+
+//优先使用原生javascript方法，尽量避免使用jQuery方法
+
+//声明变量做好缓存，使用选择器的次数越少越好
+var cached = jQuery('#top');
+cached.find('p.classA');
+cached.find('p.classB');
+
+//使用链式写法
+$('div').find('h3').eq(2).html('Hello');
+
+//尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
+```
+
+- document对象和window对象不能执行`animate()`
 
 - `display:none` 之后，元素依然存在文档中，所以绑定的事件等脚本仍有效
 
