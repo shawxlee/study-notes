@@ -127,6 +127,13 @@ event.stopPropagation();
 
 #### • `focus()`：当元素获得焦点时发生 focus 事件
 ```javascript
+$(selector).focus();    //触发focus事件
+$(selector).focus(function);    //将函数绑定到focus事件
+```
+    *function  规定当发生 focus 事件时运行的函数
+
+#### • `on()`：在被选元素及子元素上添加一个或多个事件处理程序
+```javascript
 $(selector).on(event,childSelector,data,function);
 
 //*event：规定要从被选元素移除的一个或多个有效事件或命名空间，由空格分隔多个事件值，也可以是数组
@@ -134,13 +141,6 @@ $(selector).on(event,childSelector,data,function);
     *childSelector  规定只能添加到指定的子元素上的事件处理程序（且不是选择器本身）
     *data  规定传递到函数的额外数据
     *function  规定当事件发生时运行的函数
-
-#### • `on()`：在被选元素及子元素上添加一个或多个事件处理程序
-```javascript
-$(selector).focus();    //触发focus事件
-$(selector).focus(function);    //将函数绑定到focus事件
-```
-    *function  规定当发生 focus 事件时运行的函数
 
 #### • `ready()`：当DOM已经加载，且页面完全呈现时，发生ready事件
 ```javascript
@@ -151,7 +151,18 @@ $(function);
 //*function：文档加载后要运行的函数
 ```
 <br/>
-### 2、jQuery文档操作方法
+### 2、jQuery HTML/CSS 方法
+#### • `addClass()`：向被选元素添加一个或多个类
+```javascript
+$(selector).addClass(class);   
+$(selector).addClass(function(index,oldclass));    //使用函数来添加类
+
+//*class：要添加的class的名称，多个类用空格隔开
+//*function(index,oldclass)：规定返回一个或多个待添加类名的函数
+```
+    *index  接收选择器的index位置
+    *oldclass  接收选择器的旧的类值
+
 #### • `append()`：在被选元素的尾部插入指定内容
 ```javascript
 $(selector).append(content);   
@@ -162,6 +173,43 @@ $(selector).append(function(index,html));    //使用函数来附加内容
 ```
     *index  接收选择器的index位置
     *html  接收选择器的当前HTML
+
+#### • `attr()`：设置或返回被选元素的属性值
+```javascript
+$(selector).attr(attribute);    //返回属性值
+$(selector).attr(attribute,value);    //设置属性/值
+$(selector).attr(attribute,function(index,oldvalue));    //使用函数来设置属性/值
+$(selector).attr({attribute:value, attribute:value ...});    //设置多个属性/值对
+
+//*attribute：规定属性的名称
+//*value：规定属性的值
+//*function(index,oldvalue)：规定返回属性值的函数
+
+//对于布尔值的属性，prop()返回true|false，attr()返回属性名称
+//对于元素中我们自定义的属性，建议使用attr()
+```
+
+#### • `css()`：返回或设置匹配的元素的一个或多个样式属性
+```javascript
+$(selector).css(name);    //返回 CSS 属性值
+$(selector).css(name,value);    //设置 CSS 属性
+$(selector).css(name,function(index,value));    //使用函数来设置 CSS 属性
+$(selector).css({property:value, property:value, ...});    //设置多个 CSS 属性/值对
+
+//*name：规定CSS属性的名称
+//*function(index,value)：规定返回CSS属性新值的函数
+//*property:value：规定要设置为样式属性的“名称/值对”对象
+```
+    *value  规定 CSS 属性的值；如果设置了空字符串值，则从元素中删除指定属性
+    *index  接受选择器的 index 位置
+    *oldvalue  接受 CSS 属性的当前值
+
+#### • `hasClass()`：检查被选元素是否包含指定的class
+```javascript
+$(selector).hasClass(class);
+
+//*class：需要在指定元素中查找的类
+```
 
 #### • `html()`：返回或设置被选元素的内容 (innerHTML)
 ```javascript
@@ -175,46 +223,24 @@ $(selector).html(function(index,oldcontent));    //使用函数来设置元素�
     *index  接收选择器的index位置
     *oldcontent  接收选择器的当前内容
 
-#### • `text()`：设置或返回被选元素的文本内容
+#### • `prop()`：设置或返回被选元素的属性和值
 ```javascript
-$(selector).text();    //返回文本内容，会删除 HTML 标记
-$(selector).text(content);    //设置文本内容
-$(selector).text(function(index,oldcontent));    //使用函数来设置元素内容
+$(selector).prop(property);    //返回属性的值
+$(selector).prop(property,value);    //设置属性和值
+$(selector).prop(property,function(index,currentvalue));    //使用函数设置属性和值
+$(selector).prop({property:value, property:value,...});    //置多个属性和值
 
-//*function(index,oldcontent)：规定返回被选元素的新文本内容的函数
+//*property：规定属性的名称
+
+//对于布尔值的属性，prop()返回true|false，attr()返回属性名称
+//对于元素原本具有的属性，建议使用prop()
 ```
-    *content  规定被选元素的新文本内容（特殊字符会被编码）
-    *index  接收选择器的index位置
-    *oldcontent  接收选择器的当前内容
-<br/>
-### 3、jQuery属性操作方法
-#### • `addClass()`：向被选元素添加一个或多个类
+    *value  规定属性的值
+    function(*index,*currentvalue)  规定返回要设置的属性值的函数（*index：检索集合中元素的 index 位置  *currentvalue：检索被选元素的当前属性值）
+
+#### • `remove()`：移除被选元素，包括所有的文本和子节点
 ```javascript
-$(selector).addClass(class);   
-$(selector).addClass(function(index,oldclass));    //使用函数来添加类
-
-//*class：要添加的class的名称，多个类用空格隔开
-//*function(index,oldclass)：规定返回一个或多个待添加类名的函数
-```
-    *index  接收选择器的index位置
-    *oldclass  接收选择器的旧的类值
-
-#### • `attr()`：设置或返回被选元素的属性值
-```javascript
-$(selector).attr(attribute);    //返回属性值
-$(selector).attr(attribute,value);    //设置属性/值
-$(selector).attr(attribute,function(index,oldvalue));    //使用函数来设置属性/值
-$(selector).attr({attribute:value, attribute:value ...});    //设置多个属性/值对
-
-//*attribute：规定属性的名称
-//*value：规定属性的值
-//*function(index,oldvalue)：规定返回属性值的函数
-```
-#### • `hasClass()`：检查被选元素是否包含指定的class
-```javascript
-$(selector).hasClass(class);
-
-//*class：需要在指定元素中查找的类
+$(selector).remove();
 ```
 
 #### • `removeClass()`：从被选元素移除一个或多个类
@@ -227,6 +253,34 @@ $(selector).removeClass(function(index,oldclass));    //使用函数来移除类
     *class  要移除的class的名称，多个类用空格隔开
     *index  接收选择器的index位置
     *oldclass  接收选择器的旧的类值
+
+#### • `scrollLeft()`：返回或设置匹配元素的滚动条的水平位置（像素值）
+```javascript
+$(selector).scrollLeft();    //返回水平滚动条位置
+$(selector).scrollLeft(position);    //设置水平滚动条位置
+```
+    *position  规定以像素计的新位置
+
+#### • `text()`：设置或返回被选元素的文本内容
+```javascript
+$(selector).text();    //返回文本内容，会删除 HTML 标记
+$(selector).text(content);    //设置文本内容
+$(selector).text(function(index,oldcontent));    //使用函数来设置元素内容
+
+//*function(index,oldcontent)：规定返回被选元素的新文本内容的函数
+```
+    *content  规定被选元素的新文本内容（特殊字符会被编码）
+    *index  接收选择器的index位置
+    *oldcontent  接收选择器的当前内容
+
+#### • `toggleClass()`：对添加和移除被选元素的一个或多个类进行切换
+```javascript
+$(selector).toggleClass(classname,function(index,currentclass),switch);
+
+//*classname：规定添加或移除的一个或多个类名。如需规定若干个类，请使用空格分隔类名
+```
+    *function(index,currentclass)  规定返回需要添加/删除的一个或多个类名的函数（*index：返回集合中元素的 index 位置  *currentclass：返回被选元素的当前类名）
+    *switch  布尔值，规定是否仅仅添加（true）或移除（false）类
 
 #### • `val()`：返回或设置被选元素的值
 ```javascript
@@ -244,6 +298,16 @@ $(selector).val(function(index,oldvalue));    //使用函数设置 Value 属性�
 
 ## jQuery函数
 ### 1、jQuery效果函数
+#### • `animate()`：执行 CSS 属性集的自定义动画
+```javascript
+$(selector).animate({styles},speed,easing,callback);
+
+//*styles：规定产生动画效果的一个或多个 CSS 属性/值
+```
+    *speed  规定动画的速度（毫秒|"slow"|"fast"）
+    *easing  规定在动画的不同点中元素的速度（"swing"|"linear"）
+    *callback  animate 函数执行完之后，要执行的函数。
+
 #### • `fadeIn()`：使用淡入效果来显示一个隐藏的元素
 ```javascript
 $(selector).fadeIn(speed,callback);
@@ -279,31 +343,9 @@ $(selector).toggle(speed,callback,switch);
     *speed  元素切换状态的速度
     *callback  toggle函数执行完之后，要执行的函数
     *switch  布尔值，规定 toggle 是否隐藏或显示所有被选元素
-<br/>
-### 2、jQuery CSS操作函数
-#### • `css()`：返回或设置匹配的元素的一个或多个样式属性
-```javascript
-$(selector).css(name);    //返回 CSS 属性值
-$(selector).css(name,value);    //设置 CSS 属性
-$(selector).css(name,function(index,value));    //使用函数来设置 CSS 属性
-$(selector).css({property:value, property:value, ...});    //设置多个 CSS 属性/值对
 
-//*nam：规定CSS属性的名称
-//*function(index,value)：规定返回CSS属性新值的函数
-//*property:value：规定要设置为样式属性的“名称/值对”对象
-```
-    *value  规定 CSS 属性的值；如果设置了空字符串值，则从元素中删除指定属性
-    *index  接受选择器的 index 位置
-    *oldvalue  接受 CSS 属性的当前值
-
-#### • `scrollLeft()`：返回或设置匹配元素的滚动条的水平位置（像素值）
-```javascript
-$(selector).scrollLeft();    //返回水平滚动条位置
-$(selector).scrollLeft(position);    //设置水平滚动条位置
-```
-    *position  规定以像素计的新位置
 <br/>
-### 3、jQuery Ajax操作函数
+### 2、jQuery Ajax操作函数
 #### • `ajax()`：通过HTTP请求加载远程数据
 ```javascript
 jQuery.ajax([settings]);
@@ -438,7 +480,7 @@ jQuery.ajax([settings]);
     </tr>
 </table>
 <br/>
-### 4、jQuery遍历函数
+### 3、jQuery遍历函数
 #### • `each()`：为每个匹配元素规定运行的函数
 ```javascript
 $(selector).each(function(index,element));

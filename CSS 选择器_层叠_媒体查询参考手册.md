@@ -1,8 +1,6 @@
 ﻿# CSS 选择器|层叠|媒体查询参考手册
 Cascading Style Sheets - 层叠样式表
 
-标签（空格分隔）： css 选择器 
-
 ---
 
 ## CSS选择器
@@ -508,9 +506,9 @@ h1, p {color: red;}   /* 所有h1、p元素都变红 */
 <table>
    <thead>
     <tr style="background: #555555; color: #fff;">
-     <th>+选择器类型</th>
-     <th>+特殊性</th>
-     <th>=优先级</th>
+     <th>选择器类型</th>
+     <th>特殊性</th>
+     <th>优先级</th>
     </tr>
    </thead>
    <tbody>
