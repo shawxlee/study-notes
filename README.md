@@ -114,7 +114,7 @@
 调整属性 | 组件名称
 --- | ---
 line-height | headings、display、input-btn、btn、input、custom-select、custom-file、pagination、form-feedback-tooltip、modal-title
-margin | paragraph、headings、hr、label、form-text、form-check-input、form-check-inline、form-check-inline-input、form-group、form-feedback、nav-divider、dropdown-divider、card-group、card-deck、card-columns、tooltip、modal-dialog、alert、breadcrumb、
+margin | paragraph、headings、hr、label、form-text、form-check-input、form-check-inline、form-check-inline-input、form-group、form-feedback、nav-divider、dropdown-divider、card-group、card-deck、card-columns、tooltip、modal-dialog、alert、breadcrumb
 padding | mark、list-inline、table-cell、input-btn、btn、input、custom-select、custom-select-indicator、custom-select-feedback-icon、custom-file、nav-link、navbar、navbar-nav-link、navbar-brand、navbar-toggler、dropdown、dropdown-item、pagination、jumbotron、card-img-overlay、tooltip、form-feedback-tooltip、popover-header、popover-body、toast、badge、badge-pill、modal-inner、modal-header、alert、list-group-item、thumbnail、breadcrumb、breadcrumb-item、kbd
 
 - 实现动画效果的经验小结：
@@ -148,73 +148,95 @@ hover/单个属性值过渡 | CSS - transition |
 
 - 调整按钮尺寸：
 ```css
-margin: 0;
-padding: 0;
-width: 3.5rem;   /* 设置宽高 */
-height: 2rem;
-font-size: 0.9rem;   /* 设置字号 */
+button {
+    margin: 0;
+    padding: 0;
+    width: 3.5rem;   /* 设置宽高 */
+    height: 2rem;
+    font-size: 0.9rem;   /* 设置字号 */
+}
 ```
 
 - 调整图标尺寸：
 ```css
-font-size: 1.5rem;   /* 默认字号的1.5倍大小 */
+i {
+    font-size: 1.5rem;
+}
 ```
 
 - 元素尺寸填满当前窗口（写在该元素上）：
 ```css
-width: 100vw; 
-height: 100vh;
+body {
+    width: 100vw; 
+    height: 100vh;
+}
 ```
 
 - 圆形边框：
 ```css
-border-radius: 50%;
+div {
+    border-radius: 50%;
+}
 ```
 
 - 背景颜色透明度：
 ```css
-background-color: rgba(190, 190, 190, 0.6);    /* R,G,B,透明度 */
+div {
+    background-color: rgba(190,190,190,.6);    /* R,G,B,透明度 */
+}
 ```
 
 - 首行缩进两个字符：
 ```css
-text-indent: 2em;
+p {
+    text-indent: 2em;
+}
 ```
 
 - 溢出部分显示滚动条查看：
 ```css
-height: 100vh;
-overflow: auto;
+div {
+    height: 100vh;
+    overflow: auto;
+}
 ```
 
 - 元素高度始终为当前窗口高度减去固定高度：
 ```css
-height: calc(100vh - 100px);     /* 运算符前后都必需有空格 */
+div {
+    height: calc(100vh - 100px);     /* 运算符前后都必需有空格 */
+}
 ```
 
 - 多行文本溢出部分省略：
 ```css
-overflow: hidden;
-text-overflow: ellipsis;     /* 溢出部分省略为... */
-/* text-overflow: '>>';     Firefox下，溢出部分可省略为字符串内容 */
-display: -webkit-box;
--webkit-line-clamp: 3;     /* 指定文本可显示的行数 */
--webkit-box-orient: vertical;
+p {
+    overflow: hidden;
+    text-overflow: ellipsis;     /* 溢出部分省略为... */
+ /* text-overflow: '>>';     Firefox下，溢出部分可省略为字符串内容 */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;     /* 指定文本可显示的行数 */
+    -webkit-box-orient: vertical;
+}
 ```
 
 - CSS画直角箭头：
 ```css
-display: inline-block;
-width: 15px;
-height: 15px;
-border-top: 1px solid;
-border-right: 1px solid;
-transform: rotate(45deg);
+div {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    transform: rotate(45deg);
+}
 ```
 
 - 块级元素容器尺寸自适应内容（写在该元素上）：
 ```css
-display: inline-block;    /* 仍可设置宽高 */
+.parent {
+    display: inline-block;    /* 仍可设置宽高 */
+}
 ```
 
 - 块元素清除内部元素的浮动（写在容器元素上）：
@@ -233,14 +255,18 @@ display: inline-block;    /* 仍可设置宽高 */
 
 - 使input与其他元素内联（写在该元素上）：
 ```css
-float: left|right;   /* 其他元素可能也需要一起浮动 */
+input {
+    float: left;   /* 其他元素可能也需要一起浮动 */
+}
 ```
 
 - 内联元素中的文本内容居中（写在该元素上）：
 ```css
-height: 3rem;
-line-height: 3rem;
-text-align: center; 
+a {
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+} 
 ```
 
 ## 3. JavaScript/jQuery
@@ -330,7 +356,7 @@ alert(b);    //此时b = false，再次执行变为true，再次执行变为fals
 --- | ---
 `return ……` | 返回值，存储在参数中，不写入HTML
 `$(……).text()` | 返回文本内容，会删除HTML标记 ；设置文本内容，写入原HTML，会覆盖
-`elementObject.innerHTML=……` | 返回或设置HTML内容，写入原HTML，会覆盖
+`…….innerHTML=……` | 返回或设置HTML内容，写入原HTML，会覆盖
 `$(……).html()` | 返回或设置HTML内容，写入原HTML，会覆盖
 `document.write(……)` | 返回或设置HTML/JavaScript，写入原HTML，会覆盖
 
