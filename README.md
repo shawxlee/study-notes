@@ -18,10 +18,10 @@
 
 **加粗**   _斜体_   `代码`
 
-表头1|表头2
--|-
-单元格1-1|单元格1-2
-单元格2-1|单元格2-2
+表头1 | 表头2
+--- | ---
+单元格1-1 | 单元格1-2
+单元格2-1 | 单元格2-2
 ```
 
 ## 2. HTML/CSS
@@ -109,35 +109,41 @@
 }
 ```
 
-- 实现动画效果的经验小结:
-```
-滚动条/多个属性值过渡：jQuery方法 - animate()
-hover/单个属性值过渡：CSS方法 - transition
-延迟执行/循环动画：CSS方法 - animation
-```
+- bootstrap组件居中对齐：
 
-- 元素添加绝对定位后会覆盖在同级元素之上，不用z-index
+调整属性 | 组件名称
+--- | ---
+line-height | headings、display、input-btn、btn、input、custom-select、custom-file、pagination、form-feedback-tooltip、modal-title
+margin | paragraph、headings、hr、label、form-text、form-check-input、form-check-inline、form-check-inline-input、form-group、form-feedback、nav-divider、dropdown-divider、card-group、card-deck、card-columns、tooltip、modal-dialog、alert、breadcrumb、
+padding | mark、list-inline、table-cell、input-btn、btn、input、custom-select、custom-select-indicator、custom-select-feedback-icon、custom-file、nav-link、navbar、navbar-nav-link、navbar-brand、navbar-toggler、dropdown、dropdown-item、pagination、jumbotron、card-img-overlay、tooltip、form-feedback-tooltip、popover-header、popover-body、toast、badge、badge-pill、modal-inner、modal-header、alert、list-group-item、thumbnail、breadcrumb、breadcrumb-item、kbd
+
+- 实现动画效果的经验小结：
+
+场景 | 方法 | 备注
+--- | --- | ---
+滚动条/多个属性值过渡 | jQuery - animate() | document和window对象不能执行此方法
+hover/单个属性值过渡 | CSS - transition | 
+延迟执行/循环动画 | CSS - animation | 
+
+
+- 元素添加绝对定位后会覆盖在同级元素之上，不用设置`z-index`
+
+- `display: none`之后，元素依然存在文档中，所以绑定的事件等脚本仍有效
 
 - 电影海报尺寸：
-```
-原版/再版：99cm x 69cm
-授权：88cm x 59cm
-```
+
+版本 | 尺寸
+--- | ---
+原版/再版 | 99*69cm
+授权 | 88*59cm
 
 - 内联元素自适应父元素尺寸：
 ```css
-/* 先给父元素设置宽高 */
+/* 先给父元素设置宽高，然后在子元素上调整 */
 .child {
     width: 100%;
     height: 100%;
-    white-space: nowrap;    /* 避免元素内文字换行 */
 }
-```
-
-- 选择器层级：
-```css
-/* 同一元素，位于id选择器下优先级更高 */
-#idName button {……} > .className button {……}
 ```
 
 - 调整按钮尺寸：
@@ -186,12 +192,6 @@ overflow: auto;
 height: calc(100vh - 100px);     /* 运算符前后都必需有空格 */
 ```
 
-- 图片自适应div尺寸：
-```html
-<!-- 先给父元素设置固定宽高，img设置为100% -->
-<img src="/img.jpg" width="100%" height="100%">
-```
-
 - 多行文本溢出部分省略：
 ```css
 overflow: hidden;
@@ -214,8 +214,7 @@ transform: rotate(45deg);
 
 - 块级元素容器尺寸自适应内容（写在该元素上）：
 ```css
-display: inline-block;
-/* 仍可设置宽高 */
+display: inline-block;    /* 仍可设置宽高 */
 ```
 
 - 块元素清除内部元素的浮动（写在容器元素上）：
@@ -239,8 +238,9 @@ float: left|right;   /* 其他元素可能也需要一起浮动 */
 
 - 内联元素中的文本内容居中（写在该元素上）：
 ```css
-text-align: center;
-vertical-align: middle;   /* 一般不理想，设置padding-*更方便 */
+height: 3rem;
+line-height: 3rem;
+text-align: center; 
 ```
 
 ## 3. JavaScript/jQuery
@@ -264,13 +264,16 @@ $('div').find('h3').eq(2).html('Hello');
 //尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
 ```
 
-- document对象和window对象不能执行`animate()`
-
-- `display:none` 之后，元素依然存在文档中，所以绑定的事件等脚本仍有效
+- 滚动条效果
+```javascript
+$("html, body").animate({ scrollTop: 0 }, 300, "linear");    // 滚动到顶部
+$("html, body").animate({ scrollTop: $(document).height() }, 300, "linear");    // 滚动到底部
+$(document).scrollLeft(0);    // 复位水平滚动条
+```
 
 - 点击除该元素以外的其他位置触发事件：
 ```javascript
-//需是同一类事件（如click事件）
+//需是同一类事件（例如同为点击事件）
 $(document).click(function(){
     ……
 });
@@ -279,47 +282,39 @@ $("#idName").click(function(event){
 });
 ```
 
-- Truthy（真值）：
-```javascript
-true    {}    []    42    -42    "foo"    new Date()    3.14    -3.14    Infinity    -Infinity
-```
-- Falsy（假值）：
-```javascript
-false    null    undefined    0    NaN    ' '    " "    ` `    document.all
-```
+- 真假值：
 
-- 正则表达式格式：
-```javascript
-/^……$/
-```
+Truthy（真值） | Falsy（假值）
+--- | ---
+`true`  `{}`  `[]`  `42`  `-42`  `"foo"`  `new Date()`  `3.14`  `-3.14`  `Infinity`  `-Infinity` | `false`  `null`  `undefined`  `0`  `NaN`  `' '`  `" "`  `` ``  `document.all`
 
 - YYYY-MM-DD（简单位数验证）：
 ```javascript
-\d{4}-\d{2}-\d{2}
+/^\d{4}-\d{2}-\d{2}$/
 ```
 - YYYY-MM-DD（考虑闰年）：
 ```javascript
-(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)
+/^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/
 ```
 - YYYY-/.MM-/.DD（考虑闰年）：
 ```javascript
-(?:(?!0000)[0-9]{4}([-/.])(?:(?:0[1-9]|1[0-2])([-/.])(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])([-/.])(?:29|30)|(?:0[13578]|1[02])([-/.])31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)([-/.])02([-/.])29)
+/^(?:(?!0000)[0-9]{4}([-/.])(?:(?:0[1-9]|1[0-2])([-/.])(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])([-/.])(?:29|30)|(?:0[13578]|1[02])([-/.])31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)([-/.])02([-/.])29)$/
 ```
 - YYYY-/.M(M)-/.D(D)（考虑闰年）：
 ```javascript
-(?:(?!0000)[0-9]{4}([-/.])(?:(?:0?[1-9]|1[0-2])\1(?:0?[1-9]|1[0-9]|2[0-8])|(?:0?[13-9]|1[0-2])\1(?:29|30)|(?:0?[13578]|1[02])\1(?:31))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)([-/.])0?2\2(?:29))
+/^(?:(?!0000)[0-9]{4}([-/.])(?:(?:0?[1-9]|1[0-2])\1(?:0?[1-9]|1[0-9]|2[0-8])|(?:0?[13-9]|1[0-2])\1(?:29|30)|(?:0?[13578]|1[02])\1(?:31))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)([-/.])0?2\2(?:29))$/
 ```
 - DD/MM/YYYY（考虑闰年）：
 ```javascript
-(((0[1-9]|[12][0-9]|3[01])/((0[13578]|1[02]))|((0[1-9]|[12][0-9]|30)/(0[469]|11))|(0[1-9]|[1][0-9]|2[0-8])/(02))/([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3}))|(29/02/(([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00)))
+/^(((0[1-9]|[12][0-9]|3[01])/((0[13578]|1[02]))|((0[1-9]|[12][0-9]|30)/(0[469]|11))|(0[1-9]|[1][0-9]|2[0-8])/(02))/([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3}))|(29/02/(([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00)))$/
 ```
 - D(D)-/.M(M)-/.YYYY（考虑闰年）：
 ```javascript
-(?:(?:(?:0?[1-9]|1[0-9]|2[0-8])([-/.])(?:0?[1-9]|1[0-2])|(?:29|30)([-/.])(?:0?[13-9]|1[0-2])|31([-/.])(?:0?[13578]|1[02]))([-/.])(?!0000)[0-9]{4}|29([-/.])0?2([-/.])(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00))
+/^(?:(?:(?:0?[1-9]|1[0-9]|2[0-8])([-/.])(?:0?[1-9]|1[0-2])|(?:29|30)([-/.])(?:0?[13-9]|1[0-2])|31([-/.])(?:0?[13578]|1[02]))([-/.])(?!0000)[0-9]{4}|29([-/.])0?2([-/.])(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00))$/
 ```
 - hh:mm:ss（24时制）：
 ```javascript
-([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]
+/^([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/
 ```
 
 - 布尔类型变量取反，实现切换效果：
@@ -330,12 +325,14 @@ alert(b);    //此时b = false，再次执行变为true，再次执行变为fals
 ```
 
 - 返回操作对比：
-```javascript
-return ……;   //返回值，存储在参数中，不写入HTML
-$(……).text()    //返回文本内容，会删除HTML标记 ；设置文本内容，写入原HTML，会覆盖
-$(……).html() | elementObject.innerHTML=……    //返回或设置HTML内容，写入原HTML，会覆盖
-document.write(……,……,……)    //返回或设置HTML/JavaScript，写入原HTML，会覆盖
-```
+
+方法 | 效果
+--- | ---
+`return ……` | 返回值，存储在参数中，不写入HTML
+`$(……).text()` | 返回文本内容，会删除HTML标记 ；设置文本内容，写入原HTML，会覆盖
+`elementObject.innerHTML=……` | 返回或设置HTML内容，写入原HTML，会覆盖
+`$(……).html()` | 返回或设置HTML内容，写入原HTML，会覆盖
+`document.write(……)` | 返回或设置HTML/JavaScript，写入原HTML，会覆盖
 
 - 替换一条字符串中的多个字符：
 ```javascript
@@ -359,13 +356,12 @@ $(function(){……})
 $.funcName = function(){……};
 ```
 
-- click事件触发顺序：`mousedown → mouseup → click`
-- focus事件触发顺序：`mousedown → focus → mouseup → click`
+- 事件触发顺序：
 
-- 复位水平滚动条位置：
-```javascript
-$(document).scrollLeft(0);
-```
+click事件 | focus事件
+--- | ---
+mousedown → mouseup → click | mousedown → focus → mouseup → click
+
 
 ## 4. Vue.js
 
@@ -395,24 +391,26 @@ changeColor: function (item) {
 - v-for循环中尽量不使用id，因为id是唯一的，无法循环！但如果非要使用id，可利用index动态绑定不同的id值~
 
 - 命名法：
-```
-camelCase：变量、参数、函数、方法、方法属性、id、空间
-PascalCase：类、枚举、Vue组件
-kebab-case：html文件、标签、元素属性、选择器
-underline_case：css文件
-UNDERLINE_CASE：常量、枚举属性
-_underlinecase：私有成员
-```
+
+命名法 | 适用范围
+--- | ---
+camelCase | 变量、参数、函数、方法、方法属性、id、空间
+PascalCase | 类、枚举、Vue组件
+kebab-case | html文件、标签、元素属性、选择器
+underline_case | css文件
+UNDERLINE_CASE | 常量、枚举属性
+_underlinecase | 私有成员
 
 - 命名用词：
-```
-变量名：（名词短语）、 isName/hasName（布尔值）
-函数/方法名：canName/hasName/isName（布尔值）、getName（获取值）、setName/loadName（无返回或……）
-Vue方法名：（动宾短语）、onName（事件）、setName/getName/openName/closeName/jumpName/loadName（常用单词）
-```
+
+名称范围 | 建议用词
+--- | ---
+变量名 | （名词短语）、 isName/hasName（布尔值）
+函数/方法名 | canName/hasName/isName（布尔值）、getName（获取值）、setName/loadName（无返回或……）
+Vue方法名 | （动宾短语）、onName（事件）、setName/getName/openName/closeName/jumpName/loadName（常用单词）
 
 - 实例中选项的顺序：
-```
+```javascript
 components
 props
 data
