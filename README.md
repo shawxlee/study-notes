@@ -149,6 +149,7 @@ a {
     padding-top: .35rem;    /* step4：paddingTop=(height-fontSize)/2 */
     font-size: .8rem;    /* step2：确定字号 */
     line-height: 1;    /* step3：行高设为字号的1倍 */
+    text-align: center;    /* step5：文本水平居中 */
 } 
 ```
 
