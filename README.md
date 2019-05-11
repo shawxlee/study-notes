@@ -113,6 +113,25 @@
 
 - 因导航栏固定需向body添加padding，但会影响锚点定位，所以建议用设置了高度的空div撑开页面内容
 
+- bootstrap全局样式修改：
+
+属性 | 基础值
+--- | ---
+bg | `#4F94CD`(component-active)  `#fcf8e3`(mark)
+border-color | `#dee2e6`  `rgba(#000, .1)`(hr)
+border-radius | `.25rem`  `.3rem`(lg)  `.2rem`(sm)  `50rem`(rounded-pill)
+border-width | `1px`
+box-shadow | `0 .5rem 1rem rgba(#000, .15)`  `0 1rem 3rem rgba(#000, .175)`(lg)  `0 .125rem .25rem rgba(#000, .075)`(sm)  `inset 0 -.1rem 0 rgba($black, .25)`(kbd)
+color | `white`(component-active)  `#6c757d`(muted/blockquote-small)
+font-size | `1rem`  `1.25rem`(lg/lead/blockquote)  `.875rem`(sm)  `6rem`(display1)  `5.5rem`(display2)  `4.5rem`(display3)  `3.5rem`(display4)  `80%`(small/blockquote-small)
+font-weight | `400`  `700`(bold/dt/nested-kbd)  `500`(headings)  `300`(display/lead)
+line-height | `1.5`  `1.2`(headings/display)
+margin | `.255em`(caret)  `.5rem`(headings-margin-bottom)  `1rem`(hr-margin-y)
+padding | `.255em`(caret)  `.2em`(mark)  `.5rem`(list-inline)
+transition | `all .2s ease-in-out`  `opacity .15s linear`(fade)  `height .35s ease`(collapse)
+vertical-align | `.255em`(caret)
+width | `.3em`(caret)
+
 - bootstrap组件居中对齐：
 
 调整属性 | 组件名称
