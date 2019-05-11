@@ -109,18 +109,14 @@
 }
 ```
 
-- 初次加载后显示的tab-pane初始页面不要fade，会一片空白
-
-- 因导航栏固定需向body添加padding，但会影响锚点定位，所以建议用设置了高度的空div撑开页面内容
-
 - bootstrap全局样式修改：
 
 属性 | 基础值
 --- | ---
-bg | `#4F94CD`(component-active)  `#fcf8e3`(mark)
-border-color | `#dee2e6`  `rgba(#000, .1)`(hr)
-border-radius | `.25rem`  `.3rem`(lg)  `.2rem`(sm)  `50rem`(rounded-pill)
-border-width | `1px`
+bg | `white`(body/input/input-focus/nav-tabs-link-active/dropdown/pagination/pagination-disabled/card/popover/modal-content/list-group/list-group-disabled/thumbnail/carousel-indicator-active) `#4F94CD`(component-active/dropdown-link-active/pagination-active/progress-bar/list-group-active)  `#fcf8e3`(mark)  `rgba(#000, .05)`(table-accent)  `rgba(#000, .075)`(table-hover/table-active)  `#e9ecef`(table-head/input-disabled/input-group-addon/dropdown-divider/pagination-hover/jumbotron/progress/list-group-action-active/breadcrumb)  `#343a40`(table-dark)  `rgba($white, .05)`(table-dark-accent)  `rgba($white, .075)`(table-dark-hover)  `#f8f9fa`(dropdown-link-hover/list-group-hover)  `rgba(#000, .03)`(card-cap)  `black`(tooltip/modal-backdrop)  `#212529`(kbd)
+border-color | `#dee2e6`(base/table/nav-tabs/pagination/pagination-hover/pagination-disabled/modal-header/modal-footer/thumbnail)  `rgba(#000, .1)`(hr/navbar-light-toggler/toast)  `#ced4da`(input/input-group-addon)  `#A9A9A9`(nav-pills-link)  `white`(nav-pills-link-active)  `rgba(#fff, .1)`(navbar-dark-toggler)  `rgba(#000, .15)`(dropdown)  `#4F94CD`(pagination-active/list-group-active)  `rgba(#000, .125)`(card/list-group)  `rgba(#000, .2)`(popover/modal-content)  `rgba(#000, .05)`(toast-header)
+border-radius | `.25rem`(base/btn/input/nav-tabs/nav-pills/navbar-toggler/dropdown/card/tooltip/form-feedback-tooltip/toast/badge/alert/progress/list-group/thumbnail/breadcrumb)  `.3rem`(lg/btn-lg/input-lg/popover/modal-content)  `.2rem`(sm/btn-sm/input-sm)  `50rem`(rounded-pill) `10rem`(badge-pill)
+border-width | `1px`(base/hr/table/input-btn/btn/input/nav-tabs/dropdown/pagination/card/popover/toast/modal-content/modal-header/modal-footer/alert/list-group/thumbnail)  `.25em`(spinner)  `.2em`(spinner-sm)
 box-shadow | `0 .5rem 1rem rgba(#000, .15)`  `0 1rem 3rem rgba(#000, .175)`(lg)  `0 .125rem .25rem rgba(#000, .075)`(sm)  `inset 0 -.1rem 0 rgba($black, .25)`(kbd)
 color | `white`(component-active)  `#6c757d`(muted/blockquote-small)
 font-size | `1rem`  `1.25rem`(lg/lead/blockquote)  `.875rem`(sm)  `6rem`(display1)  `5.5rem`(display2)  `4.5rem`(display3)  `3.5rem`(display4)  `80%`(small/blockquote-small)
@@ -140,6 +136,10 @@ line-height | headings、display、input-btn、btn、input、custom-select、cus
 margin | paragraph、headings、hr、label、form-text、form-check-input、form-check-inline、form-check-inline-input、form-group、form-feedback、nav-divider、dropdown-divider、card-group、card-deck、card-columns、tooltip、modal-dialog、alert、breadcrumb
 padding | mark、list-inline、table-cell、input-btn、btn、input、custom-select、custom-select-indicator、custom-select-feedback-icon、custom-file、nav-link、navbar、navbar-nav-link、navbar-brand、navbar-toggler、dropdown、dropdown-item、pagination、jumbotron、card-img-overlay、tooltip、form-feedback-tooltip、popover-header、popover-body、toast、badge、badge-pill、modal-inner、modal-header、alert、list-group-item、thumbnail、breadcrumb、breadcrumb-item、kbd
 
+- 初次加载后显示的tab-pane初始页面不要fade，会一片空白
+
+- 因导航栏固定需向body添加padding，但会影响锚点定位，所以建议用设置了高度的空div撑开页面内容
+
 - 实现动画效果的经验小结：
 
 场景 | 方法 | 备注
@@ -147,7 +147,6 @@ padding | mark、list-inline、table-cell、input-btn、btn、input、custom-sel
 滚动条/多个属性值过渡 | jQuery - animate() | document和window对象不能执行此方法
 hover/单个属性值过渡 | CSS - transition | 
 延迟执行/循环动画 | CSS - animation | 
-
 
 - 元素添加绝对定位后会覆盖在同级元素之上，不用设置`z-index`
 
