@@ -296,10 +296,10 @@ $('div').find('h3').eq(2).html('Hello');
 
 - if语句与switch语句
 
-选项数量（含default） | 适用语句
+语句 | 适用场合
 --- | ---
-≤ 5 | if
-≥ 5 | switch
+if | 布尔值；动态/区间的值；复杂的逻辑关系；选项数量小于5个
+switch | 整数/字符串；固定/有限的值；选项数量（含default）大于5个
 
 - 滚动条效果
 ```javascript
