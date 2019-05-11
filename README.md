@@ -142,6 +142,16 @@ padding | mark、list-inline、table-cell、input-btn、btn、input、custom-sel
 
 - 因导航栏固定需向body添加padding，但会影响锚点定位，所以建议用设置了高度的空div撑开页面内容
 
+- 内联元素内的文字居中（写在该元素上）：
+```css
+a {
+	height: 1.5rem;  /* step1：确定高度 */
+    padding-top: .35rem;  /* step4：paddingTop=(height-fontSize)/2 */
+	font-size: .8rem;  /* step2：确定字号 */
+	line-height: 1;  /* step3：行高设为字号的1倍 */
+} 
+```
+
 - 实现动画效果的经验小结：
 
 场景 | 方法 | 备注
@@ -282,15 +292,6 @@ div {
 input {
     float: left;   /* 其他元素可能也需要一起浮动 */
 }
-```
-
-- 内联元素中的文本内容居中（写在该元素上）：
-```css
-a {
-    height: 3rem;
-    line-height: 3rem;
-    text-align: center;
-} 
 ```
 
 ## 3. JavaScript/jQuery
