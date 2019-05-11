@@ -294,6 +294,13 @@ $('div').find('h3').eq(2).html('Hello');
 //尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
 ```
 
+- if语句与switch语句
+
+选项数量（含default） | 适用语句
+--- | ---
+≤ 5 | if
+≥ 5 | switch
+
 - 滚动条效果
 ```javascript
 $("html, body").animate({ scrollTop: 0 }, 300, "linear");    // 滚动到顶部
