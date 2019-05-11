@@ -145,10 +145,10 @@ padding | mark、list-inline、table-cell、input-btn、btn、input、custom-sel
 - 内联元素内的文字居中（写在该元素上）：
 ```css
 a {
-	height: 1.5rem;  /* step1：确定高度 */
-    padding-top: .35rem;  /* step4：paddingTop=(height-fontSize)/2 */
-	font-size: .8rem;  /* step2：确定字号 */
-	line-height: 1;  /* step3：行高设为字号的1倍 */
+    height: 1.5rem;    /* step1：确定高度 */
+    padding-top: .35rem;    /* step4：paddingTop=(height-fontSize)/2 */
+    font-size: .8rem;    /* step2：确定字号 */
+    line-height: 1;    /* step3：行高设为字号的1倍 */
 } 
 ```
 
