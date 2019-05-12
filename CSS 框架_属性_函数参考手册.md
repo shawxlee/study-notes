@@ -1069,7 +1069,7 @@ div {overflow: visible;}
 <br/>
 ### • `overflow-wrap`：设置或检索当内容超过指定容器的边界时是否断行
 ```css
-div {overflow-wrap：normal;}
+div {overflow-wrap: normal;}
 
 /* 使用 overflow-wrap 时，最好同时使用 word-wrap 作为备选兼容 */
 ```
