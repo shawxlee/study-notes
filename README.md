@@ -324,9 +324,10 @@ $('div').find('h3').eq(2).html('Hello');
 `filter()` | 检测数组中符合条件的所有元素 | 新数组 | function(currentValue,index,arr), thisValue
 `some()` | 使用指定函数检测数组中的每个元素 | true/false | function(currentValue,index,arr), thisValue
 **遍历执行函数** | **作用** | **返回** | **参数**
-`find()` | 为数组中的每个元素都调用一次函数执行 | 元素值/undefined | function(currentValue,index,arr), thisValue
-`findIndex()` | 为数组中的每个元素都调用一次函数执行 | 索引/-1 | function(currentValue,index,arr), thisValue
+`find()` | 为数组中的每个元素依次执行函数 | 元素值/undefined | function(currentValue,index,arr), thisValue
+`findIndex()` | 为数组中的每个元素依次执行函数 | 索引/-1 | function(currentValue,index,arr), thisValue
 `forEach()` | 调用数组的每个元素传递给回调函数 | 函数执行结果 | function(currentValue,index,arr), thisValue
+`map()` | 按照原始数组元素顺序依次处理元素 | 函数执行结果 | function(currentValue,index,arr), thisValue
 **判断包含元素** | **作用** | **返回** | **参数**
 `includes()` | 判断一个数组是否包含指定的值 | true/false | searchElement, fromIndex
 `indexOf()` | 从头到尾地检索数组是否含有某个元素 | 索引/-1 | item, start
