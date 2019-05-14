@@ -316,6 +316,26 @@ $('div').find('h3').eq(2).html('Hello');
 //尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
 ```
 
+- js数组方法
+
+检测数组元素 | 作用 | 返回 | 参数
+:--- | :--- | :--- | :---
+`every()` | 使用指定函数检测数组中的所有元素 | true/false | function(currentValue,index,arr), thisValue
+`filter()` | 检测数组中符合条件的所有元素 | 新数组 | function(currentValue,index,arr), thisValue
+`some()` | 使用指定函数检测数组中的每个元素 | true/false | function(currentValue,index,arr), thisValue
+**遍历执行函数** | **作用** | **返回** | **参数**
+`find()` | 为数组中的每个元素都调用一次函数执行 | 元素值/undefined | function(currentValue,index,arr), thisValue
+`findIndex()` | 为数组中的每个元素都调用一次函数执行 | 索引/-1 | function(currentValue,index,arr), thisValue
+`forEach()` | 调用数组的每个元素传递给回调函数 | 函数执行结果 | function(currentValue,index,arr), thisValue
+**判断包含元素** | **作用** | **返回** | **参数**
+`includes()` | 判断一个数组是否包含指定的值 | true/false | searchElement, fromIndex
+`indexOf()` | 从头到尾地检索数组是否含有某个元素 | 索引/-1 | item, start
+`lastIndexOf()` | 从尾到头地检索数组是否含有某个元素 | 索引/-1 | item, start
+**转换为字符串** | **作用** | **返回** | **参数**
+`join()` | 把数组转换为一个字符串，指定分隔符 | 字符串 | separator
+`toString()` | 把数组转换为一个字符串，逗号分隔 | 字符串 | 
+`valueOf()` | 返回数组的原始值，逗号分隔 | 字符串 | 
+
 - if语句与switch语句
 
 语句 | 适用场合
