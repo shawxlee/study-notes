@@ -104,6 +104,19 @@ https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js
 
 ## jQuery方法
 ### 1、jQuery事件方法
+#### • `bind()`：为被选元素添加一个或多个事件处理程序，并规定事件发生时运行的函数
+```javascript
+$(selector).bind(event,data,function);    //将事件和函数绑定到元素
+
+//*event：规定添加到元素的一个或多个事件
+//*function：规定当事件发生时运行的函数，由空格分隔多个事件，必须是有效的事件
+
+$(selector).bind({event:function, event:function, ...});
+
+//{event:function, event:function, ...}：规定事件映射，其中包含一个或多个添加到元素的事件，以及当事件发生时运行的函数
+```
+    *data  规定传递到函数的额外数据
+
 #### • `blur()`：当元素失去焦点时发生 blur 事件
 ```javascript
 $(selector).blur();    //触发blur事件
@@ -117,6 +130,16 @@ $(selector).click();    //触发click事件
 $(selector).click(function);    //将函数绑定到click事件
 ```
     *function  规定当发生click事件时运行的函数
+
+#### • `delegate()`：为被选元素的子元素添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数
+```javascript
+$(selector).delegate(childSelector,event,data,function);
+
+//*childSelector：规定要附加事件处理程序的一个或多个子元素
+//*event：规定附加到元素的一个或多个事件，由空格分隔多个事件值，必须是有效的事件
+//*function：规定当事件发生时运行的函数
+```
+    *data  规定传递到函数的额外数据
 
 #### • `event.stopPropagation()`：阻止事件冒泡到父元素，阻止任何父事件处理程序被执行
 ```javascript
