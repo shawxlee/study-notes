@@ -316,6 +316,15 @@ $('div').find('h3').eq(2).html('Hello');
 //尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
 ```
 
+- jQuery AJAX方法比较
+
+方法 | 作用 | 适用场合
+:--- | :--- | :---
+`$.ajax()` | 执行 AJAX（异步 HTTP）请求 | 精确控制
+`$.get()` | 使用 HTTP GET 请求从服务器加载数据 | 取回数据/可以缓存/历史记录/收藏书签/长度限制
+`$.getJSON()` | 使用 AJAX 的 HTTP GET 请求获取 JSON 数据 | json专用/跨域调用/安全保密
+`$.post()` | 使用 HTTP POST 请求从服务器加载数据 | 提交数据/不能缓存/后退刷新/安全保密/没有限制
+
 - 遍历方法性能比较
 
 方法 | 语法 | 短循环等级 | 长循环等级
