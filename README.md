@@ -316,6 +316,20 @@ $('div').find('h3').eq(2).html('Hello');
 //尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
 ```
 
+- 遍历方法性能比较
+
+方法 | 语法 | 短循环等级 | 长循环等级
+:--- | :--- | :--- | :---
+for | `for (var i = 0, len = arr.length; i < len; i++) {……}` | 1 | 1
+for | `for (var i = 0; i < arr.length; i++) {……}` | 2 | 2
+for | `for (var i = 0; arr[i] != null; i++) {……}` | 3 | 3
+forEach | `Array.prototype.forEach.call(arr,function(el){……});` | 4 | 7
+forEach | `arr.forEach(function(e){……});` | 5 | 6
+map | `arr.map(function(n){……});` | 6 | -
+for of | `for (x of arr) {……}` | 7 | 4
+for of | `for (let x of arr) {……}` | 8 | 5
+for in | `for (x in arr) {……}` | 9 | -
+
 - js数组方法
 
 检测数组元素 | 作用 | 返回 | 参数
