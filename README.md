@@ -470,6 +470,17 @@ mousedown → mouseup → click | mousedown → focus → mouseup → click
 
 ## 4. Vue.js
 
+- vue-touch事件
+
+分类 | 事件 | 效果
+--- | --- | ---
+Pan | `pan` `panstart` `panmove` `panend` `pancancel` `panleft` `panright` `panup` `pandown` | 按住拖动
+Pinch | `pinch` `pinchstart` `pinchmove` `pinchend` `pinchcancel` `pinchin` `pinchout` | 双指放大/缩小
+Press | `press` `pressup` | 长按（至少500毫秒）
+Rotate | `rotate` `rotatestart` `rotatemove` `rotateend` `rotatecancel` | 多指旋转
+Swipe | `swipe` `swipeleft` `swiperight` `swipeup` `swipedown` | 滑动
+Tap | `tap` `singletap` `doubletap` | 点击（最多250毫秒）
+
 - 单选切换效果：
 ```html
 <button :class="{active: order == 0}" @click="order = 0">单选框</button>
