@@ -316,6 +316,11 @@ $('div').find('h3').eq(2).html('Hello');
 //尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
 ```
 
+- 兼容性获取滚动条位置：
+```javascript
+var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+```
+
 - 嵌套循环性能优化：在嵌套外实例化全部变量；循环次数越少放在越外层
 
 - jQuery AJAX方法比较
