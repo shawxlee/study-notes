@@ -479,7 +479,7 @@ Pinch | `pinch` `pinchstart` `pinchmove` `pinchend` `pinchcancel` `pinchin` `pin
 Press | `press` `pressup` | 长按（至少500毫秒）
 Rotate | `rotate` `rotatestart` `rotatemove` `rotateend` `rotatecancel` | 多指旋转
 Swipe | `swipe` `swipeleft` `swiperight` `swipeup` `swipedown` | 滑动
-Tap | `tap` `singletap` `doubletap` | 点击（最多250毫秒）
+Tap | `tap` | 点击（最多250毫秒）
 
 - 单选切换效果：
 ```html
