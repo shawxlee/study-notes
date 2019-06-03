@@ -316,6 +316,8 @@ $('div').find('h3').eq(2).html('Hello');
 //尽量不要改动DOM结构，不要频繁使用append()、insertBefore()、insetAfter()这样的方法
 ```
 
+- 在一个方法内部，第一个`return`关键字将中断后面的代码执行，所以if判断应放在return内部
+
 - 兼容性获取滚动条位置：
 ```javascript
 var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
