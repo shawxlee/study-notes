@@ -477,6 +477,8 @@ mousedown → mouseup → click | mousedown → focus → mouseup → click
 
 ## 4. Vue.js
 
+- 若出现vue实例渲染空白，请检查以下几项：1、函数内部的`this`指向 2、`v-on="{}"`内部不能带修饰符
+
 - vue-touch事件
 
 分类 | 事件 | 效果
