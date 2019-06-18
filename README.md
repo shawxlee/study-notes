@@ -575,5 +575,53 @@ getDiff: function (item) {
 <a @eventName="methA();methB();methC()"></a>
 ```
 
-## 5. Others
+## 5. Vue-Cli
+### Step 1: 创建一个vue项目
+运行命令提示符（快捷键"Win+R" → 输入"cmd"）：
+```shell
+E:    # 命令执行环境转移到E盘内
+```
+```shell
+cd _projects    # 命令执行环境转移到E:\_projects内
+```
+```shell
+cd Vues    # 命令执行环境转移到E:\_projects\Vues内
+```
+```shell
+vue create vue-project    # 创建一套名为"vue-project"的工程项目
+# 使用键盘上下键和空格键选择preset（一般沿用上次项目的设置即可）
+```
+```shell
+cd vue-project    # 命令执行环境转移到E:\_projects\Vues\vue-project内
+```
+```shell
+npm run serve    # 在开发环境下编译和热加载
+```
+关闭命令提示符窗口，复制一个`vue.config.js`文件到vue-project文件夹内，修改文件中的基本配置
+
+### Step 2: 安装各种依赖
+vue-project文件夹内右键选择 Git Bash Here：
+#### • 引入jquery
+```bash
+$ npm install jquery    # 安装jquery
+```
+在`.eslintrc.js`文件中添加配置：
+```javascript
+……
+env: {
+    node: true,
+    jquery: true
+  },
+……
+```
+若vue.config.js中未配置jquery，当在组件中使用时需单独调用：
+```javascript
+<script>
+import $ from 'jquery'
+……
+</script>
+```
+#### • 引入bootstrap
+
+## 6. Others
 ![bits](https://github.com/shawxlee/study-notes/blob/master/md%E5%9B%BE%E7%89%87/bits.jpg?raw=true)
