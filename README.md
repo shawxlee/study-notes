@@ -607,21 +607,42 @@ $ npm install jquery    # 安装jquery
 ```
 在`.eslintrc.js`文件中添加配置：
 ```javascript
-……
 env: {
     node: true,
     jquery: true
   },
-……
 ```
 若vue.config.js中未配置jquery，当在组件中使用时需单独调用：
-```javascript
+```vue
 <script>
 import $ from 'jquery'
 ……
 </script>
 ```
 #### • 引入bootstrap
+```bash
+$ npm install popper.js --save    # 安装popper.js
+```
+```bash
+$ npm install bootstrap    # 安装bootstrap
+```
+在`main.js`文件中调用：
+```javascript
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+```
+#### • 引入fontawesome
+```bash
+$ npm install --save-dev @fortawesome/fontawesome-free    # 安装fontawesome-free
+```
+在`main.js`文件中调用：
+```javascript
+import '@fortawesome/fontawesome-free/css/all.css'
+```
+#### • 引入axios
+```bash
+$ npm install axios    # 安装axios
+```
 
 ## 6. Others
 ![bits](https://github.com/shawxlee/study-notes/blob/master/md%E5%9B%BE%E7%89%87/bits.jpg?raw=true)
