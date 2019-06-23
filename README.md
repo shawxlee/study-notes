@@ -30,28 +30,39 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    
+    <!-- 引入样式库 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <link rel="stylesheet" type="text/css" href="……">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- 私有样式 -->
+    <link rel="stylesheet" type="text/css" href="...">
+    <!-- 图标 -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <title>……</title>
+    
+    <title>...</title>
 </head>
 <body>
     <!-- HTML属性建议书写顺序： -->
     <div class="" id="" name="" data-*="" src="" for="" type="" href="" title="" alt="" aria-*="" role="" disabled></div>
     <!-- 减少标签的数量，尽量避免多余的父元素；尽量避免通过 JavaScript 生成标签 -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- 动态调整字号 -->
+    <script type="text/javascript" src="font-size.js"></script>
+    <!-- 引入脚本库 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-    <script type="text/javascript" src="……"></script>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+    <script src="./node_modules/vue-touch/dist/vue-touch.js"></script>
+    <!-- 私有脚本 -->
+    <script type="text/javascript" src="..."></script>
 </body>
 </html>
 ```
@@ -181,24 +192,6 @@ hover/单个属性值过渡 | CSS - transition |
 }
 ```
 
-- 调整按钮尺寸：
-```css
-button {
-    margin: 0;
-    padding: 0;
-    width: 3.5rem;   /* 设置宽高 */
-    height: 2rem;
-    font-size: 0.9rem;   /* 设置字号 */
-}
-```
-
-- 调整图标尺寸：
-```css
-i {
-    font-size: 1.5rem;
-}
-```
-
 - 元素尺寸填满当前窗口（写在该元素上）：
 ```css
 body {
@@ -207,39 +200,11 @@ body {
 }
 ```
 
-- 圆形边框：
-```css
-div {
-    border-radius: 50%;
-}
-```
-
-- 背景颜色透明度：
-```css
-div {
-    background-color: rgba(190,190,190,.6);    /* R,G,B,透明度 */
-}
-```
-
-- 首行缩进两个字符：
-```css
-p {
-    text-indent: 2em;
-}
-```
-
 - 溢出部分显示滚动条查看：
 ```css
 div {
     height: 100vh;
     overflow: auto;
-}
-```
-
-- 元素高度始终为当前窗口高度减去固定高度：
-```css
-div {
-    height: calc(100vh - 100px);     /* 运算符前后都必需有空格 */
 }
 ```
 
@@ -252,18 +217,6 @@ p {
     display: -webkit-box;
     -webkit-line-clamp: 3;     /* 指定文本可显示的行数 */
     -webkit-box-orient: vertical;
-}
-```
-
-- CSS画直角箭头：
-```css
-div {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-top: 1px solid;
-    border-right: 1px solid;
-    transform: rotate(45deg);
 }
 ```
 
@@ -285,13 +238,6 @@ div {
 }
 .parent {
     zoom: 1;
-}
-```
-
-- 使input与其他元素内联（写在该元素上）：
-```css
-input {
-    float: left;   /* 其他元素可能也需要一起浮动 */
 }
 ```
 
@@ -432,8 +378,7 @@ Truthy（真值） | Falsy（假值）
 - 布尔类型变量取反，实现切换效果：
 ```javascript
 var b = true;
-b = !b;    //对t取反并赋值给t
-alert(b);    //此时b = false，再次执行变为true，再次执行变为false……
+b = !b;    //对t取反并赋值给t，此时b = false，再次执行变为true，再次执行变为false……
 ```
 
 - 返回操作对比：
@@ -453,19 +398,7 @@ stringObject.replace(……).replace(……)    //连续替换多次即可
 
 - 不足两位数时在前面补0：
 ```javascript
-num = num>9 ? num : "0"+num;   //三元运算符简单实现条件语句
-```
-
-- 所有jQuery代码包裹：
-```javascript
-$(document).ready(function(){……})
-$().ready(function(){……})
-$(function(){……})
-```
-
-- jQuery自定义全局函数:
-```javascript
-$.funcName = function(){……};
+num = num > 9 ? num : "0" + num    //三元运算符简单实现条件语句
 ```
 
 - 事件触发顺序：
@@ -696,25 +629,7 @@ Tap | `tap` | 点击（最多250毫秒）
 <button :class="{active: order == 0}" @click="order = 0">单选框</button>
 ```
 
-- v-for循环中，给style动态绑定函数，根据条件改变样式：
-```html
-<p :style="{color: scoreColor(item)}">{{ item.score }}</p>
-```
-```javascript
-changeColor: function (item) {
-    if (item.score >= 9) {
-        return '#551A8B';
-    }
-    else if (item.score < 9 && item.score >= 8) {
-        return '#00008B';
-    }
-    else {
-        return '#8B0000';
-    }
-}
-```
-
-- v-for循环中尽量不使用id，因为id是唯一的，无法循环！但如果非要使用id，可利用index动态绑定不同的id值~
+- v-for循环中尽量不使用id，因为id是唯一的，无法循环！但如果非要使用id，可利用item.id或index动态绑定不同的id值~
 
 - 命名法：
 
@@ -734,31 +649,6 @@ _underlinecase | 私有成员
 变量名 | （名词短语）、 isName/hasName（布尔值）
 函数/方法名 | canName/hasName/isName（布尔值）、getName（获取值）、setName/loadName（无返回或……）
 Vue方法名 | （动宾短语）、onName（事件）、setName/getName/openName/closeName/jumpName/loadName（常用单词）
-
-- v-for中计算时间差：
-```html
-<div v-for="item in items">{{ getDiff(item) }}</div>
-```
-```javascript
-getDiff: function (item) {
-    var st = new Date(item.startTime);
-    var et = new Date(item.endTime);
-    var millDiff = et.getTime() - st.getTime();
-    var dayDiff = Math.floor(millDiff / (1000*60*60*24));
-    var dayRem = millDiff % (1000*60*60*24);
-    var hourDiff = Math.floor(dayRem / (1000*60*60));
-    var hourRem = dayRem % (1000*60*60);
-    var minDiff = Math.floor(hourRem / (1000*60));
-    var minRem = hourRem % (1000*60);
-    var secDiff = Math.round(minRem / 1000);
-    return dayDiff + "天" + hourDiff + "时" + minDiff + "分" + secDiff + "秒";
-}
-```
-
-- 一个事件中调用多个方法：
-```html
-<a @eventName="methA();methB();methC()"></a>
-```
 
 ## 5. Vue-Cli
 ### Step 1: 创建一个vue项目
@@ -782,10 +672,38 @@ cd vue-project    # 命令执行环境转移到E:\_projects\Vues\vue-project内
 ```shell
 npm run serve    # 在开发环境下编译和热加载
 ```
-关闭命令提示符窗口，复制一个`vue.config.js`文件到vue-project文件夹内，修改文件中的基本配置
+关闭命令提示符窗口，复制`vue.config.js`和`touch.js`文件到vue-project文件夹内，修改文件中的基本配置
 
 ### Step 2: 安装各种依赖
 vue-project文件夹内右键选择 Git Bash Here：
+#### • 引入vue-touch
+```bash
+$ npm install vue-touch@next    # 安装vue-touch
+```
+在`main.js`文件中调用：
+```javascript
+...
+import touch from './touch'
+...
+new Vue({
+  router,
+  touch,
+  render: h => h(App)
+}).$mount('#app')
+```
+#### • 引入*-loader
+```bash
+$ npm install style-loader --save-dev    # 安装style-loader
+```
+```bash
+$ npm install --save-dev css-loader    # 安装css-loader
+```
+```bash
+$ npm install file-loader --save-dev    # 安装file-loader
+```
+```bash
+$ npm install url-loader --save-dev    # 安装url-loader
+```
 #### • 引入jquery
 ```bash
 $ npm install jquery    # 安装jquery
@@ -796,13 +714,6 @@ env: {
     node: true,
     jquery: true
   },
-```
-若vue.config.js中未配置jquery，当在组件中使用时需单独调用：
-```vue
-<script>
-import $ from 'jquery'
-……
-</script>
 ```
 #### • 引入bootstrap
 ```bash
@@ -828,6 +739,32 @@ import '@fortawesome/fontawesome-free/css/all.css'
 ```bash
 $ npm install axios    # 安装axios
 ```
+在`*.vue`文件中调用：
+```javascript
+import axios from 'axios'
+
+export default {
+  ...
+}
+```
+#### • 引入webpack-dev-server
+```bash
+$ npm install webpack-dev-server --save-dev    # 安装webpack-dev-server
+```
+
+### Step 3: 图形化界面管理项目
+在`package.json`文件中添加设置：
+```javascript
+"scripts": {
+    "serve": "vue-cli-service serve --open",
+    ...
+  },
+```
+vue-project文件夹内右键选择 Git Bash Here：
+```bash
+$ vue ui    # 浏览器中打开图形化界面
+```
+图形化界面导入vue-project文件夹为项目，前往“任务”页运行项目
 
 ## 6. Others
 ![bits](https://github.com/shawxlee/study-notes/blob/master/md%E5%9B%BE%E7%89%87/bits.jpg?raw=true)
