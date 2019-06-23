@@ -476,6 +476,207 @@ mousedown → mouseup → click | mousedown → focus → mouseup → click
 
 
 ## 4. Vue.js
+- 风格指南
+```html
+<!-- 永远不要把 v-if 和 v-for 同时用在同一个元素上 -->
+<ul>
+  <li
+    v-for="user in activeUsers"
+    :key="user.id"
+  >
+    {{ user.name }}
+  </li>
+</ul>
+
+<!-- 为组件样式设置作用域 -->
+<style scoped>
+.button {
+  border: none;
+  border-radius: 2px;
+}
+
+.button-close {
+  background-color: red;
+}
+</style>
+
+<!-- 在单文件组件、字符串模板和 JSX 中没有内容的组件应该是自闭合的；对于绝大多数项目来说，总是 PascalCase 的 -->
+<MyComponent/>
+<!-- 但在 DOM 模板里永远不要这样做；总是 kebab-case 的 -->
+<my-component></my-component>
+
+<!-- 在声明 prop 的时候，在模板和 JSX 中应该始终使用 kebab-case -->
+<WelcomeMessage greeting-text="hi"/>
+
+<!-- 多个特性的元素应该分多行撰写，每个特性一行 -->
+<MyComponent
+  foo="a"
+  bar="b"
+  baz="c"
+/>
+
+<!-- 元素 (包括组件) 的特性应该有统一的顺序 -->
+<MyComponent
+  is
+  v-for
+  v-if
+  v-else-if
+  v-else
+  v-show
+  v-cloak
+  v-pre
+  v-once
+  id
+  ref
+  key
+  slot
+  v-model
+  v-on
+  v-html
+  v-text
+/>
+
+<!-- 单文件组件的顶级元素的顺序 -->
+<template>...</template>
+<script>/* ... */</script>
+<style>/* ... */</style>
+
+<!-- 如果一组 v-if + v-else 的元素类型相同，最好使用 key (比如两个 <div> 元素) -->
+<div
+  v-if="error"
+  key="search-status"
+>
+  错误：{{ error }}
+</div>
+<div
+  v-else
+  key="search-results"
+>
+  {{ results }}
+</div>
+```
+```javascript
+// 组件名为多个单词
+export default {
+  name: 'TodoItem',
+  // ...
+}
+
+// Prop 定义应该尽量详细
+props: {
+  status: {
+    type: String,
+    required: true,
+    validator: function (value) {
+      return [
+        'syncing',
+        'synced',
+        'version-conflict',
+        'error'
+      ].indexOf(value) !== -1
+    }
+  }
+}
+
+// 使用模块作用域保持不允许外部访问的函数的私有性
+var myGreatMixin = {
+  // ...
+  methods: {
+    publicMethod() {
+      // ...
+      myPrivateFunction()
+    }
+  }
+}
+
+function myPrivateFunction() {
+  // ...
+}
+
+export default myGreatMixin
+
+// JS/JSX 中的组件名应该始终是 PascalCase 的
+import MyComponent from './MyComponent.vue'
+export default {
+  name: 'MyComponent',
+  // ...
+}
+
+// 在声明 prop 的时候，其命名应该始终使用 camelCase
+props: {
+  greetingText: String
+}
+
+// 组件/实例的选项应该有统一的顺序
+el
+name
+parent
+functional
+delimiters
+comments
+components
+directives
+filters
+extends
+mixins
+inheritAttrs
+model
+props/propsData
+data
+computed
+watch
+beforeCreate
+created
+beforeMount
+mounted
+beforeUpdate
+updated
+activated
+deactivated
+beforeDestroy
+destroyed
+methods
+template/render
+renderError
+```
+```shell
+# 单文件组件的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)
+components/
+|- MyComponent.vue
+components/
+|- my-component.vue
+
+# 应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 Base、App 或 V
+components/
+|- BaseButton.vue
+|- BaseTable.vue
+|- BaseIcon.vue
+
+# 只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性
+components/
+|- TheHeading.vue
+|- TheSidebar.vue
+
+# 和父组件紧密耦合的子组件应该以父组件名作为前缀命名
+components/
+|- TodoList.vue
+|- TodoListItem.vue
+|- TodoListItemButton.vue
+
+# 组件名应该以高级别的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾
+components/
+|- SearchButtonClear.vue
+|- SearchButtonRun.vue
+|- SearchInputQuery.vue
+|- SearchInputExcludeGlob.vue
+|- SettingsCheckboxTerms.vue
+|- SettingsCheckboxLaunchOnStartup.vue
+
+# 组件名应该倾向于完整单词而不是缩写
+components/
+|- StudentDashboardSettings.vue
+|- UserProfileOptions.vue
+```
 
 - 若出现vue实例渲染空白，请检查以下几项：1、函数内部的`this`指向 2、`v-on="{}"`内部不能带修饰符
 
@@ -533,22 +734,6 @@ _underlinecase | 私有成员
 变量名 | （名词短语）、 isName/hasName（布尔值）
 函数/方法名 | canName/hasName/isName（布尔值）、getName（获取值）、setName/loadName（无返回或……）
 Vue方法名 | （动宾短语）、onName（事件）、setName/getName/openName/closeName/jumpName/loadName（常用单词）
-
-- 实例中选项的顺序：
-```javascript
-components
-props
-data
-created
-mounted
-activited
-update
-beforeRouteUpdate
-methods
-filter
-computed
-watch
-```
 
 - v-for中计算时间差：
 ```html
